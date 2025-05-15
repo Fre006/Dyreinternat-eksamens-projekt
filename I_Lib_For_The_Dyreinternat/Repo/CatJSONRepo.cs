@@ -9,12 +9,12 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class CatJSONRepo
+    internal class CatJsonRepo
     {
         private string _path="Cat.json";
         protected List<Cat> _cats = new List<Cat>();
 
-        public CatJSONRepo()
+        public void CatJSONRepo()
         {
             LoadFile();
         }
