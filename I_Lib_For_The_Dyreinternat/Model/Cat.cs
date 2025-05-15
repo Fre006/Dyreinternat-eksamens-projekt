@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
+    enum Breeds { Siamese, Norwegian_Forest_Cat, Korat, Maine_Coon }
     internal class Cat
     {
-        public Enum Breed;
+        public Breeds breed;
 
     }
 }
