@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lib.Model
+{
+    public class Blog
+    {
+        public string Title { get; set; }
+        public string Text { get; set; }
+        public Worker Author { get; set; }
+        public string Multimedia { get; set; }
+        public DateTime Date { get; set; }
+        
+
+        public Blog() 
+        { 
+            
+        }
+        public Blog(string title, string text, Worker author, string multimedia, DateTime date)
+        { 
+            Title = title;
+            Text = text;
+            Author = author;
+            Multimedia = multimedia;
+            Date = date;
+        }
+    }
+}
