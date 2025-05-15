@@ -9,7 +9,7 @@ namespace I_Lib_For_The_Dyreinternat.Model
 {
     internal class Dog
     {
-        public enum Race;
+        public enum Breed;
 
 
     }

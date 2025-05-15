@@ -8,5 +8,7 @@ namespace I_Lib_For_The_Dyreinternat.Model
 {
     internal class Cat
     {
+        public Enum Breed;
+
     }
 }
