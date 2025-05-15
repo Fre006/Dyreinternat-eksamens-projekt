@@ -21,5 +21,9 @@ namespace Lib.Model
             Type = type;
             Veterinarian = veterinarian;
         }
+        public override string ToString()
+        {
+            return $"Name: {Name}  Description: {Description}  CostumerCap: {CostumerCap}  AnimalCap: {AnimalCap}  Costumers: {Costumers} Animals: {Animals} Workers: {Workers} Location: {Location} Time start: {Start} time stop: {Stop} Type: {Type} Veterinarian: {Veterinarian}";
+        }
     }
 }

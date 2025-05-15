@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,10 @@ namespace Lib.Model
             PhoneNumber = phoneNumber;
             Birthdate = birthdate;
             CardNumber = cardNumber;
+        }
+        public override string ToString()
+        {
+            return $"Name: {Name}  Id: {Id}  Mail: {Mail}  PhoneNumber: {PhoneNumber}  Birthdate: {Birthdate} CardNumber: {CardNumber}";
         }
     }
 }
