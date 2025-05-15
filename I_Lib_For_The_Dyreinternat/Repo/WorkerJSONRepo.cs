@@ -40,13 +40,13 @@ namespace Lib.Repo
             File.WriteAllText(_path, JsonSerializer.Serialize(workers));
         }
        
-        public  void Add(Worker worker)
+        public void Add(Worker worker)
         {
             workers.Add(worker);
             Debug.WriteLine("Successfully added worker");
             SaveFile();
         }
-        public  List<Worker> GetAll() 
+        public List<Worker> GetAll() 
         {
             return workers; 
         }
