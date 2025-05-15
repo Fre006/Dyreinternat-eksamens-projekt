@@ -19,10 +19,21 @@ namespace I_Lib_For_The_Dyreinternat.Model
         public string ChipID { get; set; }
         public string Description { get; set; }
 
-        public DateTime birthdate { get; set; }
+        public DateTime Birthdate { get; set; }
 
-        public Animal(string name, string characteristics, string status, bool male, bool fertile, Enum size,   )
+        public Animal(string name, string characteristics, string status, bool male, bool fertile, Enum size, List<string> logs, string chipID, string description, DateTime birthdate)
         {
+            Name = name;
+            Characteristics = characteristics;
+            Status = status;
+            Male = male;
+            Fertile = fertile;
+            Size = size;
+            ChipID = chipID;
+            Description = description;
+            Logs= logs;
+            ChipID=chipID;
+            Birthdate=birthdate;
 
         }
 
