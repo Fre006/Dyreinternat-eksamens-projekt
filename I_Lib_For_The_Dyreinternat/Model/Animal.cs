@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    enum Sizes { Big, Medium, Small }
+    public enum Sizes { Big, Medium, Small }
     public class Animal
     {
         public string Name { get; set; }
