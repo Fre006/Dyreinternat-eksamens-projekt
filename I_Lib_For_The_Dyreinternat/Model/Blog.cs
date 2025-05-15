@@ -27,5 +27,10 @@ namespace Lib.Model
             Multimedia = multimedia;
             Date = date;
         }
+
+        public override string ToString()
+        {
+            return $"Title: {Title}  Text: {Text}  Author: {Author.Name}";
+        }
     }
 }

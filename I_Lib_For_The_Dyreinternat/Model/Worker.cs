@@ -13,12 +13,13 @@ namespace Lib.Model
 
         public Roles Role {  get; set; }
 
-
-        public Worker(Roles role, string name, string id, string mail, string phonenr, DateTime birtdate) 
+        public Worker() { }
+        public Worker(Roles role, string name, string id, string phoneNumber, string mail, DateTime birtdate) 
         {
             Role = role;
             Name = name;
             Id = id;
+            PhoneNumber = phoneNumber;
             Mail = mail;
             Birthdate = birtdate;
             PhoneNumber = phonenr;

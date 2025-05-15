@@ -13,43 +13,43 @@ namespace Lib.Repo
 {
     public class WorkerJSONRepo : IWorkerJSONRepo
     {
-        List<Worker> workers = new List<Worker>();
+        List<Worker> _workers = new List<Worker>();
 
         public WorkerJSONRepo()
         {
-            //try
-            //{
-            //    LoadFile();
-            //}
-            //catch
-            //{
-            //    Console.WriteLine("Failed to Load File");
-            //    SaveFile();
-            //}
-            LoadFile();
+            try
+            {
+                LoadFile();
+                Debug.WriteLine("Successfully loaded File");
+            }
+            catch
+            {
+                SaveFile();
+            }
         }
 
-        private string _path = @"Worker.json";
+        private string _path = "Worker.json";
         private void LoadFile()
         {
             string json = File.ReadAllText(_path);
-            workers = JsonSerializer.Deserialize<List<Worker>>(json);
+            _workers = JsonSerializer.Deserialize<List<Worker>>(json);
 
         }
         private void SaveFile()
         {
-            File.WriteAllText(_path, JsonSerializer.Serialize(workers));
+            File.WriteAllText(_path, JsonSerializer.Serialize(_workers));
+            Debug.WriteLine("saved file");
         }
        
         public void Add(Worker worker)
         {
-            workers.Add(worker);
+            _workers.Add(worker);
             Debug.WriteLine("Successfully added worker");
             SaveFile();
         }
         public List<Worker> GetAll() 
         {
-            return workers; 
+            return _workers; 
         }
         
        
