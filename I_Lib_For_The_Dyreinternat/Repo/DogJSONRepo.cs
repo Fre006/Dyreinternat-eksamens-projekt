@@ -29,16 +29,18 @@ namespace Lib.Repo
         }
         public List<Event> GetAllEventsByID(string chipID)
         {
-            List<Event> logslist= new List<Event>(null);
+            List<Event> logslist= new List<Event>();
             for (int i = 0; i < _dogs.Count; i++)
             {
                 if (_dogs[i].ChipID == chipID)
                 {
 
-                    return _dogs[i].Logs;
+                    logslist=_dogs[i].Logs;
+
                 }
-                else return logslist;
+                
             }
+            return logslist;
 
         }
         public List<Dog> GetAll()

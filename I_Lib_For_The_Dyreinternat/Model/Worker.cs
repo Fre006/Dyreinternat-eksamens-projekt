@@ -22,7 +22,7 @@ namespace Lib.Model
             PhoneNumber = phoneNumber;
             Mail = mail;
             Birthdate = birtdate;
-            PhoneNumber = phonenr;
+
         }
 
         public override string ToString()
