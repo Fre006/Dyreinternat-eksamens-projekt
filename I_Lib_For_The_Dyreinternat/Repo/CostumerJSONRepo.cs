@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace I_Lib_For_The_Dyreinternat.Repo
+namespace Lib.Repo
 {
     internal class CostumerJSONRepo
     {

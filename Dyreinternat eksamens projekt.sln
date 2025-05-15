@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyreinternat eksamens projekt", "Dyreinternat eksamens projekt\Dyreinternat eksamens projekt.csproj", "{68CC0621-083A-462C-B791-49156CD8E704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I_Lib_For_The_Dyreinternat", "I_Lib_For_The_Dyreinternat\I_Lib_For_The_Dyreinternat.csproj", "{27D24868-150F-47F4-ABA7-A107A75F902E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "I_Lib_For_The_Dyreinternat\Lib.csproj", "{27D24868-150F-47F4-ABA7-A107A75F902E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleProgram", "ConsoleProgram\ConsoleProgram.csproj", "{DD81D8D9-D206-46C2-A64E-E12D29554BA5}"
 EndProject
