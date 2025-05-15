@@ -10,8 +10,13 @@ namespace Lib.Model
     enum DogBreeds { Labrador, Golden_Retriever, Rhodesian_Rigdebag, Saint_Bernards_dog}
     internal class Dog:Animal
     {
-        public DogBreeds Breed; 
-        public Dog(DogBreeds breed, string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<string> logs, string chipID, string description, DateTime birthdate) { 
+        public DogBreeds Breed;
+        
+        public Dog()
+        {
+
+        }
+        public Dog(DogBreeds breed, string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<Event> logs, string chipID, string description, DateTime birthdate) { 
             Breed= breed;
             Name = name;
             Characteristics = characteristics;

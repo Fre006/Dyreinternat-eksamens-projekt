@@ -17,18 +17,19 @@ namespace Lib.Repo
 
         public WorkerJSONRepo()
         {
-            try
-            {
-                LoadFile();
-            }
-            catch 
-            {
-                Console.WriteLine("Failed to Load File");
-                SaveFile();
-            }
+            //try
+            //{
+            //    LoadFile();
+            //}
+            //catch
+            //{
+            //    Console.WriteLine("Failed to Load File");
+            //    SaveFile();
+            //}
+            LoadFile();
         }
 
-        private string _path = "Worker.json";
+        private string _path = @"Worker.json";
         private void LoadFile()
         {
             string json = File.ReadAllText(_path);

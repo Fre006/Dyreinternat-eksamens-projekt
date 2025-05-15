@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -25,7 +27,20 @@ namespace Lib.Repo
             }
 
         }
+        public List<Event> GetAllEventsByID(string chipID)
+        {
+            List<Event> logslist= new List<Event>(null);
+            for (int i = 0; i < _dogs.Count; i++)
+            {
+                if (_dogs[i].ChipID == chipID)
+                {
 
+                    return _dogs[i].Logs;
+                }
+                else return logslist;
+            }
+
+        }
         public List<Dog> GetAll()
         {
             return _dogs;

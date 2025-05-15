@@ -11,6 +11,6 @@ namespace Lib.Repo
     internal interface ICatRepo
     {
         public List<Cat> GetAll();
-        public void Add(Cat cat, string path);
+        public void Add(Cat cat, string path="default");
     }
 }

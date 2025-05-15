@@ -11,7 +11,9 @@ namespace Lib.Model
     {
         public CatBreeds Breed;
 
-        public Cat(CatBreeds breed, string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<string> logs, string chipID, string description, DateTime birthdate)
+        public Cat() { }
+
+        public Cat(CatBreeds breed, string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<Event> logs, string chipID, string description, DateTime birthdate)
         {
             Breed = breed;
             Name = name;
