@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    internal class Event
+    public class Event
     {
         public string _name;
         public string _description;
