@@ -7,19 +7,26 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    enum Roles { Admin, Leader, Grunt}
-    internal class Worker : Person
+    public enum Roles { Admin, Leader, Grunt}
+    public class Worker : Person
     {
 
         public Roles Role {  get; set; }
 
 
-        public Worker(Roles role) 
+        public Worker(Roles role, string name, string id, string mail, DateTime birtdate) 
         {
             Role = role;
+            Name = name;
+            Id = id;
+            Mail = mail;
+            Birthdate = birtdate;
         }
 
-
+        public override string ToString()
+        {
+            return $"Name: {Name}  Role: {Role}  ID: {Id}  Mail: {Mail}  Birthdate: {Birthdate}";
+        }
 
     }
 }

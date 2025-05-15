@@ -9,7 +9,7 @@ namespace Lib.Interface
 {
     public interface IWorkerJSONRepo
     {
-        public void Add(Person worker);
+        public void Add(Worker worker);
 
         public List<Person> GetAll();
     }
