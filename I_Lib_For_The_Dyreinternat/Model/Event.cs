@@ -12,7 +12,7 @@ namespace Lib.Model
         public string _description;
         public int _customerCap;
         public int _animalCap;
-        public List<Customer> _customers;
+        public List<Costumer> _costumers;
         public List<Animal> _animals;
         public List<Worker> _workers;
         public string _location;
@@ -21,9 +21,9 @@ namespace Lib.Model
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public int CustomerCap { get; set; }
+        public int CostumerCap { get; set; }
         public int AnimalCap { get; set; }
-        public List<Customer> Customers { get; set; }
+        public List<Costumer> Costumers { get; set; }
         public List<Animal> Animals { get; set; }
         public List<Worker> Workers { get; set; }
         public string Location { get; set; }
@@ -31,13 +31,13 @@ namespace Lib.Model
         public DateTime Stop { get; set; }
 
 
-        public Event(string name, string description, int customerCap, int animalCap, List<Customer> customers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
+        public Event(string name, string description, int customerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
         {
             Name = name;
             Description = description;
-            CustomerCap = customerCap;
+            CostumerCap = customerCap;
             AnimalCap = animalCap;
-            Customers = customers;
+            Costumers = costumers;
             Animals = animals;
             Workers = workers;
             Location = location;
