@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Lib.Model;
 
-namespace Lib.Interface
+namespace Lib.Repo
 {
     public interface IWorkerJSONRepo
     {
         public void Add(Worker worker);
 
-        public List<Person> GetAll();
+        public List<Worker> GetAll();
     }
 }

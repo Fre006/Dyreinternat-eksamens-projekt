@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lib.Repo;
-using Lib.Interface;
 using Lib.Model;
 using System.Diagnostics;
 
@@ -28,7 +27,7 @@ namespace Lib.Services
         }
 
 
-        public List<Person> GetAll()
+        public List<Worker> GetAll()
         {
             Debug.WriteLine("Reached Service");
             return _workerRepo.GetAll();

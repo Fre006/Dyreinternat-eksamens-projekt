@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Lib.Interface;
 using Lib.Model;
 
 
@@ -14,18 +13,25 @@ namespace Lib.Repo
 {
     public class WorkerJSONRepo : IWorkerJSONRepo
     {
-        List<Person> workers = new List<Person>();
+        List<Worker> workers = new List<Worker>();
 
         public WorkerJSONRepo()
         {
-            //LoadFile();
+            try
+            {
+                LoadFile();
+            }
+            catch 
+            {
+                Debug.WriteLine("Failed to Load File");
+            }
         }
 
         private void LoadFile()
         {
             string path = @"Worker.json";
             string json = File.ReadAllText(path);
-            workers = JsonSerializer.Deserialize<List<Person>>(json);
+            workers = JsonSerializer.Deserialize<List<Worker>>(json);
 
         }
         private void SaveFile()
@@ -40,7 +46,7 @@ namespace Lib.Repo
             Debug.WriteLine("Successfully added worker");
             SaveFile();
         }
-        public  List<Person> GetAll() 
+        public  List<Worker> GetAll() 
         {
             return workers; 
         }
