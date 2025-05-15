@@ -50,11 +50,13 @@ namespace Lib.Repo
 
         public void Delete(string title)
         {
-            foreach (Blog blog in blogs) 
+            foreach (Blog blog in blogs) //Looks through the list of blogs and remove the first one with the same title
             {
                 if (title == blog.Title)
                 {
                     blogs.Remove(blog);
+                    SaveFile(); //Saves the file after
+                    break;
                 }
             }
 
