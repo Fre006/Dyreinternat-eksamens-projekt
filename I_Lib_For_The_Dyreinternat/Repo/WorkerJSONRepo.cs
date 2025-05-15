@@ -27,16 +27,16 @@ namespace Lib.Repo
             }
         }
 
-        string path = @"Worker.json";
+        private string _path = @"Worker.json";
         private void LoadFile()
         {
-            string json = File.ReadAllText(path);
+            string json = File.ReadAllText(_path);
             workers = JsonSerializer.Deserialize<List<Worker>>(json);
 
         }
         private void SaveFile()
         {
-            File.WriteAllText(path, JsonSerializer.Serialize(workers));
+            File.WriteAllText(_path, JsonSerializer.Serialize(workers));
         }
        
         public  void Add(Worker worker)
