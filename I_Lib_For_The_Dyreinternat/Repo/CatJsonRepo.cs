@@ -14,9 +14,9 @@ namespace Lib.Repo
         private string _path="Cat.json";
         protected List<Cat> _cats = new List<Cat>();
 
-        public void CatJSONRepository(string path=_path)
+        public void CatJSONRepo()
         {
-            LoadFile(path);
+            LoadFile();
         }
 
         public List<Cat> GetAll()
@@ -24,26 +24,26 @@ namespace Lib.Repo
             return _cats;
         }
 
-        public void Add(Cat cat, string path=_path)
+        public void Add(Cat cat)
         {
             _cats.Add(cat);
-            SaveFile(path);
+            SaveFile();
         }
 
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
-        private void LoadFile(string path)
+        private void LoadFile()
         {
-            string json = File.ReadAllText(path);
+            string json = File.ReadAllText(_path);
 
             _cats = JsonSerializer.Deserialize<List<Cat>>(json);
         }
 
         //denne metode skal kaldes når vi vil putte data i vores JSON
-        private void SaveFile(string path)
+        private void SaveFile()
         {
 
-            File.WriteAllText(path, JsonSerializer.Serialize(_cats));
+            File.WriteAllText(_path, JsonSerializer.Serialize(_cats));
         }
     }
 }
