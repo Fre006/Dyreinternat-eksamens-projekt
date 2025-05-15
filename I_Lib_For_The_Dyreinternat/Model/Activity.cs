@@ -8,8 +8,7 @@ namespace Lib.Model
 {
     public class Activity : Event
     {
-        public Activity(string name, string description, int costumerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
-
+        public Activity (string name, string description, int costumerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
         {
             Name = name;
             Description = description;

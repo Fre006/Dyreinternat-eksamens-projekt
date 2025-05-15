@@ -30,6 +30,7 @@ namespace Lib.Model
         public DateTime Start { get; set; }
         public DateTime Stop { get; set; }
 
+        public Event() { }
 
         public Event(string name, string description, int customerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
         {
