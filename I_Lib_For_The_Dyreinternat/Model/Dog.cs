@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    enum Breeds { Labrador, Golden_Retriever, Rhodesian_Rigdebag, Saint_Bernards_dog}
-    internal class Dog
+    enum DogBreeds { Labrador, Golden_Retriever, Rhodesian_Rigdebag, Saint_Bernards_dog}
+    internal class Dog:Animal
     {
-        public Breeds Breed;
+        public DogBreeds Breed; 
+        public Dog(DogBreeds breed) { 
+            Breed= breed;
+
+
+
+        }
 
 
     }
