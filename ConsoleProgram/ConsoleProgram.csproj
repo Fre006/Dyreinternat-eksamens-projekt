@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\I_Lib_For_The_Dyreinternat\Lib.csproj" />
+  </ItemGroup>
+
 </Project>
