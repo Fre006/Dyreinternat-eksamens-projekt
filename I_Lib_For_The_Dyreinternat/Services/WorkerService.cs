@@ -29,7 +29,7 @@ namespace Lib.Services
 
         public List<Worker> GetAll()
         {
-            Debug.WriteLine("Reached Service");
+            Debug.WriteLine("Reached Servic e");
             return _workerRepo.GetAll();
             
         }
