@@ -21,12 +21,10 @@ namespace Lib.Repo
             {
                 LoadFile();
                 Debug.WriteLine("Successfully loaded File");
-
             }
             catch
             {
                 SaveFile();
-                Debug.WriteLine("Failed to Load File");
             }
         }
 
