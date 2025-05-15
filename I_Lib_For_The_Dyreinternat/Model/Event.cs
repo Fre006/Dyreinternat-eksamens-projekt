@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    internal class Event
+    public class Event
     {
         public string _name;
         public string _description;
@@ -30,6 +30,7 @@ namespace Lib.Model
         public DateTime Start { get; set; }
         public DateTime Stop { get; set; }
 
+        public Event() { }
 
         public Event(string name, string description, int customerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
         {

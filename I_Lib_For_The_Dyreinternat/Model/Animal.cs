@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Lib.Model
 {
     enum Sizes { Big, Medium, Small }
-    internal class Animal
+    public class Animal
     {
         public string Name { get; set; }
         public string Characteristics { get; set; }

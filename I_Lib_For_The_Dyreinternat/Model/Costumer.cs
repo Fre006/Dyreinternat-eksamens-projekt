@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    internal class Costumer : Person
+    public class Costumer : Person
     {
         public string _cardNumber;
         public string CardNumber { get; set; }
