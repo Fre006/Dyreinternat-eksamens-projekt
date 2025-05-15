@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    enum Sizes { Big, Medium, Small }
+    public enum Sizes { Big, Medium, Small }
     public class Animal
     {
         public string Name { get; set; }
@@ -22,7 +22,10 @@ namespace Lib.Model
 
         public DateTime Birthdate { get; set; }
 
+        public Animal()
+        {
 
+        }
         public Animal(string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<string> logs, string chipID, string description, DateTime birthdate)
         {
             Name = name;
