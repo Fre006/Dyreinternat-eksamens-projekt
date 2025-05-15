@@ -18,7 +18,7 @@ namespace Lib.Model
 
         public Person() { }
 
-        public Person(string name, string id, string mail, string phoneNumber, DateTime birthdate)
+        public Person(string name, string id, string phoneNumber, string mail, DateTime birthdate)
         {
             Name = name;
             Id = id;

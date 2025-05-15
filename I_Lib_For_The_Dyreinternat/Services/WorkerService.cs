@@ -22,14 +22,14 @@ namespace Lib.Services
         {
 
             _workerRepo.Add(worker);
-            Debug.WriteLine("Added worker in service");
+            //Debug.WriteLine("Added worker in service");
 
         }
 
 
         public List<Worker> GetAll()
         {
-            Debug.WriteLine("Reached Servic e");
+            //Debug.WriteLine("Reached Servic e");
             return _workerRepo.GetAll();
             
         }

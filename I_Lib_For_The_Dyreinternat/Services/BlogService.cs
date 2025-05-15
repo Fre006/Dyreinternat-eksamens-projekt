@@ -8,7 +8,7 @@ using Lib.Model;
 
 namespace Lib.Services
 {
-    internal class BlogService
+    public class BlogService
     {
         private IBlogJSONRepo _blogRepo;
         public BlogService(IBlogJSONRepo blogJSONRepo) 

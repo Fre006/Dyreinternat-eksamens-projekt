@@ -20,7 +20,7 @@ namespace Lib.Repo
             }
             catch 
             {
-                Debug.WriteLine("Failed to Load File");
+                //Debug.WriteLine("Failed to Load File");
                 //SaveFile();
             }
 

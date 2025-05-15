@@ -14,6 +14,7 @@ namespace ConsoleProgram
         static void Main(string[] args)
         {
             WorkerService workerService = new WorkerService(new WorkerJSONRepo());
+            BlogService blogService = new BlogService(new BlogJSONRepo());
 
             //Roles a = Roles.Admin;
 
@@ -22,8 +23,10 @@ namespace ConsoleProgram
 
             //workerService.Add(new Worker(Roles.Admin, "Jensen", "2198501", "Jensen@gmail.com", birthDate));
             //workerService.Add(new Worker(Roles.Grunt, "Mikkel", "3641466", "Mikkel@gmail.com", birthDate));
-            //workerService.Add(new Worker(Roles.Grunt, "Lars", "46758678", "Lars@gmail.com", birthDate));
+            //workerService.Add(new Worker(Roles.Grunt, "Lars", "46758678", "2412414", "Lars@gmail.com", birthDate));
             //workerService.Add(new Worker(Roles.Leader, "Mikkel", "3641466", "Mikkel@gmail.com", birthDate));
+
+
 
 
             List<Worker> workers = workerService.GetAll();
