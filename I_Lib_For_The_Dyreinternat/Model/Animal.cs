@@ -22,6 +22,8 @@ namespace Lib.Model
 
         public DateTime Birthdate { get; set; }
 
+        public Animal() { }
+
         public Animal(string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<string> logs, string chipID, string description, DateTime birthdate)
         {
             Name = name;
