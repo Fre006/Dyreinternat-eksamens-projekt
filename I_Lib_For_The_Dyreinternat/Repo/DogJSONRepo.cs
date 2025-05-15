@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -10,12 +8,12 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class CatJSONRepo: ICatRepo
+    internal class DogJSONRepo:IDogRepo
     {
-        private string _path="Cat.json";
-        protected List<Cat> _cats = new List<Cat>();
+        private string _path = "Dog.json";
+        protected List<Dog> _dogs = new List<Dog>();
 
-        public CatJSONRepo()
+        public DogJSONRepo()
         {
             try
             {
@@ -28,20 +26,20 @@ namespace Lib.Repo
 
         }
 
-        public List<Cat> GetAll()
+        public List<Dog> GetAll()
         {
-            return _cats;
+            return _dogs;
         }
 
-        public void Add(Cat cat,string path="default")
+        public void Add(Dog dog, string path = "default")
         {
-            _cats.Add(cat);
+            _dogs.Add(dog);
             SaveFile(path);
         }
 
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
-        private void LoadFile(string path="default")
+        private void LoadFile(string path = "default")
         {
             if (path == "default")
             {
@@ -51,22 +49,23 @@ namespace Lib.Repo
             {
                 path += _path;
             }
-                string json = File.ReadAllText(path);
+            string json = File.ReadAllText(path);
 
-            _cats = JsonSerializer.Deserialize<List<Cat>>(json);
+            _dogs = JsonSerializer.Deserialize<List<Dog>>(json);
         }
 
         //denne metode skal kaldes når vi vil putte data i vores JSON
-        private void SaveFile(string path="default")
+        private void SaveFile(string path = "default")
         {
-            if (path == "default") { 
-            path= _path;
+            if (path == "default")
+            {
+                path = _path;
             }
             else
             {
                 path += _path;
             }
-            File.WriteAllText(path, JsonSerializer.Serialize(_cats));
+            File.WriteAllText(path, JsonSerializer.Serialize(_dogs));
         }
     }
 }
