@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using I_Lib_For_The_Dyreinternat.Model;
+using Lib.Model;
 
-namespace I_Lib_For_The_Dyreinternat.Interface
+namespace Lib.Interface
 {
     public interface IWorkerJSONRepo
     {

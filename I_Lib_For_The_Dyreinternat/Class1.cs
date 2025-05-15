@@ -1,4 +1,4 @@
-﻿namespace I_Lib_For_The_Dyreinternat
+﻿namespace Lib
 {
     public class Class1
     {

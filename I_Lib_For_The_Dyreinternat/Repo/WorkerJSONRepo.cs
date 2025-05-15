@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using I_Lib_For_The_Dyreinternat.Interface;
-using I_Lib_For_The_Dyreinternat.Model;
+using Lib.Interface;
+using Lib.Model;
 
-namespace I_Lib_For_The_Dyreinternat.Repo
+namespace Lib.Repo
 {
     internal class WorkerJSONRepo : IWorkerJSONRepo
     {

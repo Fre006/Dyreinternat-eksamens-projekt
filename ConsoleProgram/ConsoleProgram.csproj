@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\I_Lib_For_The_Dyreinternat\I_Lib_For_The_Dyreinternat.csproj" />
+    <ProjectReference Include="..\I_Lib_For_The_Dyreinternat\Lib.csproj" />
   </ItemGroup>
 
 </Project>
