@@ -23,12 +23,12 @@ namespace Lib.Repo
             }
             catch 
             {
-                Debug.WriteLine("Failed to Load File");
+                Console.WriteLine("Failed to Load File");
                 SaveFile();
             }
         }
 
-        private string _path = @"Worker.json";
+        private string _path = "Worker.json";
         private void LoadFile()
         {
             string json = File.ReadAllText(_path);

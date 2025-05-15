@@ -20,20 +20,21 @@ namespace ConsoleProgram
             DateTime birthDate = new DateTime(2000, 12, 24);
             Console.WriteLine(birthDate);
 
-            //workerService.Add(new Worker(Roles.Admin, "Jensen", "2198501", "Jensen@gmail.com", birthDate));
+            workerService.Add(new Worker(Roles.Admin, "Jensen", "2198501", "Jensen@gmail.com", birthDate));
             //workerService.Add(new Worker(Roles.Grunt, "Mikkel", "3641466", "Mikkel@gmail.com", birthDate));
             //workerService.Add(new Worker(Roles.Grunt, "Lars", "46758678", "Lars@gmail.com", birthDate));
             //workerService.Add(new Worker(Roles.Leader, "Mikkel", "3641466", "Mikkel@gmail.com", birthDate));
 
 
             List<Worker> workers = workerService.GetAll();
-            Console.WriteLine(workers.Count);
+            Console.WriteLine("amount of workers "+workers.Count);
 
 
             foreach (Worker worker in workers) 
             {
 
                 Console.WriteLine(worker.Name);
+                Console.WriteLine(worker);
             }
             Console.WriteLine("6");
 
