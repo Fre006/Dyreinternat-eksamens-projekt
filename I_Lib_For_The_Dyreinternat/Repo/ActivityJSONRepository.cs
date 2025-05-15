@@ -9,7 +9,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class ActivityJSONRepository
+    internal class ActivityJSONRepository : IActivityJSONRepository
     {
         public ActivityJSONRepository()
         {
@@ -34,7 +34,7 @@ namespace Lib.Repo
         //denne metode skal kaldes når vi vil putte data i vores JSON
         private void SaveFile()
         {
-            //string path = "pets.json";
+            string path = "Activity.json";
             File.WriteAllText(path, JsonSerializer.Serialize(_activity));
         }
 
