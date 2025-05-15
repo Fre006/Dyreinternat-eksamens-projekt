@@ -11,10 +11,10 @@ namespace Lib.Repo
 {
     internal class CatJsonRepo
     {
-        public static string Path="Cat.json";
+        private string _path="Cat.json";
         protected List<Cat> _cats = new List<Cat>();
 
-        public void CatJSONRepository(string path=Path)
+        public void CatJSONRepository(string path=_path)
         {
             LoadFile(path);
         }
@@ -24,7 +24,7 @@ namespace Lib.Repo
             return _cats;
         }
 
-        public void Add(Cat cat, string path=Path)
+        public void Add(Cat cat, string path=_path)
         {
             _cats.Add(cat);
             SaveFile(path);
