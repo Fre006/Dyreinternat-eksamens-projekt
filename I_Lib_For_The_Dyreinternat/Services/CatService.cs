@@ -47,5 +47,8 @@ namespace Lib.Services
         {
             _catRepo.ChangeStatusByID(id, status, path);
         }
+        public void DeleteByID(string ChipID) { 
+        _catRepo.DeleteByID(ChipID);
+        }
     }
 }

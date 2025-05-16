@@ -41,5 +41,9 @@ namespace Lib.Services
         {
             _dogRepo.Sterilise(id, path);
         }
+        public void DeleteByID(string ChipID)
+        {
+            _dogRepo.DeleteByID(ChipID);
+        }
     }
 }

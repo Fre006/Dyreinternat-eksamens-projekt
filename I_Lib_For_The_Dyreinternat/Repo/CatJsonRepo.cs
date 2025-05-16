@@ -44,12 +44,13 @@ namespace Lib.Repo
             }   
             return index;
         }
-        public void DeleteByID(string chipID)
+        public void DeleteByID(string chipID, string path="default")
         {
             int index=GetIndexByID(chipID);
             //catches if chipID doesn't match, and then will not delete
             if (_cats[index].ChipID == chipID) { 
             _cats.RemoveAt(index);
+            SaveFile(path);
             }
         }
         public Cat GetByID(string chipID)
@@ -101,6 +102,7 @@ namespace Lib.Repo
             if (_cats[index].ChipID == chipID)
             {
                 _cats[index].Status = status;
+                SaveFile(path);
             }
         }
 
@@ -126,6 +128,7 @@ namespace Lib.Repo
             }
 
         }
+
 
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
