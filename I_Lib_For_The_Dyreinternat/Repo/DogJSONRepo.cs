@@ -44,15 +44,15 @@ namespace Lib.Repo
 
         }
 
-        public List<Event> Getlogs(string chipID)
+        public List<Event> GetLogs(string chipID)
         {
             List<Event> log = new List<Event>();
             Dog thedog=GetByID(chipID);
             return thedog.Logs; ;
         }
-        public void Addlog(string chipID, Event newEntry, string path="default")
+        public void AddLog(string chipID, Event newEntry, string path="default")
         {
-            Getlogs(chipID).Add(newEntry);
+            GetLogs(chipID).Add(newEntry);
             SaveFile(path);
         }
 
