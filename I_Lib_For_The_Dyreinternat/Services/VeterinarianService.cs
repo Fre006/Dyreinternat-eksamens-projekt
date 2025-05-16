@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Lib.Model;
+using Lib.Repo;
+
+namespace Lib.Services
+{
+    internal class VeterinarianService
+    {
+        private IVeterinarianJSONRepository _veterinarianJSONRepository;
+
+        public VeterinarianService(IVeterinarianJSONRepository veterinarianJSONRepository)
+        {
+            _veterinarianJSONRepository = veterinarianJSONRepository;
+        }
+        public virtual void Add(VeterinarianVisit veterinarian)
+        {
+            veterinarian._costumers = new List<Costumer> { };
+            _veterinarianJSONRepository.Add(veterinarian);
+        }
+        public List<Activity> GetAll()
+        {
+            return (List<Activity>)_veterinarianJSONRepository;
+        }
+    }
+}
