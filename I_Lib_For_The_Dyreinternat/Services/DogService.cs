@@ -37,5 +37,9 @@ namespace Lib.Services
         {
             return _dogRepo.GetByID(ChipID);
         }
+        public void Sterilise(string id, string path = "default")
+        {
+            _dogRepo.Sterilise(id, path);
+        }
     }
 }

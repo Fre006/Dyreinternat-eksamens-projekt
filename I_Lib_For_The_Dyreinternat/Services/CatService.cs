@@ -36,6 +36,16 @@ namespace Lib.Services
         public void AddLog(Event log, string chipID, string path="default") {
             _catRepo.AddLog(chipID, log, path);
         }
-
+        public void Sterilise(string id, string path="default") {
+            _catRepo.Sterilise(id, path);    
+        }
+        public string GetStatus(string id)
+        {
+            return _catRepo.GetStatusByID(id);
+        }
+        public void ChangeStatus(string id, string status, string path="default")
+        {
+            _catRepo.ChangeStatusByID(id, status, path);
+        }
     }
 }
