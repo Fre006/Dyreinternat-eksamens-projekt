@@ -26,6 +26,7 @@ namespace Lib.Repo
 
         public virtual void Add(VeterinarianVisit veterinarian)
         {
+            veterinarian._costumers = new List<Costumer> { };
             _veterinarian.Add(veterinarian);
             SaveFile();
         }
