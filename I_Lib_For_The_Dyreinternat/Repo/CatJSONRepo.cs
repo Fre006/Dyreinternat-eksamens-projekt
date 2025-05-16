@@ -101,6 +101,7 @@ namespace Lib.Repo
             if (_cats[index].ChipID == chipID)
             {
                 _cats[index].Status = status;
+                SaveFile(path);
             }
         }
 
