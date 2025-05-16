@@ -32,18 +32,31 @@ namespace Lib.Model
 
         public Event() { }
 
-        public Event(string name, string description, int customerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
+        //List<Costumer> costumers, List<Animal> animals, List<Worker> workers
+        public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers)
         {
             Name = name;
             Description = description;
             CostumerCap = customerCap;
             AnimalCap = animalCap;
-            Costumers = costumers;
-            Animals = animals;
-            Workers = workers;
             Location = location;
             Start = start;
             Stop = stop;
+            Workers = workers;
+        }
+
+        public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Animal> animals) : this(name, description,customerCap,animalCap,location,start,stop,workers)
+        {
+            Animals = animals;
+        }
+        public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Costumer> costumers) : this(name, description, customerCap, animalCap, location, start, stop, workers)
+        {
+            Costumers = costumers;
+        }
+        public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Animal> animals, List<Costumer> costumers) : this(name, description, customerCap, animalCap, location, start, stop, workers)
+        {
+            Animals = animals;
+            Costumers = costumers;
         }
     }
 }
