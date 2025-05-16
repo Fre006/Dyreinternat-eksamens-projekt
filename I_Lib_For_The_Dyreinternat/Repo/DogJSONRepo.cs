@@ -27,18 +27,38 @@ namespace Lib.Repo
             }
 
         }
-        public Dog GetByID(string chipID)
+        public int GetIndexByID(string chipID)
         {
-            Dog thedog= new Dog();
+            //returns 0 if chipID isn't found
+            int index = 0;
             for (int i = 0; i < _dogs.Count; i++)
             {
                 if (_dogs[i].ChipID == chipID)
                 {
 
-                    thedog=_dogs[i];
+                    index = i;
 
                 }
-                
+            }
+            return index;
+        }
+        public void DeleteByID(string chipID)
+        {
+            int index = GetIndexByID(chipID);
+            //catches if chipID doesn't match, and then will not delete
+            if (_dogs[index].ChipID == chipID)
+            {
+                _dogs.RemoveAt(index);
+            }
+        }
+        public Dog GetByID(string chipID)
+        {
+            Dog thedog = new Dog();
+            int index = GetIndexByID(chipID);
+
+            if (_dogs[index].ChipID == chipID)
+            {
+                thedog = _dogs[index];
             }
             return thedog;
 
@@ -50,10 +70,20 @@ namespace Lib.Repo
             Dog thedog=GetByID(chipID);
             return thedog.Logs; ;
         }
+
         public void AddLog(string chipID, Event newEntry, string path="default")
         {
-            GetLogs(chipID).Add(newEntry);
+            List<Event> log=new List<Event>();
+            log=GetLogs(chipID);
+            log.Add(newEntry);
+            int index = 0;
+            index = GetIndexByID(chipID);
+            if (_dogs[index].ChipID == chipID)
+            {
+                _dogs[index].Logs= log;
+            }
             SaveFile(path);
+
         }
 
         public List<Dog> GetAll()
