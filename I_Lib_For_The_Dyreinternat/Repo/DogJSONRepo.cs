@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -24,6 +26,34 @@ namespace Lib.Repo
                 SaveFile();
             }
 
+        }
+        public Dog GetByID(string chipID)
+        {
+            Dog thedog= new Dog();
+            for (int i = 0; i < _dogs.Count; i++)
+            {
+                if (_dogs[i].ChipID == chipID)
+                {
+
+                    thedog=_dogs[i];
+
+                }
+                
+            }
+            return thedog;
+
+        }
+
+        public List<Event> GetLogs(string chipID)
+        {
+            List<Event> log = new List<Event>();
+            Dog thedog=GetByID(chipID);
+            return thedog.Logs; ;
+        }
+        public void AddLog(string chipID, Event newEntry, string path="default")
+        {
+            GetLogs(chipID).Add(newEntry);
+            SaveFile(path);
         }
 
         public List<Dog> GetAll()

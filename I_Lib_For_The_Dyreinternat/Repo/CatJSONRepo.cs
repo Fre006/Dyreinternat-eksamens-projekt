@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -26,6 +27,54 @@ namespace Lib.Repo
                 SaveFile();
             }
 
+        }
+        public int GetIndexByID(string chipID)
+        {
+            //returns 0 if chipID isn't found
+            int index= 0;
+            for (int i = 0; i < _cats.Count; i++)
+            {
+                if (_cats[i].ChipID == chipID)
+                {
+
+                    index=i;
+
+                }
+            }
+            return index;
+        }
+        public void DeleteByID(string chipID)
+        {
+            int index=GetIndexByID(chipID);
+            //catches if chipID doesn't match, and then will not delete
+            if (_cats[index].ChipID == chipID) { 
+            _cats.RemoveAt(index);
+            }
+        }
+        public Cat GetByID(string chipID)
+        {
+            Cat thecat = new Cat();
+            int index=GetIndexByID(chipID);
+
+            if (_cats[index].ChipID == chipID)
+            {
+                thecat = _cats[index];
+            }
+            return thecat;
+
+        }
+
+
+        public List<Event> GetLogs(string chipID)
+        {
+            List<Event> log = new List<Event>();
+            Cat thecat = GetByID(chipID);
+            return thecat.Logs; ;
+        }
+        public void AddLog(string chipID, Event newEntry, string path = "default")
+        {
+            GetLogs(chipID).Add(newEntry);
+            SaveFile(path);
         }
 
         public List<Cat> GetAll()

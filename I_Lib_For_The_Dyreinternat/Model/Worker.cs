@@ -13,14 +13,16 @@ namespace Lib.Model
 
         public Roles Role {  get; set; }
 
-
-        public Worker(Roles role, string name, string id, string mail, DateTime birtdate) 
+        public Worker() { }
+        public Worker(Roles role, string name, string id, string phoneNumber, string mail, DateTime birtdate) 
         {
             Role = role;
             Name = name;
             Id = id;
+            PhoneNumber = phoneNumber;
             Mail = mail;
             Birthdate = birtdate;
+
         }
 
         public override string ToString()
