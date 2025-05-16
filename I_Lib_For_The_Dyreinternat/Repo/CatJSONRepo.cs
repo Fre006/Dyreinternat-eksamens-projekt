@@ -15,7 +15,7 @@ namespace Lib.Repo
         private string _path="Cat.json";
         protected List<Cat> _cats = new List<Cat>();
 
-        public void CatJSONRepo()
+        public CatJSONRepo()
         {
             try
             {
