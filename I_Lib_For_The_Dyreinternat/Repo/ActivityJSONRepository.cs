@@ -30,6 +30,27 @@ namespace Lib.Repo
             _activity.Add(activity);
             SaveFile();
         }
+        public virtual void AddNoAnimal(Activity activity)
+        {
+            activity._animals = new List<Animal> { };
+            _activity.Add(activity);
+            SaveFile();
+        }
+
+        public virtual void AddNoCostumer(Activity activity)
+        {
+            activity._costumers = new List<Costumer> { };
+            _activity.Add(activity);
+            SaveFile();
+        }
+
+        public virtual void AddOnlyWorker(Activity activity)
+        {
+            activity._animals = new List<Animal> { };
+            activity._costumers = new List<Costumer> { };
+            _activity.Add(activity);
+            SaveFile();
+        }
 
         //denne metode skal kaldes når vi vil putte data i vores JSON
         private void SaveFile()
