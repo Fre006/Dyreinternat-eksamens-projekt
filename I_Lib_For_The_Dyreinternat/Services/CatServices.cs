@@ -25,6 +25,13 @@ namespace Lib.Services
         {
             return _catRepo.GetAll();
         }
+        public List<Event> GetLogs(string chipID)
+        {
+            return _catRepo.GetLogs(chipID);
+        }
+        public void AddLog(Event log, string chipID, string path="default") {
+            _catRepo.AddLog(chipID, log, path);
+        }
 
     }
 }
