@@ -81,8 +81,9 @@ namespace Lib.Repo
             if (_cats[index].ChipID == chipID)
             {
                 _cats[index].Logs = log;
+                SaveFile(path);
             }
-            SaveFile(path);
+
 
         }
 
@@ -113,6 +114,17 @@ namespace Lib.Repo
         {
             _cats.Add(cat);
             SaveFile(path);
+        }
+        public void Sterilise(string chipID, string path="default")
+        {
+            Cat thecat = new Cat();
+            thecat = GetByID(chipID);
+            if (thecat.ChipID == chipID)
+            {
+                thecat.Fertile = false;
+                SaveFile(path);
+            }
+
         }
 
 
