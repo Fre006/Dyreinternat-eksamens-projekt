@@ -8,11 +8,11 @@ using Lib.Repo;
 
 namespace Lib.Services
 {
-    internal class CatServices
+    internal class CatService
     {
         private ICatRepo _catRepo;
 
-        public CatServices(ICatRepo CatRepo)
+        public CatService(ICatRepo CatRepo)
         {
             _catRepo = CatRepo;
         }
@@ -20,6 +20,10 @@ namespace Lib.Services
         {
             _catRepo.Add(cat);
 
+        }
+        public Cat GetByID(string ChipID)
+        {
+            return _catRepo.GetByID(ChipID);
         }
         public List<Cat> GetAll()
         {

@@ -39,7 +39,6 @@ namespace Lib.Model
             Logs= logs;
             ChipID=chipID;
             Birthdate=birthdate;
-
         }
 
 

@@ -33,5 +33,9 @@ namespace Lib.Services
         {
             _dogRepo.AddLog(chipID, log, path);
         }
+        public Dog GetByID(string ChipID)
+        {
+            return _dogRepo.GetByID(ChipID);
+        }
     }
 }
