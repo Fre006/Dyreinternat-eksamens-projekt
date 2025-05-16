@@ -15,5 +15,10 @@ namespace Lib.Repo
 
         public List<Event> GetLogs(string id);
         public void AddLog(string id, Event newentry, string path = "default");
+        public void Sterilise(string id, string path = "default");
+
+        public string GetStatusByID(string chipID);
+        public void ChangeStatusByID(string chipID, string status, string path = "default");
+
     }
 }

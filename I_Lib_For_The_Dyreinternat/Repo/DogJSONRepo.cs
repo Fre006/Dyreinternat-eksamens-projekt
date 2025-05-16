@@ -107,6 +107,21 @@ namespace Lib.Repo
                 SaveFile(path);
             }
         }
+        public string GetStatusByID(string chipID)
+        {
+            Dog thedog = GetByID(chipID);
+            return thedog.Status;
+        }
+
+        public void ChangeStatusByID(string chipID, string status, string path = "default")
+        {
+            int index = 0;
+            index = GetIndexByID(chipID);
+            if (_dogs[index].ChipID == chipID)
+            {
+                _dogs[index].Status = status;
+            }
+        }
 
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
