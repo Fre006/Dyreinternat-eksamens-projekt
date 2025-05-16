@@ -19,5 +19,7 @@ namespace Lib.Repo
         public void Sterilise(string id, string path="default");
         public string GetStatusByID(string chipID);
         public void ChangeStatusByID(string chipID, string status, string path = "default");
+
+        public void DeleteByID(string chipID, string path="default");
     }
 }
