@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -40,7 +41,7 @@ namespace Lib.Repo
                     index=i;
 
                 }
-            }
+            }   
             return index;
         }
         public void DeleteByID(string chipID)
@@ -67,15 +68,42 @@ namespace Lib.Repo
 
         public List<Event> GetLogs(string chipID)
         {
-            List<Event> log = new List<Event>();
             Cat thecat = GetByID(chipID);
             return thecat.Logs; ;
         }
         public void AddLog(string chipID, Event newEntry, string path = "default")
         {
-            GetLogs(chipID).Add(newEntry);
-            SaveFile(path);
+            List<Event> log = new List<Event>();
+            log = GetLogs(chipID);
+            log.Add(newEntry);
+            int index = 0;
+            index = GetIndexByID(chipID);
+            if (_cats[index].ChipID == chipID)
+            {
+                _cats[index].Logs = log;
+                SaveFile(path);
+            }
+
+
         }
+
+
+        public string GetStatusByID(string chipID)
+        {
+            Cat thecat = GetByID(chipID);
+            return thecat.Status;
+        }
+        
+        public void ChangeStatusByID(string chipID, string status, string path = "default")
+        {
+            int index = 0;
+            index = GetIndexByID(chipID);
+            if (_cats[index].ChipID == chipID)
+            {
+                _cats[index].Status = status;
+            }
+        }
+
 
         public List<Cat> GetAll()
         {
@@ -86,6 +114,17 @@ namespace Lib.Repo
         {
             _cats.Add(cat);
             SaveFile(path);
+        }
+        public void Sterilise(string chipID, string path="default")
+        {
+            Cat thecat = new Cat();
+            thecat = GetByID(chipID);
+            if (thecat.ChipID == chipID)
+            {
+                thecat.Fertile = false;
+                SaveFile(path);
+            }
+
         }
 
 
