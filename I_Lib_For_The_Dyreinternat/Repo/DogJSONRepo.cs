@@ -27,22 +27,36 @@ namespace Lib.Repo
             }
 
         }
-        public List<Event> GetAllEventsByID(string chipID)
+        public Dog GetByID(string chipID)
         {
-            List<Event> logslist= new List<Event>();
+            Dog thedog= new Dog();
             for (int i = 0; i < _dogs.Count; i++)
             {
                 if (_dogs[i].ChipID == chipID)
                 {
 
-                    logslist=_dogs[i].Logs;
+                    thedog=_dogs[i];
 
                 }
                 
             }
-            return logslist;
+            return thedog;
 
         }
+
+        public List<Event> Getlogs(string chipID)
+        {
+            List<Event> log = new List<Event>();
+            Dog thedog=GetByID(chipID);
+            return thedog.Logs; ;
+        }
+        public void Addlog(string chipID, Event newEntry, string path="default")
+        {
+            Dog thedog = GetByID(chipID);
+            thedog.Logs.Add(newEntry);
+            SaveFile(path);
+        }
+
         public List<Dog> GetAll()
         {
             return _dogs;
