@@ -52,8 +52,7 @@ namespace Lib.Repo
         }
         public void Addlog(string chipID, Event newEntry, string path="default")
         {
-            Dog thedog = GetByID(chipID);
-            thedog.Logs.Add(newEntry);
+            Getlogs(chipID).Add(newEntry);
             SaveFile(path);
         }
 

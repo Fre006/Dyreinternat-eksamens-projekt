@@ -27,6 +27,34 @@ namespace Lib.Repo
             }
 
         }
+        public Cat GetByID(string chipID)
+        {
+            Cat thecat = new Cat();
+            for (int i = 0; i < _cats.Count; i++)
+            {
+                if (_cats[i].ChipID == chipID)
+                {
+
+                    thecat = _cats[i];
+
+                }
+
+            }
+            return thecat;
+
+        }
+
+        public List<Event> Getlogs(string chipID)
+        {
+            List<Event> log = new List<Event>();
+            Cat thecat = GetByID(chipID);
+            return thecat.Logs; ;
+        }
+        public void Addlog(string chipID, Event newEntry, string path = "default")
+        {
+            Getlogs(chipID).Add(newEntry);
+            SaveFile(path);
+        }
 
         public List<Cat> GetAll()
         {
