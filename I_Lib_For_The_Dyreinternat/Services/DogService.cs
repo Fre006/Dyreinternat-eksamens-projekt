@@ -10,9 +10,9 @@ namespace Lib.Services
 {
     internal class DogService
     {
-        private IDogRepo _dogRepo;
+        private IDogJSONRepo _dogRepo;
 
-        public DogService(IDogRepo DogRepo)
+        public DogService(IDogJSONRepo DogRepo)
         {
             _dogRepo = DogRepo;
         }

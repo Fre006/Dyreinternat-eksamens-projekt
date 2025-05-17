@@ -29,11 +29,12 @@ namespace Lib.Model
         public string Location { get; set; }
         public DateTime Start { get; set; }
         public DateTime Stop { get; set; }
+        public int ID { get; set; }
 
         public Event() { }
 
         //List<Costumer> costumers, List<Animal> animals, List<Worker> workers
-        public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers)
+        public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, int id=0)
         {
             Name = name;
             Description = description;
@@ -43,6 +44,8 @@ namespace Lib.Model
             Start = start;
             Stop = stop;
             Workers = workers;
+            ID = id;
+
         }
 
         public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Animal> animals) : this(name, description,customerCap,animalCap,location,start,stop,workers)

@@ -10,9 +10,9 @@ namespace Lib.Services
 {
     internal class CatService
     {
-        private ICatRepo _catRepo;
+        private ICatJSONRepo _catRepo;
 
-        public CatService(ICatRepo CatRepo)
+        public CatService(ICatJSONRepo CatRepo)
         {
             _catRepo = CatRepo;
         }

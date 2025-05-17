@@ -11,8 +11,10 @@ namespace Lib.Repo
 {
     internal class ActivityJSONRepository : IActivityJSONRepository
     {
-        public ActivityJSONRepository()
+        private IEventJSONRepo _eventRepo;
+        public ActivityJSONRepository(IEventJSONRepo EventRepo)
         {
+            _eventRepo = EventRepo;
             LoadFile();
         }
 
@@ -27,6 +29,9 @@ namespace Lib.Repo
 
         public virtual void Add(Activity activity)
         {
+            int newid = _eventRepo.GiveID(activity.ID);
+            activity.ID = newid;
+            _eventRepo.AddEventToLogViaID(activity.ID);
             _activity.Add(activity);
             SaveFile();
         }

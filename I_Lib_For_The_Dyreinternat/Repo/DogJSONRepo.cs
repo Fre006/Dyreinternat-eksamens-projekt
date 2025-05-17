@@ -10,7 +10,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class DogJSONRepo:IDogRepo
+    internal class DogJSONRepo:IDogJSONRepo
     {
         private string _path = "Dog.json";
         protected List<Dog> _dogs = new List<Dog>();
