@@ -15,7 +15,14 @@ namespace Lib.Repo
         public ActivityJSONRepository(IEventJSONRepo EventRepo)
         {
             _eventRepo = EventRepo;
-            LoadFile();
+            try
+            {
+                LoadFile();
+            }
+            catch
+            {
+                SaveFile();
+            }
         }
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON

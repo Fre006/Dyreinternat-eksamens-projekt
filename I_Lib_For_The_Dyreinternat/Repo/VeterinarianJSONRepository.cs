@@ -10,9 +10,18 @@ namespace Lib.Repo
 {
     internal class VeterinarianJSONRepository : IVeterinarianJSONRepository
     {
-        public VeterinarianJSONRepository()
+        private IEventJSONRepo _eventRepo;
+        public VeterinarianJSONRepository(IEventJSONRepo EventRepo)
         {
-            LoadFile();
+            _eventRepo = EventRepo;
+            try
+            {
+                LoadFile();
+            }
+            catch
+            {
+                SaveFile();
+            }
         }
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
@@ -27,6 +36,9 @@ namespace Lib.Repo
         public virtual void Add(VeterinarianVisit veterinarian)
         {
             veterinarian._costumers = new List<Costumer> { };
+            int newid = _eventRepo.GiveID(veterinarian.ID);
+            veterinarian.ID = newid;
+            _eventRepo.AddEventToLogViaID(veterinarian.ID);
             _veterinarian.Add(veterinarian);
             SaveFile();
         }

@@ -12,7 +12,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class CatJSONRepo: ICatRepo
+    internal class CatJSONRepo: ICatJSONRepo
     {
         private string _path="Cat.json";
         protected List<Cat> _cats = new List<Cat>();
