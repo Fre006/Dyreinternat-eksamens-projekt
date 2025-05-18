@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    enum CatBreeds { Siamese, Norwegian_Forest_Cat, Korat, Maine_Coon }
+    enum CatBreeds {Unknown, Siamese, Norwegian_Forest_Cat, Korat, Maine_Coon }
     internal class Cat : Animal
     {
         public CatBreeds Breed;
 
         public Cat() { }
 
-        public Cat(CatBreeds breed, string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<Event> logs, string chipID, string description, DateTime birthdate)
+        public Cat(string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<Event> logs, string chipID, string description, CatBreeds breed=CatBreeds.Unknown, DateTime birthdate=default(DateTime))
         {
             Breed = breed;
             Name = name;

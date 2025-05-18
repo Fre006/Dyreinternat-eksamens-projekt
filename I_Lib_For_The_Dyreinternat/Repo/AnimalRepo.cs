@@ -14,9 +14,9 @@ namespace Lib.Repo
         protected List<Animal> _animals = new List<Animal>();
         private List<Cat> _cats= new List<Cat>();
         private List<Dog> _dogs = new List<Dog>();
-        private ICatRepo _catRepo;
-        private IDogRepo _dogRepo;
-        public AnimalRepo(ICatRepo CatRepo, IDogRepo DogRepo) {
+        private ICatJSONRepo _catRepo;
+        private IDogJSONRepo _dogRepo;
+        public AnimalRepo(ICatJSONRepo CatRepo, IDogJSONRepo DogRepo) {
             _catRepo = CatRepo;
             _cats = _catRepo.GetAll();
             _dogRepo = DogRepo;
