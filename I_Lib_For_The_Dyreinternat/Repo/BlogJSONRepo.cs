@@ -11,7 +11,7 @@ namespace Lib.Repo
 {
     public class BlogJSONRepo : IBlogJSONRepo
     {
-        List<Blog> blogs = new List<Blog>();
+        List<Blog> _blogs = new List<Blog>();
         public BlogJSONRepo() 
         {
             try
@@ -20,7 +20,7 @@ namespace Lib.Repo
             }
             catch 
             {
-                //Debug.WriteLine("Failed to Load File");
+                Debug.WriteLine("Failed to Load Blog File");
                 //SaveFile();
             }
 
@@ -29,37 +29,66 @@ namespace Lib.Repo
         private void LoadFile()
         {
             string json = File.ReadAllText(_path);
-            blogs = JsonSerializer.Deserialize<List<Blog>>(json);
+
+            _blogs = JsonSerializer.Deserialize<List<Blog>>(json);
+
 
         }
         private void SaveFile()
         {
-            File.WriteAllText(_path, JsonSerializer.Serialize(blogs));
+            File.WriteAllText(_path, JsonSerializer.Serialize(_blogs));
         }
 
         public void Add(Blog blog)
         {
-            blogs.Add(blog);
+           _blogs.Add(blog);
             //Debug.WriteLine("Successfully added Blog");
             SaveFile();
         }
         public List<Blog> GetAll()
         {
-            return blogs;
+            return _blogs;
         }
 
         public void Delete(string title)
         {
-            foreach (Blog blog in blogs) //Looks through the list of blogs and remove the first one with the same title
+            foreach (Blog blog in _blogs) //Looks through the list of blogs and remove the first one with the same title
             {
                 if (title == blog.Title)
                 {
-                    blogs.Remove(blog);
+                    _blogs.Remove(blog);
                     SaveFile(); //Saves the file after
                     break;
                 }
             }
+        }
+        public Blog GetByTitle(string title)
+        {
+            foreach (Blog blog in _blogs)
+            {
+                if (blog.Title == title)
+                {
+                    return blog;
+                }
+            }
+            return null;
 
+        }
+
+        public Blog Edit(Blog blog, Blog changedBlog)
+        {
+            foreach (Blog b in _blogs)
+            {
+                if (b.Title == blog.Title)
+                {
+                    b.Title = changedBlog.Title;
+                    b.Text = changedBlog.Text;
+                    b.Multimedia = changedBlog.Multimedia;
+                    SaveFile();
+                }
+            }
+
+            return null;
         }
 
 

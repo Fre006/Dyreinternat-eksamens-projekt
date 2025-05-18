@@ -14,18 +14,17 @@ namespace Lib.Model
         public string Multimedia { get; set; }
         public DateTime Date { get; set; }
         
-
-        public Blog() 
-        { 
-            
-        }
-        public Blog(string title, string text, Worker author, string multimedia, DateTime date)
-        { 
+        public Blog() { }
+        public Blog(string title, string text, Worker author, DateTime date) :this()
+        {
             Title = title;
             Text = text;
             Author = author;
-            Multimedia = multimedia;
             Date = date;
+        }
+        public Blog(string title, string text, Worker author, string multimedia, DateTime date) :this(title,text,author,date)
+        {
+            Multimedia = multimedia;
         }
 
         public override string ToString()
