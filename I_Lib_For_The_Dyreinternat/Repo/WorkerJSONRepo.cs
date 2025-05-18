@@ -29,7 +29,7 @@ namespace Lib.Repo
             }
         }
 
-        private string _path = @"worker.json";
+        private string _path = "Worker.json";
         private void LoadFile()
         {
             string json = File.ReadAllText(_path);

@@ -40,6 +40,7 @@ namespace Lib.Model
         {
             
             Birthdate = birtdate;
+
         }
 
         public override string ToString()

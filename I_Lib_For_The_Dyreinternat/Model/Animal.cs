@@ -16,7 +16,7 @@ namespace Lib.Model
         public bool Fertile { get; set; }
         public Sizes Size;
 
-        public List<string> Logs { get; set; }
+        public List<Event> Logs { get; set; }
         public string ChipID { get; set; }
         public string Description { get; set; }
 
@@ -26,7 +26,7 @@ namespace Lib.Model
         {
 
         }
-        public Animal(string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<string> logs, string chipID, string description, DateTime birthdate)
+        public Animal(string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<Event> logs, string chipID, string description, DateTime birthdate)
         {
             Name = name;
             Characteristics = characteristics;
@@ -39,7 +39,6 @@ namespace Lib.Model
             Logs= logs;
             ChipID=chipID;
             Birthdate=birthdate;
-
         }
 
 

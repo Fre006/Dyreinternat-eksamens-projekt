@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface ICatRepo
+    internal interface IEventJSONRepo
     {
-        public List<Cat> GetAll();
-        public void Add(Cat cat, string path);
+        public int GiveID(int ThisID);
+        public Event GetEventByID(int id);
+        public void AddEventToLogViaID(int id);
+
     }
 }

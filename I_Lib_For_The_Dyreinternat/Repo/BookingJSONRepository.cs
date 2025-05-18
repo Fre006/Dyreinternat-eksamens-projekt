@@ -10,9 +10,18 @@ namespace Lib.Repo
 {
     internal class BookingJSONRepository : IBookingJSONRepository
     {
-        public BookingJSONRepository()
+        private IEventJSONRepo _eventRepo;
+        public BookingJSONRepository(IEventJSONRepo EventRepo)
         {
-            LoadFile();
+            _eventRepo = EventRepo;
+            try
+            {
+                LoadFile();
+            }
+            catch
+            {
+                SaveFile();
+            }
         }
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
@@ -26,6 +35,9 @@ namespace Lib.Repo
 
         public virtual void Add(Booking booking)
         {
+            int newid=_eventRepo.GiveID(booking.ID);
+            booking.ID = newid;
+            _eventRepo.AddEventToLogViaID(booking.ID);
             _booking.Add(booking);
             SaveFile();
         }

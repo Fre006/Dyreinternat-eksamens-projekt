@@ -11,9 +11,18 @@ namespace Lib.Repo
 {
     internal class ActivityJSONRepository : IActivityJSONRepository
     {
-        public ActivityJSONRepository()
+        private IEventJSONRepo _eventRepo;
+        public ActivityJSONRepository(IEventJSONRepo EventRepo)
         {
-            LoadFile();
+            _eventRepo = EventRepo;
+            try
+            {
+                LoadFile();
+            }
+            catch
+            {
+                SaveFile();
+            }
         }
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
@@ -27,6 +36,30 @@ namespace Lib.Repo
 
         public virtual void Add(Activity activity)
         {
+            int newid = _eventRepo.GiveID(activity.ID);
+            activity.ID = newid;
+            _eventRepo.AddEventToLogViaID(activity.ID);
+            _activity.Add(activity);
+            SaveFile();
+        }
+        public virtual void AddNoAnimal(Activity activity)
+        {
+            activity._animals = new List<Animal> { };
+            _activity.Add(activity);
+            SaveFile();
+        }
+
+        public virtual void AddNoCostumer(Activity activity)
+        {
+            activity._costumers = new List<Costumer> { };
+            _activity.Add(activity);
+            SaveFile();
+        }
+
+        public virtual void AddOnlyWorker(Activity activity)
+        {
+            activity._animals = new List<Animal> { };
+            activity._costumers = new List<Costumer> { };
             _activity.Add(activity);
             SaveFile();
         }
