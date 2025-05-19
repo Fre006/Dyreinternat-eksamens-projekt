@@ -7,7 +7,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface ICostumerJSONRepo
+    public interface ICostumerJSONRepo
     {
         public List<Costumer> GetAll();
         public void Add(Costumer costumer);

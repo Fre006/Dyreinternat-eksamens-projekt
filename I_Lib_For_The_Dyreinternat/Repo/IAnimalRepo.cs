@@ -7,7 +7,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface IAnimalRepo
+    public interface IAnimalRepo
     {
         public List<Animal> GetAll();
         public Animal GetByID(string id);

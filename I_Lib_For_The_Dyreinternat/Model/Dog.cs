@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    enum DogBreeds {Unknown,Labrador, Golden_Retriever, Rhodesian_Rigdebag, Saint_Bernards_dog}
-    internal class Dog:Animal
+    public enum DogBreeds {Unknown,Labrador, Golden_Retriever, Rhodesian_Rigdebag, Saint_Bernards_dog}
+    public class Dog:Animal
     {
         public DogBreeds Breed;
 

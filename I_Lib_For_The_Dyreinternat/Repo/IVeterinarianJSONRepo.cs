@@ -7,9 +7,9 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface IBookingJSONRepository
+    public interface IVeterinarianJSONRepo
     {
-        public List<Booking> GetAll();
-        public void Add(Booking booking);
+        public List<VeterinarianVisit> GetAll();
+        public void Add(VeterinarianVisit veterinarian);
     }
 }

@@ -9,7 +9,7 @@ using Lib.Services;
 
 namespace Lib.Repo
 {
-    internal class AnimalRepo:IAnimalRepo
+    public class AnimalRepo:IAnimalRepo
     {
         protected List<Animal> _animals = new List<Animal>();
         private List<Cat> _cats= new List<Cat>();

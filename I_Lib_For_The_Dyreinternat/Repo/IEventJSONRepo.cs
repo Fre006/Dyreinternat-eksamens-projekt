@@ -7,7 +7,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface IEventJSONRepo
+    public interface IEventJSONRepo
     {
         public int GiveID(int ThisID);
         public Event GetEventByID(int id);

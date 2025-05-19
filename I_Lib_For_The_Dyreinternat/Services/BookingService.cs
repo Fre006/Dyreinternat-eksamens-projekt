@@ -10,9 +10,9 @@ namespace Lib.Services
 {
     internal class BookingService
     {
-        private IBookingJSONRepository _bookingJSONRepository;
+        private IBookingJSONRepo _bookingJSONRepository;
 
-        public BookingService(IBookingJSONRepository bookingJSONRepository)
+        public BookingService(IBookingJSONRepo bookingJSONRepository)
         {
             _bookingJSONRepository = bookingJSONRepository;
         }

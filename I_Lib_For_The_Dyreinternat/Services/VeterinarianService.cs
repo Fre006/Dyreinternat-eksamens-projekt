@@ -10,9 +10,9 @@ namespace Lib.Services
 {
     internal class VeterinarianService
     {
-        private IVeterinarianJSONRepository _veterinarianJSONRepository;
+        private IVeterinarianJSONRepo _veterinarianJSONRepository;
 
-        public VeterinarianService(IVeterinarianJSONRepository veterinarianJSONRepository)
+        public VeterinarianService(IVeterinarianJSONRepo veterinarianJSONRepository)
         {
             _veterinarianJSONRepository = veterinarianJSONRepository;
         }

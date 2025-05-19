@@ -8,10 +8,10 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class VeterinarianJSONRepository : IVeterinarianJSONRepository
+    public class VeterinarianJSONRepo : IVeterinarianJSONRepo
     {
         private IEventJSONRepo _eventRepo;
-        public VeterinarianJSONRepository(IEventJSONRepo EventRepo)
+        public VeterinarianJSONRepo(IEventJSONRepo EventRepo)
         {
             _eventRepo = EventRepo;
             try

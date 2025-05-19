@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Lib.Model
 {
-    internal class Booking : Event
+    public class Booking : Event
     {
         public Booking(string name, string description, int costumerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
         {

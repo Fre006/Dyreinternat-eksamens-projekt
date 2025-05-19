@@ -9,9 +9,9 @@ namespace Lib.Services
 {
     public class ActivityService
     {
-        private IActivityJSONRepository _activityJSONRepository;
+        private IActivityJSONRepo _activityJSONRepository;
 
-        public ActivityService(IActivityJSONRepository activityJSONRepository)
+        public ActivityService(IActivityJSONRepo activityJSONRepository)
         {
             _activityJSONRepository = activityJSONRepository;
         }

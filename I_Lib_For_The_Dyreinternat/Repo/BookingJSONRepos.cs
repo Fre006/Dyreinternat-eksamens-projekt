@@ -8,10 +8,10 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class BookingJSONRepository : IBookingJSONRepository
+    public class BookingJSONRepos : IBookingJSONRepo
     {
         private IEventJSONRepo _eventRepo;
-        public BookingJSONRepository(IEventJSONRepo EventRepo)
+        public BookingJSONRepos(IEventJSONRepo EventRepo)
         {
             _eventRepo = EventRepo;
             try

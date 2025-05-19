@@ -9,7 +9,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class CostumerJSONRepository : ICostumerJSONRepo
+    public class CostumerJSONRepository : ICostumerJSONRepo
     {
         public List<Costumer> _costumer = new List<Costumer>();
 
