@@ -20,11 +20,12 @@ namespace Lib.Repo
             try
             {
                 LoadFile();
-                Debug.WriteLine("Successfully loaded File");
+                Debug.WriteLine("Successfully loaded Worker Json File");
             }
             catch
             {
-                SaveFile();
+                Debug.WriteLine("Failed to load Worker Json file");
+                //SaveFile();
             }
         }
 
@@ -47,12 +48,43 @@ namespace Lib.Repo
             Debug.WriteLine("Successfully added worker");
             SaveFile();
         }
+        public void Delete(Worker worker)
+        {
+            _workers.Remove(worker);
+            Debug.WriteLine("Successfully removed worker");
+            SaveFile();
+        }
         public List<Worker> GetAll() 
         {
             return _workers; 
         }
-        
-       
-    }
+        public Worker GetByID(string id)
+        {
+            foreach (Worker worker in _workers) 
+            {
+                if (worker.Id == id)
+                {
+                    return worker;
+                }
+            }
+            return null;
 
+        }
+
+        public void Edit(string name, Worker worker1)
+        {
+            foreach (Worker worker in _workers)
+            {
+                if (worker.Name == name)
+                {
+                    worker.Role = worker1.Role;
+                    worker.PhoneNumber = worker1.PhoneNumber;
+                    worker.Birthdate = worker1.Birthdate;
+                }                    
+                SaveFile();
+            }
+        }
+    }
+       
 }
+

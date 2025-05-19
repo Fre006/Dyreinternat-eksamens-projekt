@@ -13,6 +13,8 @@ namespace Lib.Repo
         public List<Blog> GetAll();
 
         public void Delete(string title);
-       
+
+        public Blog GetByTitle(string title);
+        public Blog Edit(Blog blog, Blog changedBlog);
     }
 }

@@ -10,7 +10,10 @@ namespace Lib.Repo
     public interface IWorkerJSONRepo
     {
         public void Add(Worker worker);
+        public void Delete(Worker worker);
 
         public List<Worker> GetAll();
+
+        public Worker GetByID(string id);
     }
 }

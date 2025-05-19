@@ -30,5 +30,15 @@ namespace Lib.Services
             _blogRepo.Delete(title);
         }
 
+        public Blog  GetByTitle(string title)
+        {
+            return _blogRepo.GetByTitle(title);
+        }
+        public Blog Edit(Blog blog, Blog changedBlog)
+        {
+            return (_blogRepo.Edit(blog, changedBlog));
+        }
+
+
     }
 }

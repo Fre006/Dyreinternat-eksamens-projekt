@@ -25,13 +25,22 @@ namespace Lib.Services
             //Debug.WriteLine("Added worker in service");
 
         }
+        public void Delete(Worker worker)
+        {
+            _workerRepo.Delete(worker);
+        }
 
 
         public List<Worker> GetAll()
         {
             //Debug.WriteLine("Reached Servic e");
             return _workerRepo.GetAll();
+        }
+        public Worker GetByID(string id)
+        {
+            return _workerRepo.GetByID(id);
             
         }
+
     }
 }
