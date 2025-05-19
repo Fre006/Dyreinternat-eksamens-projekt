@@ -9,7 +9,42 @@ namespace Dyreinternat_eksamens_projekt
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddSingleton<IActivityJSONRepository, ActivityJSONRepository>();
+
+            //Singleton for Activity.Repo
+            builder.Services.AddSingleton<IActivityJSONRepo, ActivityJSONRepo>();
+            builder.Services.AddSingleton<ActivityService>();
+
+            //Singleton for Animal repository
+            builder.Services.AddSingleton<IAnimalRepo, AnimalRepo>();
+            builder.Services.AddSingleton<AnimalService>();
+
+            //Singleton for Blog repository
+            builder.Services.AddSingleton<IBlogJSONRepo, BlogJSONRepo>();
+            builder.Services.AddSingleton<BlogService>();
+
+            //Singleton for Booking repository
+            builder.Services.AddSingleton<IBookingJSONRepo, BookingJSONRepo>();
+            builder.Services.AddSingleton<BookingService>();
+
+            //Singleton for Cat repository
+            builder.Services.AddSingleton<ICatJSONRepo, CatJSONRepo>();
+            builder.Services.AddSingleton<CatService>();
+
+            //Singleton for Costumer repository
+            builder.Services.AddSingleton<ICostumerJSONRepo, CostumerJSONRepo>();
+            builder.Services.AddSingleton<CostumerService>();
+
+            //Singleton for Dog repository
+            builder.Services.AddSingleton<IDogJSONRepo, DogJSONRepo>();
+            builder.Services.AddSingleton<DogService>();
+
+            //Singleton for Veterinarian repository
+            builder.Services.AddSingleton<IVeterinarianJSONRepo, VeterinarianJSONRepo>();
+            builder.Services.AddSingleton<VeterinarianService>();
+
+            //Singleton for Worker repository
+            builder.Services.AddSingleton<IWorkerJSONRepo, WorkerJSONRepo>();
+            builder.Services.AddSingleton<WorkerService>();
 
             // Add services to the container.
             builder.Services.AddRazorPages();

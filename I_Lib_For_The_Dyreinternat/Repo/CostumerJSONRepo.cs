@@ -9,11 +9,11 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    public class CostumerJSONRepository : ICostumerJSONRepo
+    public class CostumerJSONRepo : ICostumerJSONRepo
     {
         public List<Costumer> _costumer = new List<Costumer>();
 
-        public CostumerJSONRepository()
+        public CostumerJSONRepo()
         {
             LoadFile();
         }
