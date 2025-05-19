@@ -79,6 +79,8 @@ namespace Lib.Repo
 
         }
 
+
+
         public void AddEventToLog(Event theevent)
         {
             foreach (Animal animal in theevent.Animals)
