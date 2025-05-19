@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Services
 {
-    internal class CostumerService
+    public class CostumerService
     {
     }
 }
