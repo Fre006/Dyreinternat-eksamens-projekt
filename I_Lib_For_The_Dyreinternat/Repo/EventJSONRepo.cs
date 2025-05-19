@@ -82,7 +82,7 @@ namespace Lib.Repo
 
         public void AddEventToLog(Event theevent)
         {
-            LoadAllEvents();
+
             Debug.WriteLine("amount of events:"+_events.Count);
             foreach (Animal animal in theevent.Animals)
             {
@@ -109,6 +109,7 @@ namespace Lib.Repo
 
         public void AddEventToLogViaID(int id)
         {
+            LoadAllEvents();
             Event Event=GetEventByID(id);
             AddEventToLog(Event);
 

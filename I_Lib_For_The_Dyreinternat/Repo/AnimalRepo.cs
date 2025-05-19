@@ -57,8 +57,23 @@ namespace Lib.Repo
         }
         public void AddLog(string chipID, Event newEntry, string path = "default")
         {
-            _dogRepo.AddLog(chipID, newEntry, path);
-            _catRepo.AddLog(chipID, newEntry, path);
+            try
+            {
+                _dogRepo.AddLog(chipID, newEntry, path);
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                _catRepo.AddLog(chipID, newEntry, path);
+            }
+            catch
+            {
+
+            }
+
         }
 
         public Animal GetByID(string chipID)
