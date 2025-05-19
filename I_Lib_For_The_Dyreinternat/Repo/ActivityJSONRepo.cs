@@ -12,6 +12,7 @@ namespace Lib.Repo
     public class ActivityJSONRepo : IActivityJSONRepo
     {
         private IEventJSONRepo _eventRepo;
+        private List<Activity> _activity = new List<Activity>();
         public ActivityJSONRepo(IEventJSONRepo EventRepo)
         {
             _eventRepo = EventRepo;
@@ -34,7 +35,7 @@ namespace Lib.Repo
             _activity = JsonSerializer.Deserialize<List<Activity>>(json);
         }
 
-        public virtual void Add(Activity activity)
+        public void Add(Activity activity)
         {
             int newid = _eventRepo.GiveID(activity.ID);
             activity.ID = newid;
@@ -72,7 +73,7 @@ namespace Lib.Repo
             File.WriteAllText(path, JsonSerializer.Serialize(_activity));
         }
 
-        public List<Activity> _activity = new List<Activity>();
+
 
         public List<Activity> GetAll()
         {

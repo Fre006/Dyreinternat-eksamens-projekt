@@ -34,7 +34,7 @@ namespace Lib.Repo
             return _animals;
         }
 
-        public int GetIndexByID(string chipID)
+        private int GetIndexByID(string chipID)
         {
             //returns 0 if chipID isn't found
             int index = 0;
