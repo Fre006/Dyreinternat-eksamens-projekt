@@ -12,7 +12,7 @@ namespace Lib.Repo
     public class ActivityJSONRepo : IActivityJSONRepo
     {
         private IEventJSONRepo _eventRepo;
-        private List<Activity> _activity = new List<Activity>();
+        private List<TheActivity> _activity = new List<TheActivity>();
         public ActivityJSONRepo(IEventJSONRepo EventRepo)
         {
             _eventRepo = EventRepo;
@@ -32,10 +32,10 @@ namespace Lib.Repo
             string path = "Activity.json";
             string json = File.ReadAllText(path);
 
-            _activity = JsonSerializer.Deserialize<List<Activity>>(json);
+            _activity = JsonSerializer.Deserialize<List<TheActivity>>(json);
         }
 
-        public void Add(Activity activity)
+        public void Add(TheActivity activity)
         {
             int newid = _eventRepo.GiveID(activity.ID);
             activity.ID = newid;
@@ -44,21 +44,21 @@ namespace Lib.Repo
             _eventRepo.AddEventToLogViaID(activity.ID);
 
         }
-        public virtual void AddNoAnimal(Activity activity)
+        public virtual void AddNoAnimal(TheActivity activity)
         {
             activity._animals = new List<Animal> { };
             _activity.Add(activity);
             SaveFile();
         }
 
-        public virtual void AddNoCostumer(Activity activity)
+        public virtual void AddNoCostumer(TheActivity activity)
         {
             activity._costumers = new List<Costumer> { };
             _activity.Add(activity);
             SaveFile();
         }
 
-        public virtual void AddOnlyWorker(Activity activity)
+        public virtual void AddOnlyWorker(TheActivity activity)
         {
             activity._animals = new List<Animal> { };
             activity._costumers = new List<Costumer> { };
@@ -75,7 +75,7 @@ namespace Lib.Repo
 
 
 
-        public List<Activity> GetAll()
+        public List<TheActivity> GetAll()
         {
             return _activity;
         }

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    public class Activity : Event
+    public class TheActivity : Event
     {
         
-        public Activity()
+        public TheActivity()
         {
 
         }
 
-        public Activity (string name, string description, int costumerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Animal> animals, List<Costumer> costumers, int id=0)
+        public TheActivity (string name, string description, int costumerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Animal> animals, List<Costumer> costumers, int id=0)
         {
             Name = name;
             Description = description;
@@ -26,6 +26,8 @@ namespace Lib.Model
             Stop = stop;
             Workers = workers;
             ID = id;
+            Animals= animals;
+            Costumers = costumers;
 
         }
 

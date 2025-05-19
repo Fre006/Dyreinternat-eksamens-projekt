@@ -15,31 +15,31 @@ namespace Lib.Services
         {
             _activityJSONRepository = activityJSONRepository;
         }
-        public void Add(Activity activity)
+        public void Add(TheActivity activity)
         {
             _activityJSONRepository.Add(activity);
         }
-        public void AddNoAnimal(Activity activity)
+        public void AddNoAnimal(TheActivity activity)
         {
             activity._animals = new List<Animal> { };
             _activityJSONRepository.Add(activity);
         }
 
-        public void AddNoCostumer(Activity activity)
+        public void AddNoCostumer(TheActivity activity)
         {
             activity._costumers = new List<Costumer> { };
             _activityJSONRepository.Add(activity);
         }
 
-        public void AddOnlyWorker(Activity activity)
+        public void AddOnlyWorker(TheActivity activity)
         {
             activity._animals = new List<Animal> { };
             activity._costumers = new List<Costumer> { };
             _activityJSONRepository.Add(activity);
         }
-        public List<Activity> GetAll()
+        public List<TheActivity> GetAll()
         {
-            return (List<Activity>)_activityJSONRepository;
+            return (List<TheActivity>)_activityJSONRepository;
         }
     }
 }

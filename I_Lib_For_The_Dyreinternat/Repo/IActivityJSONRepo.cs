@@ -9,10 +9,10 @@ namespace Lib.Repo
 {
     public interface IActivityJSONRepo
     {
-        public List<Activity> GetAll();
-        public void Add(Activity activity);
-        //public void AddNoCostumer(Activity activity);
-        //public void AddNoAnimal(Activity activity);
-        //public void AddOnlyWorker(Activity activity);
+        public List<TheActivity> GetAll();
+        public void Add(TheActivity activity);
+        public void AddNoCostumer(TheActivity activity);
+        public void AddNoAnimal(TheActivity activity);
+        public void AddOnlyWorker(TheActivity activity);
     }
 }

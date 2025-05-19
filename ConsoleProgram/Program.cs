@@ -40,7 +40,7 @@ namespace ConsoleProgram
             Worker worker = new Worker(Roles.Admin,"Bilbo","1");
             List<Worker> workers= new List<Worker>();
             workers.Add(worker);
-            Activity theActivity= new Activity("Se Buster","Kom og se den dumme kat kræft, Buster",69,1,"her",DateTime.Now, DateTime.Now,workers,animals, costumers);
+            TheActivity theActivity= new TheActivity("Se Buster","Kom og se den dumme kat kræft, Buster",69,1,"her",DateTime.Now, DateTime.Now,workers,animals, costumers);
             activityService.Add(theActivity);
             List<Event> Logs = catService.GetLogs("12345");
 
