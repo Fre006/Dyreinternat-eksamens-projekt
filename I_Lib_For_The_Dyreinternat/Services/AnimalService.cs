@@ -8,7 +8,7 @@ using Lib.Repo;
 
 namespace Lib.Services
 {
-    internal class AnimalService
+    public class AnimalService
     {
         private IAnimalRepo _animalRepo;
 

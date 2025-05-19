@@ -8,7 +8,7 @@ using Lib.Repo;
 
 namespace Lib.Services
 {
-    internal class VeterinarianService
+    public class VeterinarianService
     {
         private IVeterinarianJSONRepo _veterinarianJSONRepository;
 
