@@ -77,7 +77,7 @@ namespace Lib.Repo
             List<Event> log = new List<Event>();
             log = GetLogs(chipID);
             log.Add(newEntry);
-            int index = 0;
+            int index=0;
             index = GetIndexByID(chipID);
             if (_cats[index].ChipID == chipID)
             {

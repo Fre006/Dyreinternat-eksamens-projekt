@@ -93,8 +93,8 @@ namespace Lib.Repo
 
         public int GiveID(int ThisID)
         {
-            ThisID = _iD;
             _iD++;
+            ThisID = _iD;
             SaveFile();
             return ThisID;
         }
