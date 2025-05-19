@@ -44,12 +44,13 @@ namespace Lib.Repo
             }   
             return index;
         }
-        public void DeleteByID(string chipID)
+        public void DeleteByID(string chipID, string path="default")
         {
             int index=GetIndexByID(chipID);
             //catches if chipID doesn't match, and then will not delete
             if (_cats[index].ChipID == chipID) { 
             _cats.RemoveAt(index);
+            SaveFile(path);
             }
         }
         public Cat GetByID(string chipID)
