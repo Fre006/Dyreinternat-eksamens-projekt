@@ -1,3 +1,7 @@
+using System.Runtime.InteropServices;
+using Lib.Repo;
+using Lib.Services;
+
 namespace Dyreinternat_eksamens_projekt
 {
     public class Program
@@ -5,6 +9,7 @@ namespace Dyreinternat_eksamens_projekt
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddSingleton<IActivityJSONRepository, ActivityJSONRepository>();
 
             // Add services to the container.
             builder.Services.AddRazorPages();
