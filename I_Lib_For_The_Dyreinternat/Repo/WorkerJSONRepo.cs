@@ -80,8 +80,8 @@ namespace Lib.Repo
                     worker.Role = worker1.Role;
                     worker.PhoneNumber = worker1.PhoneNumber;
                     worker.Birthdate = worker1.Birthdate;
+                    SaveFile();
                 }                    
-                SaveFile();
             }
         }
     }
