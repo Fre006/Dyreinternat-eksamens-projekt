@@ -15,7 +15,7 @@ namespace ConsoleProgram
         {
             WorkerService workerService = new WorkerService(new WorkerJSONRepo());
             BlogService blogService = new BlogService(new BlogJSONRepo());
-
+            CatService catService = new CatService(new CatJSONRepo());
 
             DateTime birthDate = new DateTime(2000, 12, 24);
             Console.WriteLine(birthDate);

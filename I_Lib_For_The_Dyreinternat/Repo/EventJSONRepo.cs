@@ -12,7 +12,7 @@ using Lib.Services;
 
 namespace Lib.Repo
 {
-    internal class EventJSONRepo:IEventJSONRepo
+    public class EventJSONRepo:IEventJSONRepo
     {
 
         private string _path = "ID.json";
@@ -22,11 +22,11 @@ namespace Lib.Repo
         private List<Activity> _activities=new List<Activity>();
         private int _iD = 0;
 
-        private IBookingJSONRepository _bookingRepo;
-        private IActivityJSONRepository _activityRepo;
-        private IVeterinarianJSONRepository _vetRepo;
+        private IBookingJSONRepo _bookingRepo;
+        private IActivityJSONRepo _activityRepo;
+        private IVeterinarianJSONRepo _vetRepo;
         private IAnimalRepo _animalRepo;
-        public EventJSONRepo(IBookingJSONRepository BookingRepo, IActivityJSONRepository ActivityRepo, IVeterinarianJSONRepository VetRepo, IAnimalRepo AnimalRepo)
+        public EventJSONRepo(IBookingJSONRepo BookingRepo, IActivityJSONRepo ActivityRepo, IVeterinarianJSONRepo VetRepo, IAnimalRepo AnimalRepo)
         {
 
             try

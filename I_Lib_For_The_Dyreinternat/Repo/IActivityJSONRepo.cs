@@ -7,7 +7,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    public interface IActivityJSONRepository
+    public interface IActivityJSONRepo
     {
         public List<Activity> GetAll();
         public void Add(Activity activity);

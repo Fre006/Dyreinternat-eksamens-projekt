@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    enum CatBreeds {Unknown, Siamese, Norwegian_Forest_Cat, Korat, Maine_Coon }
-    internal class Cat : Animal
+    public enum CatBreeds {Unknown, Siamese, Norwegian_Forest_Cat, Korat, Maine_Coon }
+    public class Cat : Animal
     {
         public CatBreeds Breed;
 

@@ -8,7 +8,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface ICatJSONRepo
+    public interface ICatJSONRepo
     {
         public List<Cat> GetAll();
         public void Add(Cat cat, string path="default");

@@ -9,10 +9,10 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class ActivityJSONRepository : IActivityJSONRepository
+    public class ActivityJSONRepo : IActivityJSONRepo
     {
         private IEventJSONRepo _eventRepo;
-        public ActivityJSONRepository(IEventJSONRepo EventRepo)
+        public ActivityJSONRepo(IEventJSONRepo EventRepo)
         {
             _eventRepo = EventRepo;
             try

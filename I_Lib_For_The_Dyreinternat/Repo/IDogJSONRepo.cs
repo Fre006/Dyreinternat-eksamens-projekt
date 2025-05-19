@@ -7,7 +7,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface IDogJSONRepo
+    public interface IDogJSONRepo
     {
         public List<Dog> GetAll();
         public void Add(Dog dog, string path="default");

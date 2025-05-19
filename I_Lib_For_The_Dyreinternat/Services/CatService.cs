@@ -8,7 +8,7 @@ using Lib.Repo;
 
 namespace Lib.Services
 {
-    internal class CatService
+    public class CatService
     {
         private ICatJSONRepo _catRepo;
 

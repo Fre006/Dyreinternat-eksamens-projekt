@@ -12,7 +12,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class CatJSONRepo: ICatJSONRepo
+    public class CatJSONRepo: ICatJSONRepo
     {
         private string _path="Cat.json";
         protected List<Cat> _cats = new List<Cat>();
@@ -50,6 +50,7 @@ namespace Lib.Repo
             //catches if chipID doesn't match, and then will not delete
             if (_cats[index].ChipID == chipID) { 
             _cats.RemoveAt(index);
+            SaveFile(path);
             }
         }
         public Cat GetByID(string chipID)
@@ -76,7 +77,7 @@ namespace Lib.Repo
             List<Event> log = new List<Event>();
             log = GetLogs(chipID);
             log.Add(newEntry);
-            int index = 0;
+            int index=0;
             index = GetIndexByID(chipID);
             if (_cats[index].ChipID == chipID)
             {
