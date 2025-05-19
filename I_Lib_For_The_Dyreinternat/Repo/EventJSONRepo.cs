@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Lib.Model;
 using Lib.Repo;
 using Lib.Services;
+using System.Diagnostics;
 
 namespace Lib.Repo
 {
@@ -19,7 +20,7 @@ namespace Lib.Repo
         private List<Event> _events=new List<Event>();
         private List<Booking> _bookings=new List<Booking>();
         private List<VeterinarianVisit> _vets=new List<VeterinarianVisit>();
-        private List<Activity> _activities=new List<Activity>();
+        private List<TheActivity> _activities=new List<TheActivity>();
         private int _iD = 0;
         private IAnimalRepo _animalRepo;
         public EventJSONRepo(IAnimalRepo AnimalRepo)
@@ -33,12 +34,19 @@ namespace Lib.Repo
             {
                 SaveFile();
             }
+            _animalRepo = AnimalRepo;
+            LoadAllEvents();
+        }
+
+        private void LoadAllEvents()
+        {
             try
             {
                 LoadActivities();
 
             }
-            catch { 
+            catch
+            {
             }
             try
             {
@@ -56,14 +64,6 @@ namespace Lib.Repo
             catch
             {
             }
-
-
-
-
-
-            _animalRepo = AnimalRepo;
-
-
             foreach (VeterinarianVisit vet in _vets)
             {
                 _events.Add(vet);
@@ -72,7 +72,7 @@ namespace Lib.Repo
             {
                 _events.Add(booking);
             }
-            foreach (Activity activity in _activities)
+            foreach (TheActivity activity in _activities)
             {
                 _events.Add(activity);
             }
@@ -80,9 +80,10 @@ namespace Lib.Repo
         }
 
 
-
         public void AddEventToLog(Event theevent)
         {
+            LoadAllEvents();
+            Debug.WriteLine("amount of events:"+_events.Count);
             foreach (Animal animal in theevent.Animals)
             {
                 _animalRepo.AddLog(animal.ChipID, theevent);
@@ -109,10 +110,8 @@ namespace Lib.Repo
         public void AddEventToLogViaID(int id)
         {
             Event Event=GetEventByID(id);
-            if (Event.ID == id)
-            {
-                AddEventToLog(Event);
-            }
+            AddEventToLog(Event);
+
 
         }
 
@@ -158,7 +157,7 @@ namespace Lib.Repo
             string path = "Activity.json";
             string json = File.ReadAllText(path);
 
-            _activities = JsonSerializer.Deserialize<List<Activity>>(json);
+            _activities = JsonSerializer.Deserialize<List<TheActivity>>(json);
         }
 
         private void LoadBookings()

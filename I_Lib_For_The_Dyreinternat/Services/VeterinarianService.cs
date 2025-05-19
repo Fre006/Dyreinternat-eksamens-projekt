@@ -21,9 +21,9 @@ namespace Lib.Services
             veterinarian._costumers = new List<Costumer> { };
             _veterinarianJSONRepository.Add(veterinarian);
         }
-        public List<Activity> GetAll()
+        public List<TheActivity> GetAll()
         {
-            return (List<Activity>)_veterinarianJSONRepository;
+            return (List<TheActivity>)_veterinarianJSONRepository;
         }
     }
 }
