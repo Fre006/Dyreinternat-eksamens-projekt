@@ -41,7 +41,7 @@ namespace Lib.Repo
             activity.ID = newid;
             _activity.Add(activity);
             SaveFile();
-            _eventRepo.AddEventToLogViaID(activity.ID);
+            _eventRepo.AddEventToLog(activity);
 
         }
         public virtual void AddNoAnimal(TheActivity activity)
