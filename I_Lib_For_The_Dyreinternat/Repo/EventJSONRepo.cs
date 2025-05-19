@@ -21,12 +21,8 @@ namespace Lib.Repo
         private List<VeterinarianVisit> _vets=new List<VeterinarianVisit>();
         private List<Activity> _activities=new List<Activity>();
         private int _iD = 0;
-
-        private IBookingJSONRepo _bookingRepo;
-        private IActivityJSONRepo _activityRepo;
-        private IVeterinarianJSONRepo _vetRepo;
         private IAnimalRepo _animalRepo;
-        public EventJSONRepo(IBookingJSONRepo BookingRepo, IActivityJSONRepo ActivityRepo, IVeterinarianJSONRepo VetRepo, IAnimalRepo AnimalRepo)
+        public EventJSONRepo(IAnimalRepo AnimalRepo)
         {
 
             try
@@ -37,13 +33,37 @@ namespace Lib.Repo
             {
                 SaveFile();
             }
-            _bookingRepo = BookingRepo;
-            _bookings = _bookingRepo.GetAll();
-            _activityRepo = ActivityRepo;
-            _activities = _activityRepo.GetAll();
-            _vetRepo = VetRepo;
+            try
+            {
+                LoadActivities();
+
+            }
+            catch { 
+            }
+            try
+            {
+                LoadBookings();
+
+            }
+            catch
+            {
+            }
+            try
+            {
+                LoadVets();
+
+            }
+            catch
+            {
+            }
+
+
+
+
+
             _animalRepo = AnimalRepo;
-            _vets = _vetRepo.GetAll();
+
+
             foreach (VeterinarianVisit vet in _vets)
             {
                 _events.Add(vet);
@@ -58,6 +78,8 @@ namespace Lib.Repo
             }
 
         }
+
+
 
         public void AddEventToLog(Event theevent)
         {
@@ -78,6 +100,10 @@ namespace Lib.Repo
                 }
             }
             return Event;
+        }
+        public List<Event> GetAll()
+        {
+            return _events;
         }
 
         public void AddEventToLogViaID(int id)
@@ -125,6 +151,30 @@ namespace Lib.Repo
                 path += _path;
             }
             File.WriteAllText(path, JsonSerializer.Serialize(_iD));
+        }
+
+        private void LoadActivities()
+        {
+            string path = "Activity.json";
+            string json = File.ReadAllText(path);
+
+            _activities = JsonSerializer.Deserialize<List<Activity>>(json);
+        }
+
+        private void LoadBookings()
+        {
+            string path = "Booking.json";
+            string json = File.ReadAllText(path);
+
+            _bookings = JsonSerializer.Deserialize<List<Booking>>(json);
+        }
+
+        private void LoadVets()
+        {
+            string path = "Veterinarian.json";
+            string json = File.ReadAllText(path);
+
+            _vets = JsonSerializer.Deserialize<List<VeterinarianVisit>>(json);
         }
     }
 }
