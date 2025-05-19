@@ -38,9 +38,10 @@ namespace Lib.Repo
             veterinarian._costumers = new List<Costumer> { };
             int newid = _eventRepo.GiveID(veterinarian.ID);
             veterinarian.ID = newid;
-            _eventRepo.AddEventToLogViaID(veterinarian.ID);
             _veterinarian.Add(veterinarian);
             SaveFile();
+            _eventRepo.AddEventToLogViaID(veterinarian.ID);
+
         }
 
         //denne metode skal kaldes når vi vil putte data i vores JSON

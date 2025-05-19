@@ -37,9 +37,10 @@ namespace Lib.Repo
         {
             int newid=_eventRepo.GiveID(booking.ID);
             booking.ID = newid;
-            _eventRepo.AddEventToLogViaID(booking.ID);
             _booking.Add(booking);
             SaveFile();
+            _eventRepo.AddEventToLogViaID(booking.ID);
+
         }
 
         //denne metode skal kaldes når vi vil putte data i vores JSON
