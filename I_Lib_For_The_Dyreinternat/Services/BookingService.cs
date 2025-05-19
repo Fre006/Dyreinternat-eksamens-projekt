@@ -8,7 +8,7 @@ using Lib.Repo;
 
 namespace Lib.Services
 {
-    internal class BookingService
+    public class BookingService
     {
         private IBookingJSONRepo _bookingJSONRepository;
 
