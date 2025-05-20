@@ -94,11 +94,66 @@ namespace ConsoleProgram
 
                     break;
                 case 2:
+                    Console.WriteLine("hvilket dyr vil du lave?");
+                    Console.WriteLine("1. Kat");
+                    Console.WriteLine("2. Hund");
+                    choice = ChoiceChoser();
+                    switch (choice)
+                    {
+                        case 1:
+
+                            break;
+                        case 2:
+                            break;
+                    }
 
                     break;
             }
 
         }
+        public static void MakeAnimal()
+        {
+            Console.WriteLine("Hvad skal dyret hede?");
+            string name = Console.ReadLine();
+            Console.WriteLine("Hvad er dyret kendetegn");
+            string characteristics = Console.ReadLine();
+            Console.WriteLine("Hvad er dyret Status");
+            string status = Console.ReadLine();
+            bool male = true;
+            Console.WriteLine("Er dyret hankøn(ja/nej)");
+            string yesNo = Console.ReadLine();
+            checksYesNo(male);
+            Console.WriteLine("Er dyret steriliseret?(ja/nej)");
+
+            Console.WriteLine("Beskriv dyret");
+            string description = Console.ReadLine();
+
+
+
+
+            //Animal anAnimal= new Animal(name, characteristics, status, male,);
+
+            void checksYesNo(bool thebool)
+            {
+
+                if (yesNo == "ja")
+                {
+
+                }
+                else if (yesNo == "nej")
+                {
+                    thebool = false;
+                }
+                else
+                {
+                    Console.WriteLine("Vær venlig at skrive ja eller nej");
+                    yesNo = Console.ReadLine();
+                    checksYesNo(thebool);
+                }
+            }
+
+        }
+
     }
 }
 
