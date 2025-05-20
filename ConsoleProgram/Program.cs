@@ -30,29 +30,38 @@ namespace ConsoleProgram
             while (testing == true)
             {
                 testClient();
-                void testClient()
+            }
+            void testClient()
+            {
+                Console.WriteLine("Hvad vil du gerne teste?");
+                Console.WriteLine("1. Slut test");
+                Console.WriteLine("2. Dyr");
+                Console.WriteLine("3. Blog");
+                Console.WriteLine("4. Worker");
+                Console.WriteLine("5. Event");
+                Console.Write("Indsæt dit valg: ");
+                int choice = ChoiceChoser();
+
+
+
+                switch (choice)
                 {
-                    Console.WriteLine("Hvad vil du gerne teste?");
-                    Console.WriteLine("1. Slut test");
-                    Console.WriteLine("2. Dyr");
-                    Console.Write("Indsæt dit valg: ");
+                    case 1:
+                        testing = false;
+                        break;
+                    case 2:
+                        Console.WriteLine("Hvad ville du teste med Dyr?");
+                        Animals(animalService);
+                        break;
+                    case 3:
+                        CreateBlog(workerService, blogService);
+                        break;
+                    case 4:
+                        CreateWorker(workerService);
+                        break;
 
-                    int choice = ChoiceChoser();
-
-
-
-                    switch (choice)
-                    {
-                        case 1:
-                            testing = false;
-                            break;
-                        case 2:
-                            Console.WriteLine("Hvad ville du teste med Dyr?");
-                            Animals(animalService);
-                            break;
-                    }
-
-
+                    case 5:
+                        break;
                 }
             }
 
@@ -151,8 +160,47 @@ namespace ConsoleProgram
                     checksYesNo(thebool);
                 }
             }
+        }
+                
+
+
+        public static void CreateBlog(WorkerService workerService, BlogService blogService)
+        {
+        Console.WriteLine("Write the title");
+        string title = Console.ReadLine();
+        Console.WriteLine("Write the body text");
+        string text = Console.ReadLine();
+        Worker author = workerService.GetByID("012845");
+
+        blogService.Add(new Blog(title, text, author, DateTime.Now));
 
         }
+        public static void CreateWorker(WorkerService workerService)
+        {
+            Console.WriteLine("Write the role of the woker (Admin/Leader/Grunt");
+            string a = Console.ReadLine();
+            Roles role;
+            switch (a)
+            {
+                case "Admin" or "admin":
+                    role = Roles.Admin;
+                    break;
+                case "Leader" or "leader":
+                    role = Roles.Leader;
+                    break;
+                case "Grunt" or "grunt":
+                    role = Roles.Grunt;
+                    break;
+            }
+            Console.WriteLine("Write the name of the new worker");
+            string name = Console.ReadLine();
+            Console.WriteLine("Write the new id of the worker");
+            string id = Console.ReadLine();
+
+            workerService.Add(new Worker(Roles.Admin, name, id));
+
+        }
+
 
     }
 }
