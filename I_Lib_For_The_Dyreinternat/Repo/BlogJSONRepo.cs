@@ -75,7 +75,7 @@ namespace Lib.Repo
 
         }
 
-        public Blog Edit(Blog blog, Blog changedBlog)
+        public void Edit(Blog blog, Blog changedBlog)
         {
             foreach (Blog b in _blogs)
             {
@@ -88,7 +88,7 @@ namespace Lib.Repo
                 }
             }
 
-            return null;
+            //return null;
         }
 
 

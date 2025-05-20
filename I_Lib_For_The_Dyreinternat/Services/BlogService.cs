@@ -34,9 +34,9 @@ namespace Lib.Services
         {
             return _blogRepo.GetByTitle(title);
         }
-        public Blog Edit(Blog blog, Blog changedBlog)
+        public void Edit(Blog blog, Blog changedBlog)
         {
-            return (_blogRepo.Edit(blog, changedBlog));
+            _blogRepo.Edit(blog, changedBlog);
         }
 
 

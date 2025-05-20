@@ -15,6 +15,6 @@ namespace Lib.Repo
         public void Delete(string title);
 
         public Blog GetByTitle(string title);
-        public Blog Edit(Blog blog, Blog changedBlog);
+        public void Edit(Blog blog, Blog changedBlog);
     }
 }
