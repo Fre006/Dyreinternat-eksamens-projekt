@@ -20,7 +20,7 @@ namespace Lib.Repo
                 LoadFile();
             }
             catch
-            {
+            { 
                 SaveFile();
             }
         }
