@@ -41,7 +41,7 @@ namespace Lib.Repo
             activity.ID = newid;
             _activity.Add(activity);
             SaveFile();
-            _eventRepo.AddEventToLog(activity);
+            _eventRepo.AddEventToLogViaID(activity.ID);
 
         }
         public virtual void AddNoAnimal(TheActivity activity)
@@ -73,12 +73,44 @@ namespace Lib.Repo
             File.WriteAllText(path, JsonSerializer.Serialize(_activity));
         }
 
+        public TheActivity GetByName(string name)
+        {
+            foreach (TheActivity activity in _activity)
+            {
+                if (name == activity.Name )
+                {
+                    return activity;
+                }
+            }
+            return null;
+        }
 
+        public int GetIndexById(int id)
+        {
+            int index = 0;
+            for(int i = 0; i<_activity.Count;i++)
+            {
+                if (_activity[i].ID == id)
+                {
+                    index = i;
+                }
+            }
+            return index;
+        }
 
         public List<TheActivity> GetAll()
         {
             return _activity;
         }
 
+        public void DeleteById(int id)
+        {
+            int index = GetIndexById(id);
+            if (_activity[index].ID == id)
+            {
+                _activity.RemoveAt(index);
+                SaveFile();
+            }
+        }
     }
 }
