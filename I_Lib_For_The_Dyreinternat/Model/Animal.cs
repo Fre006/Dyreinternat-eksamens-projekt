@@ -21,12 +21,12 @@ namespace Lib.Model
         public string Description { get; set; }
 
         public DateTime Birthdate { get; set; }
-        public List<Event> DefaultEvents = new List<Event>();
+
         public Animal()
         {
 
         }
-        public Animal(string name, string characteristics, string status, bool male, bool fertile, Sizes size, string chipID, string description, DateTime birthdate, List<Event> logs)
+        public Animal(string name, string characteristics, string status, bool male, bool fertile, Sizes size, List<Event> logs, string chipID, string description, DateTime birthdate)
         {
             Name = name;
             Characteristics = characteristics;
@@ -40,20 +40,6 @@ namespace Lib.Model
             ChipID=chipID;
             Birthdate=birthdate;
         }
-        public override string ToString()
-        {
-            string sex = "Male";
-            if (Male == false)
-            {
-                sex = "Female";
-            }
-            string fertility = "Animal isn't sterilised";
-            if (Fertile == false) { fertility = "Animal is sterilised"; }
-      
-
-            return $"Name: {Name}  Id: {ChipID}  Status: {Status}  Description: {Description}  Birthdate: {Birthdate} Sex: {sex} Sterilised:{fertility}";
-        }
-
 
 
 

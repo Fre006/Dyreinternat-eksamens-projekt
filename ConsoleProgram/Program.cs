@@ -26,52 +26,8 @@ namespace ConsoleProgram
             ActivityService activityService = new ActivityService(new ActivityJSONRepo(eventRepo));
             BookingService bookingService= new BookingService(new BookingJSONRepo(eventRepo));
             VeterinarianService vetService= new VeterinarianService(new VeterinarianJSONRepo(eventRepo));
-            bool testing = true;
-            while (testing==true)
-            {
-                testClient();
-                void testClient()
-                {
-                    Console.WriteLine("Hvad vil du gerne teste?");
-                    Console.WriteLine("1. Slut test");
-                    Console.WriteLine("2. Dyr");
-                    Console.Write("Indsæt dit valg: ");
 
-                    int choice = ChoiceChoser();
-
-
-
-                    switch (choice)
-                    {
-                        case 1:
-                            testing = false;
-                            break;
-                        case 2:
-                            Console.WriteLine("Hvad ville du teste med Dyr?");
-                            Animals(animalService);
-                            break;
-                    }
-
-
-                }
-            }
- 
-
-        }
-        public static int ChoiceChoser()
-        {
-            int choice = new int();
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                Console.WriteLine("Du skal skrive et nummer");
-                Console.Write("Indsæt dit valg: ");
-                ChoiceChoser();
-            }
-            return choice;
+            List<Event> Log= new List<Event>();
 
             Cat thecat= new Cat("Buster","dum","kræft",true,true,Sizes.Big,Log,"12345","sort");
             List<Animal> animals= new List<Animal>();
@@ -96,8 +52,6 @@ namespace ConsoleProgram
             DateTime birthDate = new DateTime(2000, 12, 24);
             Console.WriteLine(birthDate);
 
-                    break;
-            }
 
         }
     }
