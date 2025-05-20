@@ -12,7 +12,7 @@ namespace Lib.Repo
         public int GiveID(int ThisID);
         public Event GetEventByID(int id);
         public void AddEventToLogViaID(int id);
-
+        public void AddEventToLog(Event theevent);
         public List<Event> GetAll();
 
     }
