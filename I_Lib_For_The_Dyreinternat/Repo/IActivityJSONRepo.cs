@@ -14,5 +14,8 @@ namespace Lib.Repo
         public void AddNoCostumer(TheActivity activity);
         public void AddNoAnimal(TheActivity activity);
         public void AddOnlyWorker(TheActivity activity);
+        public TheActivity GetByName(string name);
+        public int GetIndexById(int id);
+        public void DeleteById(int id);
     }
 }

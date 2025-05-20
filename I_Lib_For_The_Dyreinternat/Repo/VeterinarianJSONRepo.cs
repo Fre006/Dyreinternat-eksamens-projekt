@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -58,5 +59,37 @@ namespace Lib.Repo
             return _veterinarian;
         }
 
+        public VeterinarianVisit GetByName(string name)
+        {
+            foreach (VeterinarianVisit veterinarian in _veterinarian)
+            {
+                if (name == veterinarian.Name)
+                {
+                    return veterinarian;
+                }
+            }
+            return null;
+        }
+        public int GetIndexById(int id)
+        {
+            int index = 0;
+            for (int i = 0; i < _veterinarian.Count; i++)
+            {
+                if (_veterinarian[i].ID == id)
+                {
+                    index = i;
+                }
+            }
+            return index;
+        }
+        public void DeleteById(int id)
+        {
+            int index = GetIndexById(id);
+            if (_veterinarian[index].ID == id)
+            {
+                _veterinarian.RemoveAt(index);
+                SaveFile();
+            }
+        }
     }
 }
