@@ -33,6 +33,20 @@ namespace Lib.Repo
         {
             return _animals;
         }
+        internal void UpdateAnimals()
+        {
+            _animals = new List<Animal>();
+            _cats = _catRepo.GetAll();
+            _dogs = _dogRepo.GetAll();
+            foreach (Cat cat in _cats)
+            {
+                _animals.Add(cat);
+            }
+            foreach (Dog dog in _dogs)
+            {
+                _animals.Add(dog);
+            }
+        }
 
         private int GetIndexByID(string chipID)
         {

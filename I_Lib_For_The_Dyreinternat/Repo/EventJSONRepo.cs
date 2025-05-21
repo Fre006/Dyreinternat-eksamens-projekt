@@ -40,6 +40,7 @@ namespace Lib.Repo
 
         private void LoadAllEvents()
         {
+            _events = new List<Event>();
             try
             {
                 LoadActivities();

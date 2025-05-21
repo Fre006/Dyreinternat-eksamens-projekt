@@ -10,23 +10,31 @@ namespace Lib.Repo
 {
     internal class VaultEventJSONRepo
     {
-        public Dictionary<int ,Event> _oldEvents = new Dictionary<int, Event>();
+        public Dictionary<int ,Event> _EventVault = new Dictionary<int, Event>();
 
-        public void Add(Event oldEvent)
-        {
-            _oldEvents.Add(oldEvent);
-        }
         private void LoadFile()
         {
-            string path = "oldEvents.json";
+            string path = "EventVault.json";
             string json = File.ReadAllText(path);
 
-            _oldEvents = JsonSerializer.Deserialize<Dictionary<int, Event>>(json);
+            _EventVault = JsonSerializer.Deserialize<Dictionary<int, Event>>(json);
         }
         private void SaveFile()
         {
-            string path = "oldEvents.json";
-            File.WriteAllText(path, JsonSerializer.Serialize(_oldEvents));
+            string path = "EventVault.json";
+            File.WriteAllText(path, JsonSerializer.Serialize(_EventVault));
+        }
+        public void VaultEvent(Event EventVault)
+        {
+            _EventVault.Add(EventVault.ID, EventVault);
+        }
+        public Event VaultGetEvent(int Key)
+        {
+            if (_EventVault.ContainsKey(Key))
+            {
+                return _EventVault[Key];
+            }
+            else return null;
         }
     }
 }
