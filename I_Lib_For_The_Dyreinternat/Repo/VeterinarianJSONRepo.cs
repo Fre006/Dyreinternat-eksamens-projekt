@@ -91,5 +91,20 @@ namespace Lib.Repo
                 SaveFile();
             }
         }
+        public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, string veterinarian)
+        {
+            int index = GetIndexById(id);
+            if (_veterinarian[index].ID == id)
+            {
+                _veterinarian[index].Name = name;
+                _veterinarian[index].Description = description;
+                _veterinarian[index].CostumerCap = customerCap;
+                _veterinarian[index].AnimalCap = animalCap;
+                _veterinarian[index].Location = location;
+                _veterinarian[index].Start = start;
+                _veterinarian[index].Stop = stop;
+                _veterinarian[index].Veterinarian = veterinarian;
+            }
+        }
     }
 }

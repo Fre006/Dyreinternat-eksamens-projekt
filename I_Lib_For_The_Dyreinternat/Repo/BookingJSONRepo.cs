@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -11,9 +12,10 @@ namespace Lib.Repo
     public class BookingJSONRepo : IBookingJSONRepo
     {
         private IEventJSONRepo _eventRepo;
-        public BookingJSONRepo(IEventJSONRepo EventRepo)
+        public List<Booking> _booking = new List<Booking>();
+        public BookingJSONRepo(IEventJSONRepo bookingRepo)
         {
-            _eventRepo = EventRepo;
+            _eventRepo = bookingRepo;
             try
             {
                 LoadFile();
@@ -49,12 +51,58 @@ namespace Lib.Repo
             string path = "Booking.json";
             File.WriteAllText(path, JsonSerializer.Serialize(_booking));
         }
+        public Booking GetByName(string name)
+        {
+            foreach (Booking booking in _booking)
+            {
+                if (name == booking.Name)
+                {
+                    return booking;
+                }
+            }
+            return null;
+        }
 
-        public List<Booking> _booking = new List<Booking>();
+        public int GetIndexById(int id)
+        {
+            int index = 0;
+            for (int i = 0; i < _booking.Count; i++)
+            {
+                if (_booking[i].ID == id)
+                {
+                    index = i;
+                }
+            }
+            return index;
+        }
 
         public List<Booking> GetAll()
         {
             return _booking;
+        }
+
+        public void DeleteById(int id)
+        {
+            int index = GetIndexById(id);
+            if (_booking[index].ID == id)
+            {
+                _booking.RemoveAt(index);
+                SaveFile();
+            }
+        }
+        public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop)
+        {
+            int index = GetIndexById(id);
+            if (_booking[index].ID == id)
+            {
+                _booking[index].Name = name;
+                _booking[index].Description = description;
+                _booking[index].CostumerCap = customerCap;
+                _booking[index].AnimalCap = animalCap;
+                _booking[index].Location = location;
+                _booking[index].Start = start;
+                _booking[index].Stop = stop;
+            }
         }
     }
 }

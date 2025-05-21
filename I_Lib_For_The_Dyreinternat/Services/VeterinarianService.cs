@@ -10,20 +10,25 @@ namespace Lib.Services
 {
     public class VeterinarianService
     {
-        private IVeterinarianJSONRepo _veterinarianJSONRepository;
+        private IVeterinarianJSONRepo _veterinarianRepo;
 
-        public VeterinarianService(IVeterinarianJSONRepo veterinarianJSONRepository)
+        public VeterinarianService(IVeterinarianJSONRepo veterinarianJSONRepo)
         {
-            _veterinarianJSONRepository = veterinarianJSONRepository;
+            _veterinarianRepo = veterinarianJSONRepo;
         }
         public virtual void Add(VeterinarianVisit veterinarian)
         {
             veterinarian._costumers = new List<Costumer> { };
-            _veterinarianJSONRepository.Add(veterinarian);
+            _veterinarianRepo.Add(veterinarian);
         }
-        public List<TheActivity> GetAll()
+        public List<VeterinarianVisit> GetAll()
         {
-            return (List<TheActivity>)_veterinarianJSONRepository;
+            return (List<VeterinarianVisit>)_veterinarianRepo;
+        }
+
+        public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, string veterinarian)
+        {
+            _veterinarianRepo.Edit(id, name, description, customerCap, animalCap, location, start, stop, veterinarian);
         }
     }
 }
