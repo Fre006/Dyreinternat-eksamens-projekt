@@ -153,17 +153,16 @@ namespace ConsoleProgram
             if (yesNo == "ja")
             {
 
-                }
-                else if (yesNo == "nej")
-                {
+            }
+            else if (yesNo == "nej")
+            {
                     thebool = false;
-                }
-                else
-                {
+            }
+            else
+            {
                     Console.WriteLine("Vær venlig at skrive ja eller nej");
                     yesNo = Console.ReadLine();
                     checksYesNo(thebool);
-                }
             }
         }
                 
@@ -204,16 +203,9 @@ namespace ConsoleProgram
 
             workerService.Add(new Worker(Roles.Admin, name, id));
 
-            }
-            else if (yesNo == "nej")
-            {
-                thebool = false;
-            }
-            else
-            {
-                Console.WriteLine("Vær venlig at skrive ja eller nej");
-                checksYesNo(thebool);
-            }
+            
+       
+            
         }
 
 
