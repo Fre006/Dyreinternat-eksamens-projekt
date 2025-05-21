@@ -27,7 +27,7 @@ namespace ConsoleProgram
             BookingService bookingService = new BookingService(new BookingJSONRepo(eventRepo));
             VeterinarianService vetService = new VeterinarianService(new VeterinarianJSONRepo(eventRepo));
             bool testing = true;
-            while (testing)
+            while (testing == true)
             {
                 testClient();
             }
@@ -130,11 +130,10 @@ namespace ConsoleProgram
             string status = Console.ReadLine();
             bool male = true;
             Console.WriteLine("Er dyret hankøn(ja/nej)");
-
+            string yesNo = Console.ReadLine();
             checksYesNo(male);
             Console.WriteLine("Er dyret steriliseret?(ja/nej)");
-            bool fertile=true;
-            checksYesNo(fertile);
+
             Console.WriteLine("Beskriv dyret");
             string description = Console.ReadLine();
 
@@ -143,15 +142,11 @@ namespace ConsoleProgram
 
             //Animal anAnimal= new Animal(name, characteristics, status, male,);
 
-            
-
-        }
-
-        public static void checksYesNo(bool thebool)
-        {
-            string yesNo = Console.ReadLine();
-            if (yesNo == "ja")
+            void checksYesNo(bool thebool)
             {
+
+                if (yesNo == "ja")
+                {
 
                 }
                 else if (yesNo == "nej")
@@ -166,18 +161,18 @@ namespace ConsoleProgram
                 }
             }
         }
-                
+
 
 
         public static void CreateBlog(WorkerService workerService, BlogService blogService)
         {
-        Console.WriteLine("Write the title");
-        string title = Console.ReadLine();
-        Console.WriteLine("Write the body text");
-        string text = Console.ReadLine();
-        Worker author = workerService.GetByID("012845");
+            Console.WriteLine("Write the title");
+            string title = Console.ReadLine();
+            Console.WriteLine("Write the body text");
+            string text = Console.ReadLine();
+            Worker author = workerService.GetByID("012845");
 
-        blogService.Add(new Blog(title, text, author, DateTime.Now));
+            blogService.Add(new Blog(title, text, author, DateTime.Now));
 
         }
         public static void CreateWorker(WorkerService workerService)
@@ -204,17 +199,57 @@ namespace ConsoleProgram
 
             workerService.Add(new Worker(Roles.Admin, name, id));
 
-            }
-            else if (yesNo == "nej")
-            {
-                thebool = false;
-            }
-            else
-            {
-                Console.WriteLine("Vær venlig at skrive ja eller nej");
-                checksYesNo(thebool);
-            }
         }
+
+        public void CreateCat(CatService catService)
+        {
+            List<Event> events = new List<Event>();
+            Console.WriteLine("Write the cats name");
+            string catName = Console.ReadLine();
+            Console.WriteLine("Any unique characteristics");
+            string characteristics = Console.ReadLine();
+            Console.WriteLine("Status");
+            string status = Console.ReadLine();
+            Console.WriteLine("Gender? (Male/Female)");
+            string gender = Console.ReadLine();
+            bool male = true; //True er default
+            switch (gender)
+            {
+                case "male" or "Male":
+                    male = true;
+                    break;
+                case "female" or "Female":
+                    male = false;
+                    break;
+            }
+            Console.WriteLine("Is the cat fertile? (True/False)");
+            bool fertile = bool.Parse(Console.ReadLine());
+            Console.WriteLine("What size it? (");
+            Sizes size = Sizes.Small; //Small er default
+
+            string roleChoice = Console.ReadLine();
+            switch (roleChoice)
+            {
+                case "Small" or "small":
+                    size = Sizes.Small;
+                    break;
+                case "Medium" or "medium":
+                    size = Sizes.Medium;
+                    break;
+                case "Big" or "big":
+                    size = Sizes.Big;
+                    break;
+            }
+            Console.WriteLine("Write the chipID");
+            string chipID = Console.ReadLine();
+            Console.WriteLine("Description");
+            string description = Console.ReadLine();
+
+            catService.Add(new Cat(catName, characteristics, status, male, fertile, size, events, chipID, description));
+
+
+        }
+
 
 
     }
