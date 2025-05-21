@@ -11,5 +11,9 @@ namespace Lib.Repo
     {
         public List<Booking> GetAll();
         public void Add(Booking booking);
+        public Booking GetByName(string name);
+        public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop);
+        public int GetIndexById(int id);
+        public void DeleteById(int id);
     }
 }
