@@ -27,6 +27,13 @@ namespace Lib.Repo
         {
             _AnimalVault.Add(oldAnimal.ChipID, oldAnimal);
         }
-
+        public Animal VaultGetAnimal(string Key)
+        {
+            if (_AnimalVault.ContainsKey(Key))
+            {
+                return _AnimalVault[Key];
+            }
+            else return null;
+        }
     }
 }

@@ -28,6 +28,13 @@ namespace Lib.Repo
         {
             _EventVault.Add(EventVault.ID, EventVault);
         }
-
+        public Event VaultGetEvent(int Key)
+        {
+            if (_EventVault.ContainsKey(Key))
+            {
+                return _EventVault[Key];
+            }
+            else return null;
+        }
     }
 }
