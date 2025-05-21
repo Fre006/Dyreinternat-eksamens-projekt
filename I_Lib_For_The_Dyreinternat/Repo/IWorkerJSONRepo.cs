@@ -15,5 +15,7 @@ namespace Lib.Repo
         public List<Worker> GetAll();
 
         public Worker GetByID(string id);
+        public Worker GetByName(string name);
+
     }
 }

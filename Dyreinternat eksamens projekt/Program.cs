@@ -14,6 +14,10 @@ namespace Dyreinternat_eksamens_projekt
             builder.Services.AddSingleton<IActivityJSONRepo, ActivityJSONRepo>();
             builder.Services.AddSingleton<ActivityService>();
 
+            //Singleton for Event repository
+            builder.Services.AddSingleton<IEventJSONRepo, EventJSONRepo>();
+            builder.Services.AddSingleton<EventService>();
+
             //Singleton for Animal repository
             builder.Services.AddSingleton<IAnimalRepo, AnimalRepo>();
             builder.Services.AddSingleton<AnimalService>();
@@ -60,14 +64,13 @@ namespace Dyreinternat_eksamens_projekt
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.MapStaticAssets();
-            app.MapRazorPages()
-               .WithStaticAssets();
+            app.MapRazorPages();
 
             app.Run();
         }

@@ -42,7 +42,7 @@ namespace Lib.Repo
         public void Add(Blog blog)
         {
            _blogs.Add(blog);
-            //Debug.WriteLine("Successfully added Blog");
+            Debug.WriteLine("Successfully added Blog");
             SaveFile();
         }
         public List<Blog> GetAll()

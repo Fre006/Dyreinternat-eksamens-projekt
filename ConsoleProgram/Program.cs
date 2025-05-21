@@ -198,8 +198,9 @@ namespace ConsoleProgram
             string id = Console.ReadLine();
 
             workerService.Add(new Worker(Roles.Admin, name, id));
-
+            
         }
+        
 
         public void CreateCat(CatService catService)
         {

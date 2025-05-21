@@ -41,6 +41,11 @@ namespace Lib.Services
             return _workerRepo.GetByID(id);
             
         }
+        public Worker GetByName(string name) 
+        {  
+            return _workerRepo.GetByName(name);
+        }
+
 
     }
 }
