@@ -180,17 +180,23 @@ namespace ConsoleProgram
             Console.WriteLine("Write the role of the woker (Admin/Leader/Grunt");
             string a = Console.ReadLine();
             Roles role;
-            switch (a)
+            try { 
+                switch (a)
+                {
+                    case "Admin" or "admin":
+                        role = Roles.Admin;
+                        break;
+                    case "Leader" or "leader":
+                        role = Roles.Leader;
+                        break;
+                    case "Grunt" or "grunt":
+                        role = Roles.Grunt;
+                        break;
+                }
+            }
+            catch 
             {
-                case "Admin" or "admin":
-                    role = Roles.Admin;
-                    break;
-                case "Leader" or "leader":
-                    role = Roles.Leader;
-                    break;
-                case "Grunt" or "grunt":
-                    role = Roles.Grunt;
-                    break;
+                Console.WriteLine("You are stupid, that is not a Role");
             }
             Console.WriteLine("Write the name of the new worker");
             string name = Console.ReadLine();
@@ -198,6 +204,53 @@ namespace ConsoleProgram
             string id = Console.ReadLine();
 
             workerService.Add(new Worker(Roles.Admin, name, id));
+
+        }
+        public void MakeCat(CatService catService)
+        {
+            List<Event> events = new List<Event>();
+            Console.WriteLine("Write the cats name");
+            string catName = Console.ReadLine();
+            Console.WriteLine("Any unique characteristics");
+            string characteristics = Console.ReadLine();
+            Console.WriteLine("Status");
+            string status = Console.ReadLine();
+            Console.WriteLine("Gender? (Male/Female)");
+            string gender = Console.ReadLine();
+            bool male = true; //True er default
+            switch (gender)
+            {
+                case "male" or "Male":
+                    male = true;
+                    break;
+                case "female" or "Female":
+                    male = false;
+                    break;
+            }
+            Console.WriteLine("Is the cat fertile? (True/False)");
+            bool fertile = bool.Parse(Console.ReadLine());
+            Console.WriteLine("What size it? (");
+            Sizes size = Sizes.Small; //Small er default
+
+            string roleChoice = Console.ReadLine();
+            switch (roleChoice)
+            {
+                case "Small" or "small":
+                    size = Sizes.Small;
+                    break;
+                case "Medium" or "medium":
+                    size = Sizes.Medium;
+                    break;
+                case "Big" or "big":
+                    size = Sizes.Big;
+                    break;
+            }
+            Console.WriteLine("Write the chipID");
+            string chipID = Console.ReadLine();
+            Console.WriteLine("Description");
+            string description = Console.ReadLine();
+
+            catService.Add(new Cat(catName, characteristics, status, male, fertile, size, events, chipID, description));
 
         }
 
