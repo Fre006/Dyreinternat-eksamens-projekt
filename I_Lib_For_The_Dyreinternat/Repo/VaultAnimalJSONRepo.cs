@@ -10,18 +10,22 @@ namespace Lib.Repo
 {
     internal class VaultAnimalJSONRepo
     {
-        public Dictionary<int, Animal> _oldAnimal = new Dictionary<int, Animal>();
+        public Dictionary<string, Animal> _AnimalVault = new Dictionary<string, Animal>();
         private void LoadFile()
         {
-            string path = "oldAnimal.json";
+            string path = "AnimalVault.json";
             string json = File.ReadAllText(path);
 
-            _oldAnimal = JsonSerializer.Deserialize<Dictionary<int, Animal>>(json);
+            _AnimalVault = JsonSerializer.Deserialize<Dictionary<string, Animal>>(json);
         }
         private void SaveFile()
         {
-            string path = "oldEvents.json";
-            File.WriteAllText(path, JsonSerializer.Serialize(_oldAnimal));
+            string path = "AnimalVault.json";
+            File.WriteAllText(path, JsonSerializer.Serialize(_AnimalVault));
+        }
+        public void VaultAnimal(Animal oldAnimal)
+        {
+            _AnimalVault.Add(oldAnimal.ChipID, oldAnimal);
         }
 
     }

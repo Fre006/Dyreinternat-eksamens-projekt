@@ -27,7 +27,7 @@ namespace ConsoleProgram
             BookingService bookingService = new BookingService(new BookingJSONRepo(eventRepo));
             VeterinarianService vetService = new VeterinarianService(new VeterinarianJSONRepo(eventRepo));
             bool testing = true;
-            while (testing == true)
+            while (testing)
             {
                 testClient();
             }
@@ -130,10 +130,11 @@ namespace ConsoleProgram
             string status = Console.ReadLine();
             bool male = true;
             Console.WriteLine("Er dyret hankøn(ja/nej)");
-            string yesNo = Console.ReadLine();
+
             checksYesNo(male);
             Console.WriteLine("Er dyret steriliseret?(ja/nej)");
-
+            bool fertile=true;
+            checksYesNo(fertile);
             Console.WriteLine("Beskriv dyret");
             string description = Console.ReadLine();
 
@@ -142,11 +143,15 @@ namespace ConsoleProgram
 
             //Animal anAnimal= new Animal(name, characteristics, status, male,);
 
-            void checksYesNo(bool thebool)
-            {
+            
 
-                if (yesNo == "ja")
-                {
+        }
+
+        public static void checksYesNo(bool thebool)
+        {
+            string yesNo = Console.ReadLine();
+            if (yesNo == "ja")
+            {
 
                 }
                 else if (yesNo == "nej")
@@ -205,6 +210,16 @@ namespace ConsoleProgram
 
             workerService.Add(new Worker(Roles.Admin, name, id));
 
+            }
+            else if (yesNo == "nej")
+            {
+                thebool = false;
+            }
+            else
+            {
+                Console.WriteLine("Vær venlig at skrive ja eller nej");
+                checksYesNo(thebool);
+            }
         }
         public void MakeCat(CatService catService)
         {
