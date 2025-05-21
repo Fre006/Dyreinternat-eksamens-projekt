@@ -93,6 +93,7 @@ namespace Lib.Repo
 
         public Event GetEventByID(int id)
         {
+            LoadAllEvents();
             Event Event=new Event();
             foreach(Event theevent in _events)
             {
