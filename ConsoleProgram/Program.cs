@@ -27,7 +27,7 @@ namespace ConsoleProgram
             BookingService bookingService = new BookingService(new BookingJSONRepo(eventRepo));
             VeterinarianService vetService = new VeterinarianService(new VeterinarianJSONRepo(eventRepo));
             bool testing = true;
-            while (testing)
+            while (testing == true)
             {
                 testClient();
             }
@@ -130,11 +130,10 @@ namespace ConsoleProgram
             string status = Console.ReadLine();
             bool male = true;
             Console.WriteLine("Er dyret hankøn(ja/nej)");
-
+            string yesNo = Console.ReadLine();
             checksYesNo(male);
             Console.WriteLine("Er dyret steriliseret?(ja/nej)");
-            bool fertile=true;
-            checksYesNo(fertile);
+
             Console.WriteLine("Beskriv dyret");
             string description = Console.ReadLine();
 
@@ -143,15 +142,11 @@ namespace ConsoleProgram
 
             //Animal anAnimal= new Animal(name, characteristics, status, male,);
 
-            
-
-        }
-
-        public static void checksYesNo(bool thebool)
-        {
-            string yesNo = Console.ReadLine();
-            if (yesNo == "ja")
+            void checksYesNo(bool thebool)
             {
+
+                if (yesNo == "ja")
+                {
 
                 }
                 else if (yesNo == "nej")
@@ -166,18 +161,18 @@ namespace ConsoleProgram
                 }
             }
         }
-                
+
 
 
         public static void CreateBlog(WorkerService workerService, BlogService blogService)
         {
-        Console.WriteLine("Write the title");
-        string title = Console.ReadLine();
-        Console.WriteLine("Write the body text");
-        string text = Console.ReadLine();
-        Worker author = workerService.GetByID("012845");
+            Console.WriteLine("Write the title");
+            string title = Console.ReadLine();
+            Console.WriteLine("Write the body text");
+            string text = Console.ReadLine();
+            Worker author = workerService.GetByID("012845");
 
-        blogService.Add(new Blog(title, text, author, DateTime.Now));
+            blogService.Add(new Blog(title, text, author, DateTime.Now));
 
         }
         public static void CreateWorker(WorkerService workerService)
@@ -185,23 +180,17 @@ namespace ConsoleProgram
             Console.WriteLine("Write the role of the woker (Admin/Leader/Grunt");
             string a = Console.ReadLine();
             Roles role;
-            try { 
-                switch (a)
-                {
-                    case "Admin" or "admin":
-                        role = Roles.Admin;
-                        break;
-                    case "Leader" or "leader":
-                        role = Roles.Leader;
-                        break;
-                    case "Grunt" or "grunt":
-                        role = Roles.Grunt;
-                        break;
-                }
-            }
-            catch 
+            switch (a)
             {
-                Console.WriteLine("You are stupid, that is not a Role");
+                case "Admin" or "admin":
+                    role = Roles.Admin;
+                    break;
+                case "Leader" or "leader":
+                    role = Roles.Leader;
+                    break;
+                case "Grunt" or "grunt":
+                    role = Roles.Grunt;
+                    break;
             }
             Console.WriteLine("Write the name of the new worker");
             string name = Console.ReadLine();
@@ -210,18 +199,9 @@ namespace ConsoleProgram
 
             workerService.Add(new Worker(Roles.Admin, name, id));
 
-            }
-            else if (yesNo == "nej")
-            {
-                thebool = false;
-            }
-            else
-            {
-                Console.WriteLine("Vær venlig at skrive ja eller nej");
-                checksYesNo(thebool);
-            }
         }
-        public void MakeCat(CatService catService)
+
+        public void CreateCat(CatService catService)
         {
             List<Event> events = new List<Event>();
             Console.WriteLine("Write the cats name");
@@ -267,7 +247,9 @@ namespace ConsoleProgram
 
             catService.Add(new Cat(catName, characteristics, status, male, fertile, size, events, chipID, description));
 
+
         }
+
 
 
     }
