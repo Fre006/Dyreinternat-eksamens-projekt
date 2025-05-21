@@ -112,5 +112,19 @@ namespace Lib.Repo
                 SaveFile();
             }
         }
+        public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop)
+        {
+            int index = GetIndexById(id);
+            if (_activity[index].ID == id)
+            {
+                _activity[index].Name = name;
+                _activity[index].Description = description;
+                _activity[index].CostumerCap = customerCap;
+                _activity[index].AnimalCap = animalCap;
+                _activity[index].Location = location;
+                _activity[index].Start = start;
+                _activity[index].Stop = stop;
+            }
+        }
     }
 }

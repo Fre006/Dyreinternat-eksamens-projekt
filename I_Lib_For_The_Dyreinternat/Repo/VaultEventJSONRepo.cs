@@ -8,10 +8,22 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class VaultEventJSONRepo
+    internal class VaultEventJSONRepo : IVaultEventJSONRepo
     {
+        private IVaultEventJSONRepo _vaultEventRepo;
         public Dictionary<int ,Event> _EventVault = new Dictionary<int, Event>();
-
+        public VaultEventJSONRepo(IVaultEventJSONRepo EventVault)
+        {
+            _vaultEventRepo = EventVault;
+            try
+            {
+                LoadFile();
+            }
+            catch
+            {
+                SaveFile();
+            }
+        }
         private void LoadFile()
         {
             string path = "EventVault.json";
@@ -27,6 +39,7 @@ namespace Lib.Repo
         public void VaultEvent(Event EventVault)
         {
             _EventVault.Add(EventVault.ID, EventVault);
+
         }
         public Event VaultGetEvent(int Key)
         {

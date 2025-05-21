@@ -17,5 +17,6 @@ namespace Lib.Repo
         public TheActivity GetByName(string name);
         public int GetIndexById(int id);
         public void DeleteById(int id);
+        public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop);
     }
 }

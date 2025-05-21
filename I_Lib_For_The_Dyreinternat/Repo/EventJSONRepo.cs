@@ -40,6 +40,7 @@ namespace Lib.Repo
 
         private void LoadAllEvents()
         {
+            _events = new List<Event>();
             try
             {
                 LoadActivities();
@@ -92,6 +93,7 @@ namespace Lib.Repo
 
         public Event GetEventByID(int id)
         {
+            LoadAllEvents();
             Event Event=new Event();
             foreach(Event theevent in _events)
             {

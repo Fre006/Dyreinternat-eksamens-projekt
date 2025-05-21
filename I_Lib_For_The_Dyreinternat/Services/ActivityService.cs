@@ -55,5 +55,9 @@ namespace Lib.Services
         {
             _activityRepo.DeleteById(id);
         }
+        public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop)
+        {
+            _activityRepo.Edit(id, name, description, customerCap, animalCap, location, start, stop);
+        }
     }
 }
