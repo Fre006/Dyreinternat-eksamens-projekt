@@ -17,7 +17,7 @@ namespace Lib.Model
         {
         
         }
-        public Worker(Roles role, string name, int id) :this()
+        public Worker(Roles role, string name, int id = 0) :this()
         {
             Role = role;
             Name = name;
