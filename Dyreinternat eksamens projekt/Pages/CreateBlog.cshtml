@@ -1,0 +1,28 @@
+﻿@page
+@model Dyreinternat_eksamens_projekt.Pages.CreateBlogModel
+@{
+}
+
+<body>
+	<main>
+		<form method="post">
+			<input type="text" name="Title" asp-for="Title" placeholder="Title" />
+			<input type="text" name="Text" asp-for="Text" placeholder="Text" />
+			<input type="text" name="AuthorName" asp-for="AuthorName" placeholder="AuthorName" />
+			<input type="submit" value="Create Blog" />
+		</form>
+		<div>
+			@foreach (Lib.Model.Blog blog in Model.Blogs)
+			{
+				<h1>
+					@blog.Title
+				</h1>
+
+				<p>
+					@blog.Text
+				</p>
+			}
+		</div>
+	</main>
+</body>
+

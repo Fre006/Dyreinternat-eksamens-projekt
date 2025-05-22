@@ -73,6 +73,18 @@ namespace Lib.Repo
             return null;
 
         }
+        public Worker GetByName(string name)
+        {
+            foreach (Worker worker in _workers) 
+            {
+                if (worker.Name == name)
+                {
+                    return worker;
+                }
+            }
+            return null;
+
+        }
 
         public void Edit(string name, Worker worker1)
         {
