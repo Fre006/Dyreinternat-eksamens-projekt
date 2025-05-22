@@ -11,6 +11,7 @@ namespace Lib.Repo
     {
         public List<Person> GetAll();
         public int GiveID(int ThisID);
+        public Person GetByID(int ID);
 
     }
 }

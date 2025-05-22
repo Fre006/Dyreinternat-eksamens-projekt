@@ -104,5 +104,44 @@ namespace Lib.Repo
                 _booking[index].Stop = stop;
             }
         }
+        public void RegAnimal(int EventId, string AnimalId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Animal animal = _eventRepo.GetAnimalByID(AnimalId);
+                _booking[index]._animals.Add(animal);
+            }
+            catch
+            {
+                Console.WriteLine("Animal or event id is incorrect");
+            }
+        }
+        public void RegCostumer(int EventId, int CostumerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
+                _booking[index].Costumers.Add(costumer);
+            }
+            catch
+            {
+                Console.WriteLine("costumer or event id is incorrect");
+            }
+        }
+        public void RegWorker(int EventId, int WorkerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Worker worker = _eventRepo.GetWorkerByID(WorkerId);
+                _booking[index].Workers.Add(worker);
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
+            }
+        }
     }
 }

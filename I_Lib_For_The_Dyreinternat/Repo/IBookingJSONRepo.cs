@@ -15,5 +15,8 @@ namespace Lib.Repo
         public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop);
         public int GetIndexById(int id);
         public void DeleteById(int id);
+        public void RegAnimal(int EventId, string AnimalId);
+        public void RegCostumer(int EventId, int CostumerId);
+        public void RegWorker(int EventId, int WorkerId);
     }
 }

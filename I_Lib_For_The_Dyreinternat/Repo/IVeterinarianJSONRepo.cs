@@ -15,5 +15,7 @@ namespace Lib.Repo
         public VeterinarianVisit GetByName(string name);
         public int GetIndexById(int id);
         public void DeleteById(int id);
+        public void RegAnimal(int EventId, string AnimalId);
+        public void RegWorker(int EventId, int WorkerId);
     }
 }

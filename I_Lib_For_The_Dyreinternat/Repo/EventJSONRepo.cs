@@ -23,7 +23,9 @@ namespace Lib.Repo
         private List<TheActivity> _activities=new List<TheActivity>();
         private int _iD = 0;
         private IAnimalRepo _animalRepo;
-        public EventJSONRepo(IAnimalRepo AnimalRepo)
+        private ICostumerJSONRepo _costumerRepo;
+        private IWorkerJSONRepo _workerRepo;
+        public EventJSONRepo(IAnimalRepo AnimalRepo, ICostumerJSONRepo CostumerRepo, IWorkerJSONRepo WorkerRepo)
         {
 
             try
@@ -35,6 +37,8 @@ namespace Lib.Repo
                 SaveFile();
             }
             _animalRepo = AnimalRepo;
+            _costumerRepo = CostumerRepo;
+            _workerRepo = WorkerRepo;
             LoadAllEvents();
         }
 
@@ -184,11 +188,17 @@ namespace Lib.Repo
 
             return animal;
         }
-        //public Animal GetCostumerByID(string id)
-        //{
-        //    Costumer costumer = _costumerRepo.GetByID(id);
+        public Costumer GetCostumerByID(int id)
+        {
+            Costumer costumer = _costumerRepo.GetByID(id);
 
-        //    return costumer;
-        //}
+            return costumer;
+        }
+        public Worker GetWorkerByID(int id)
+        {
+            Worker worker = _workerRepo.GetByID(id);
+
+            return worker;
+        }
     }
 }

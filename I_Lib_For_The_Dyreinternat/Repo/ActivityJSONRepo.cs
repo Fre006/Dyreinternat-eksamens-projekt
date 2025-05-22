@@ -136,20 +136,33 @@ namespace Lib.Repo
             }
             catch
             {
-                Console.WriteLine("Animal or event id not correct");
+                Console.WriteLine("Animal or event id is incorrect");
             }
         }        
-        public void RegCostumer(int EventId, string CostumerId)
+        public void RegCostumer(int EventId, int CostumerId)
         {
             try
             {
                 int index = GetIndexById(EventId);
                 Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
-                _activity[index]._costumer.Add(costumer);
+                _activity[index].Costumers.Add(costumer);
             }
             catch
             {
                 Console.WriteLine("costumer or event id is incorrect");
+            }
+        }
+        public void RegWorker(int EventId, int WorkerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Worker worker = _eventRepo.GetWorkerByID(WorkerId);
+                _activity[index].Workers.Add(worker);
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
             }
         }
     }
