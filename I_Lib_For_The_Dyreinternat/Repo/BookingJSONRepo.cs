@@ -110,7 +110,11 @@ namespace Lib.Repo
             {
                 int index = GetIndexById(EventId);
                 Animal animal = _eventRepo.GetAnimalByID(AnimalId);
-                _booking[index]._animals.Add(animal);
+                if (_booking[index].Animals.Count < _booking[index].AnimalCap)
+                {
+                    _booking[index]._animals.Add(animal);
+                }
+                else Console.WriteLine("No more animals can attend this event");
             }
             catch
             {
@@ -123,7 +127,11 @@ namespace Lib.Repo
             {
                 int index = GetIndexById(EventId);
                 Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
-                _booking[index].Costumers.Add(costumer);
+                if (_booking[index].Costumers.Count < _booking[index].CostumerCap)
+                {
+                    _booking[index]._costumers.Add(costumer);
+                }
+                else Console.WriteLine("No more Costumers can attend this event");
             }
             catch
             {
