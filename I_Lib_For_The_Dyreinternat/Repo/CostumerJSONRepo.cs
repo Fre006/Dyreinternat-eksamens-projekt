@@ -11,11 +11,20 @@ namespace Lib.Repo
 {
     public class CostumerJSONRepo : ICostumerJSONRepo
     {
+        private IPersonJSONRepo _personRepo;
         public List<Costumer> _costumer = new List<Costumer>();
 
-        public CostumerJSONRepo()
+        public CostumerJSONRepo(IPersonJSONRepo PersonRepo)
         {
-            LoadFile();
+            _personRepo = PersonRepo;
+            try
+            {
+                LoadFile();
+            }
+            catch
+            {
+                SaveFile();
+            }
         }
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
@@ -29,6 +38,7 @@ namespace Lib.Repo
 
         public virtual void Add(Costumer costumer)
         {
+            int newid = _personRepo.GiveID(costumer.Id);
             _costumer.Add(costumer);
             SaveFile();
         }

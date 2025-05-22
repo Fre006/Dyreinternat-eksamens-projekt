@@ -117,13 +117,13 @@ namespace Lib.Repo
         }
 
 
-        public int GiveID(int ThisID)
+       public int GiveID(int ThisID)
         {
             _iD++;
             ThisID = _iD;
             SaveFile();
             return ThisID;
-        }
+        } 
 
 
         private void LoadFile(string path = "default")
@@ -176,5 +176,17 @@ namespace Lib.Repo
 
             _vets = JsonSerializer.Deserialize<List<VeterinarianVisit>>(json);
         }
+        public Animal GetAnimalByID(string id)
+        {
+            Animal animal = _animalRepo.GetByID(id);
+
+            return animal;
+        }
+        //public Animal GetCostumerByID(string id)
+        //{
+        //    Costumer costumer = _costumerRepo.GetByID(id);
+
+        //    return costumer;
+        //}
     }
 }

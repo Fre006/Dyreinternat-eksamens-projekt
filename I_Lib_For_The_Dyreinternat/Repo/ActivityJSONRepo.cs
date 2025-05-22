@@ -126,5 +126,31 @@ namespace Lib.Repo
                 _activity[index].Stop = stop;
             }
         }
+        public void RegAnimal(int EventId, string AnimalId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Animal animal = _eventRepo.GetAnimalByID(AnimalId);
+                _activity[index]._animals.Add(animal);
+            }
+            catch
+            {
+                Console.WriteLine("Animal or event id not correct");
+            }
+        }        
+        public void RegCostumer(int EventId, string CostumerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
+                _activity[index]._costumer.Add(costumer);
+            }
+            catch
+            {
+                Console.WriteLine("costumer or event id is incorrect");
+            }
+        }
     }
 }

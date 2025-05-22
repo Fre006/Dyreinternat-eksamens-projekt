@@ -12,7 +12,7 @@ namespace Lib.Model
         public string _cardNumber;
         public string CardNumber { get; set; }
 
-        public Costumer(string name, string id, string mail, string phoneNumber, DateTime birthdate, string cardNumber)
+        public Costumer(string name, string mail, string phoneNumber, DateTime birthdate, string cardNumber, int id)
         {
             Name = name;
             Id = id;
