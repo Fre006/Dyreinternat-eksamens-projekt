@@ -10,7 +10,7 @@ namespace Lib.Model
     {
 
         public string Name { get; set; }
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Mail {  get; set; }
         public string PhoneNumber { get; set; }
         public DateTime Birthdate { get; set; }
@@ -18,7 +18,7 @@ namespace Lib.Model
 
         public Person() { }
 
-        public Person(string name, string id, string phoneNumber, string mail, DateTime birthdate)
+        public Person(string name, string phoneNumber, string mail, DateTime birthdate, int id = 0)
         {
             Name = name;
             Id = id;

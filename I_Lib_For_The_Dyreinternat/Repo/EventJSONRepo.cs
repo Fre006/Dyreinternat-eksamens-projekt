@@ -124,7 +124,7 @@ namespace Lib.Repo
             ThisID = _iD;
             SaveFile();
             return ThisID;
-        }
+        } 
 
         //Loads id-file into _iD
         private void LoadFile(string path = "default")
@@ -179,5 +179,17 @@ namespace Lib.Repo
 
             _vets = JsonSerializer.Deserialize<List<VeterinarianVisit>>(json);
         }
+        public Animal GetAnimalByID(string id)
+        {
+            Animal animal = _animalRepo.GetByID(id);
+
+            return animal;
+        }
+        //public Animal GetCostumerByID(string id)
+        //{
+        //    Costumer costumer = _costumerRepo.GetByID(id);
+
+        //    return costumer;
+        //}
     }
 }

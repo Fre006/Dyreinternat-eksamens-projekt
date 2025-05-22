@@ -17,26 +17,26 @@ namespace Lib.Model
         {
         
         }
-        public Worker(Roles role, string name, string id) :this()
+        public Worker(Roles role, string name, int id) :this()
         {
             Role = role;
             Name = name;
             Id = id;
         }
-        public Worker(Roles role, string name, string id, string phoneNumber) :this(role, name, id)
+        public Worker(Roles role, string name, int id, string phoneNumber) :this(role, name, id)
         {
             PhoneNumber = phoneNumber;
         }
-        public Worker(Roles role, string name, string id, string mail, DateTime birtdate) : this(role, name, id, mail)
+        public Worker(Roles role, string name, int id, string mail, DateTime birtdate) : this(role, name, id, mail)
         {
 
             Birthdate = birtdate;
         }
-        public Worker(Roles role, string name, string id, string phoneNumber, string mail) :this(role, name, id, phoneNumber) 
+        public Worker(Roles role, string name, int id, string phoneNumber, string mail) :this(role, name, id, phoneNumber) 
         {
             Mail = mail;
         }
-        public Worker(Roles role, string name, string id, string phoneNumber, string mail, DateTime birtdate) :this(role, name, id, phoneNumber, mail)
+        public Worker(Roles role, string name, int id, string phoneNumber, string mail, DateTime birtdate) :this(role, name, id, phoneNumber, mail)
         {
             
             Birthdate = birtdate;

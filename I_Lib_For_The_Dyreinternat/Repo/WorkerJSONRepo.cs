@@ -13,10 +13,12 @@ namespace Lib.Repo
 {
     public class WorkerJSONRepo : IWorkerJSONRepo
     {
+        private IPersonJSONRepo _personRepo;
         List<Worker> _workers = new List<Worker>();
 
-        public WorkerJSONRepo()
+        public WorkerJSONRepo(IPersonJSONRepo PersonRepo)
         {
+            _personRepo = PersonRepo;
             try
             {
                 LoadFile();
@@ -44,6 +46,7 @@ namespace Lib.Repo
        
         public void Add(Worker worker)
         {
+            int newid = _personRepo.GiveID(worker.Id);
             _workers.Add(worker);
             Debug.WriteLine("Successfully added worker");
             SaveFile();
