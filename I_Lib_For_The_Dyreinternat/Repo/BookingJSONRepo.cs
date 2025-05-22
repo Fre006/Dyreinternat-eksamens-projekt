@@ -151,5 +151,39 @@ namespace Lib.Repo
                 Console.WriteLine("Worker or event id is incorrect");
             }
         }
+        public void DeRegWorker(int EventId, int WorkerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                if (_booking[index].ID == WorkerId)
+                {
+                    int remove = _booking[index].ID;
+                    _booking[index].Workers.RemoveAt(remove);
+                }
+                else Console.WriteLine("Employee is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
+            }
+        }
+        public void DeRegAnimal(int EventId, int AnimalId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                if (_booking[index].ID == AnimalId)
+                {
+                    int remove = _booking[index].ID;
+                    _booking[index].Workers.RemoveAt(remove);
+                }
+                else Console.WriteLine("Animal is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Animal or event id is incorrect");
+            }
+        }
     }
 }
