@@ -14,9 +14,10 @@ namespace Lib.Repo
 {
     public class CatJSONRepo: ICatJSONRepo
     {
+        //_path is the file name
         private string _path="Cat.json";
         protected List<Cat> _cats = new List<Cat>();
-
+        //tries to load Cat.json, if it doesn't exist then it creates it
         public CatJSONRepo()
         {
             try

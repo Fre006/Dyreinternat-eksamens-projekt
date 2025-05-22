@@ -66,11 +66,13 @@ namespace Lib.Repo
 
         public List<Event> GetLogs(string chipID)
         {
+
             Animal theanimal = GetByID(chipID);
             return theanimal.Logs; ;
         }
         public void AddLog(string chipID, Event newEntry, string path = "default")
         {
+            UpdateAnimals();
             try
             {
                 _dogRepo.AddLog(chipID, newEntry, path);
@@ -92,6 +94,7 @@ namespace Lib.Repo
 
         public Animal GetByID(string chipID)
         {
+            UpdateAnimals();
             Animal theanimal = new Animal();
             int index = GetIndexByID(chipID);
 

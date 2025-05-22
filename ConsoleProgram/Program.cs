@@ -90,6 +90,7 @@ namespace ConsoleProgram
         {
             Console.WriteLine("1. Se alle dyr");
             Console.WriteLine("2. Skabe et nyt dyr");
+            Console.WriteLine("3. Se dyr ved at give ID");
             Console.Write("Indsæt dit valg: ");
 
             int choice = ChoiceChoser();
@@ -120,11 +121,34 @@ namespace ConsoleProgram
                             AddDog(dogService, animalService);
                             break;
                     }
-
                     break;
+                case 3:
+                    Console.WriteLine("Venligst skriv ID'et på det dyr du gerne vil se");
+                    GetAnimalByID(animalService);
+                    break;
+
+
             }
 
+
         }
+        public static Animal GetAnimalByID(AnimalService animalService)
+        {
+            string chipID = Console.ReadLine();
+            Animal theanimal = new Animal();
+            try
+            {
+                
+                theanimal=animalService.GetByID(chipID);
+            }
+            catch
+            {
+                Console.WriteLine("skriv et valid ID");
+                GetAnimalByID(animalService);
+            }
+            return theanimal;
+        }
+
         public static Animal MakeAnimal(AnimalService animalService)
         {
             Console.WriteLine("Hvad skal dyret hede?");

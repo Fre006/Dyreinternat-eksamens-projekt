@@ -15,7 +15,7 @@ namespace Lib.Repo
 {
     public class EventJSONRepo:IEventJSONRepo
     {
-
+        //_path is the file name
         private string _path = "ID.json";
         private List<Event> _events=new List<Event>();
         private List<Booking> _bookings=new List<Booking>();
@@ -37,7 +37,7 @@ namespace Lib.Repo
             _animalRepo = AnimalRepo;
             LoadAllEvents();
         }
-
+        //Loads all events into the _events lists, if no events makes an empty _events list
         private void LoadAllEvents()
         {
             _events = new List<Event>();
@@ -80,17 +80,16 @@ namespace Lib.Repo
 
         }
 
-
+        //Looks at all animals in the Event and sends the event and animal id and the event to AddLog to animal repos
         public void AddEventToLog(Event theevent)
         {
 
-            Debug.WriteLine("amount of events:"+_events.Count);
             foreach (Animal animal in theevent.Animals)
             {
                 _animalRepo.AddLog(animal.ChipID, theevent);
             }
         }
-
+        //Updates _events list and checks all events for their id and if they match the given id saves that event if not returns an empty event
         public Event GetEventByID(int id)
         {
             LoadAllEvents();
@@ -108,7 +107,7 @@ namespace Lib.Repo
         {
             return _events;
         }
-
+        //Gets event via id of event and adds to logs of animals
         public void AddEventToLogViaID(int id)
         {
             LoadAllEvents();
@@ -118,7 +117,7 @@ namespace Lib.Repo
 
         }
 
-
+        //takes the the id from somewhere and returns _iD++ for a unique identifier for the Event
         public int GiveID(int ThisID)
         {
             _iD++;
@@ -127,7 +126,7 @@ namespace Lib.Repo
             return ThisID;
         }
 
-
+        //Loads id-file into _iD
         private void LoadFile(string path = "default")
         {
             if (path == "default")
@@ -142,6 +141,8 @@ namespace Lib.Repo
 
             _iD = JsonSerializer.Deserialize<int>(json);
         }
+
+        //Saves _iD into ID.json
         private void SaveFile(string path = "default")
         {
             if (path == "default")
@@ -154,7 +155,7 @@ namespace Lib.Repo
             }
             File.WriteAllText(path, JsonSerializer.Serialize(_iD));
         }
-
+        //Loads all activities from Activity.json file into _activities list
         private void LoadActivities()
         {
             string path = "Activity.json";
@@ -162,7 +163,7 @@ namespace Lib.Repo
 
             _activities = JsonSerializer.Deserialize<List<TheActivity>>(json);
         }
-
+        //Loads all bookings from Booking.json file into _bookings list
         private void LoadBookings()
         {
             string path = "Booking.json";
@@ -170,7 +171,7 @@ namespace Lib.Repo
 
             _bookings = JsonSerializer.Deserialize<List<Booking>>(json);
         }
-
+        //Loads all veterinarian visits from Veterinarian.json file into _vets list
         private void LoadVets()
         {
             string path = "Veterinarian.json";
