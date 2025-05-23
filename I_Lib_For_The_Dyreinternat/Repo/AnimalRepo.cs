@@ -131,7 +131,7 @@ namespace Lib.Repo
             }
         }
         //Sends Chip id to both deletebyid for catrepo and dogrepos deletebyid
-        public void DeleteByID(string chipID)b
+        public void DeleteByID(string chipID)
         {
             try { _catRepo.DeleteByID(chipID); }
             catch { }
