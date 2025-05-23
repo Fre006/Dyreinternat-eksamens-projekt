@@ -20,6 +20,7 @@ namespace Lib.Repo
         public string GetStatusByID(string chipID);
         public void ChangeStatusByID(string chipID, string status, string path = "default");
         public void DeleteByID(string chipID, string path="default");
+        public void RemoveLogByID(int EventID, string Chipid);
 
     }
 }
