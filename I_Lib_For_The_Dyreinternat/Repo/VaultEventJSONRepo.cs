@@ -8,7 +8,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class VaultEventJSONRepo : IVaultEventJSONRepo
+    public class VaultEventJSONRepo : IVaultEventJSONRepo
     {
         public Dictionary<int ,Event> _EventVault = new Dictionary<int, Event>();
         public VaultEventJSONRepo()

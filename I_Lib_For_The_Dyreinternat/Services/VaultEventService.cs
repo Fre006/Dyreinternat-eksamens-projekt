@@ -8,7 +8,7 @@ using Lib.Repo;
 
 namespace Lib.Services
 {
-    internal class VaultEventService
+    public class VaultEventService
     {
         private IVaultEventJSONRepo _VaultEventRepo;
         public VaultEventService(IVaultEventJSONRepo VaultEventRepo)

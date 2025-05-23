@@ -8,7 +8,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal class VaultAnimalJSONRepo: IVaultAnimalJSONRepo
+    public class VaultAnimalJSONRepo: IVaultAnimalJSONRepo
     {
         public Dictionary<string, Animal> _AnimalVault = new Dictionary<string, Animal>();
         public VaultAnimalJSONRepo()
