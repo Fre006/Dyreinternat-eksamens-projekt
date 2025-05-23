@@ -8,7 +8,7 @@ using Lib.Model;
 
 namespace Lib.Services
 {
-    internal class VaultAnimalService
+    public class VaultAnimalService
     {
         private IVaultAnimalJSONRepo _VaultAnimalRepo;
         public VaultAnimalService(IVaultAnimalJSONRepo VaultAnimalRepo)
