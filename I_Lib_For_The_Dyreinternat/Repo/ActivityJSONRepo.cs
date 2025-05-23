@@ -144,8 +144,8 @@ namespace Lib.Repo
             try
             {
                 int index = GetIndexById(EventId);
-                Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
-                _activity[index]._costumer.Add(costumer);
+                //Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
+                //_activity[index]._costumer.Add(costumer);
             }
             catch
             {

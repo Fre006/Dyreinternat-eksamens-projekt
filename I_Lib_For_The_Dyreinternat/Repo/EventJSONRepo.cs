@@ -38,7 +38,7 @@ namespace Lib.Repo
             LoadAllEvents();
         }
         //Loads all events into the _events lists, if no events makes an empty _events list
-        private void LoadAllEvents()
+        internal void LoadAllEvents()
         {
             _events = new List<Event>();
             try
@@ -89,7 +89,8 @@ namespace Lib.Repo
                 _animalRepo.AddLog(animal.ChipID, theevent);
             }
         }
-        //Updates _events list and checks all events for their id and if they match the given id saves that event if not returns an empty event
+        //Updates _events list and checks all events for their id and
+        //if they match the given id returns that event if not returns an empty event
         public Event GetEventByID(int id)
         {
             LoadAllEvents();
@@ -103,6 +104,7 @@ namespace Lib.Repo
             }
             return Event;
         }
+        //gets all events
         public List<Event> GetAll()
         {
             return _events;
@@ -117,7 +119,7 @@ namespace Lib.Repo
 
         }
 
-        //takes the the id from somewhere and returns _iD++ for a unique identifier for the Event
+        //takes the the id from somewhere and returns _iD++ for a unique identifier for the Event.
         public int GiveID(int ThisID)
         {
             _iD++;
@@ -143,7 +145,7 @@ namespace Lib.Repo
         }
 
         //Saves _iD into ID.json
-        private void SaveFile(string path = "default")
+        internal void SaveFile(string path = "default")
         {
             if (path == "default")
             {
@@ -156,7 +158,7 @@ namespace Lib.Repo
             File.WriteAllText(path, JsonSerializer.Serialize(_iD));
         }
         //Loads all activities from Activity.json file into _activities list
-        private void LoadActivities()
+        internal void LoadActivities()
         {
             string path = "Activity.json";
             string json = File.ReadAllText(path);
@@ -164,7 +166,7 @@ namespace Lib.Repo
             _activities = JsonSerializer.Deserialize<List<TheActivity>>(json);
         }
         //Loads all bookings from Booking.json file into _bookings list
-        private void LoadBookings()
+        internal void LoadBookings()
         {
             string path = "Booking.json";
             string json = File.ReadAllText(path);
@@ -172,13 +174,14 @@ namespace Lib.Repo
             _bookings = JsonSerializer.Deserialize<List<Booking>>(json);
         }
         //Loads all veterinarian visits from Veterinarian.json file into _vets list
-        private void LoadVets()
+        internal void LoadVets()
         {
             string path = "Veterinarian.json";
             string json = File.ReadAllText(path);
 
             _vets = JsonSerializer.Deserialize<List<VeterinarianVisit>>(json);
         }
+        
         public Animal GetAnimalByID(string id)
         {
             Animal animal = _animalRepo.GetByID(id);
