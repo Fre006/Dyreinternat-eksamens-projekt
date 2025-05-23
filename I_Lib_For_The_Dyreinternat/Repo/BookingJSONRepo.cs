@@ -164,7 +164,7 @@ namespace Lib.Repo
                         if (theworker.Id == WorkerId)
                         {
                             _booking[index].Workers.Remove(theworker);
-
+                            SaveFile();
                         }
                     }
                 }
