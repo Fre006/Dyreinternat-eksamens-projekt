@@ -1,0 +1,98 @@
+﻿
+@page
+@model Dyreinternat_eksamens_projekt.Pages.CreateAnimalModel
+@{
+}
+<body>
+	<main>
+		<form method="post" asp-page-handler="CreateDog">
+			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
+			<input type="text" name="Description" asp-for="Description" placeholder="Description" />
+			<input type="text" name="Status" asp-for="Status" placeholder="Status" />
+			<input type="text" name="Characteristics" asp-for="Characteristics" placeholder="Characteristics" />
+			<input type="text" name="ChipID" asp-for="ChipID" placeholder="ChipID" />
+			<input type="checkbox" name="Male" asp-for="Male" placeholder="Is the Animal Male?" />
+			<input type="checkbox" name="Fertile" asp-for="Fertile" placeholder="Is the Animal Fertile?" />
+			<input type="datetime" name="Birthdate" asp-for="Birthdate" placeholder="Birthdate" />
+			<input type="submit" value="Create Blog" />
+		</form>
+		<div>
+			@foreach (Lib.Model.Animal animal in Model.animals)
+			{
+				<h1>
+					@animal.Name
+				</h1>
+
+				<p>
+					@animal.Description
+				</p>
+				<p>
+					@animal.Status
+				</p>
+				<p>
+					@animal.Characteristics
+				</p>
+				<p>
+					@animal.Size
+				</p>
+				<p>
+					@animal.Birthdate
+				</p>
+				<p>
+					@animal.ChipID
+				</p>
+				<p>
+					@if (animal.Male == true)
+					{
+						<p>
+							Dyret er hankøn
+
+						</p>
+					}
+					else
+					{
+						<p>
+							Dyret er hunkøn
+
+						</p>
+					}
+				</p>
+				<p>
+					@if (animal.Fertile == true)
+					{
+						<p>
+							Dyret er ikke steriliseret
+
+						</p>
+					}
+					else
+					{
+						<p>
+							Dyret er steriliseret
+
+						</p>
+					}
+				</p>
+				<p>
+					@foreach(Lib.Model.Event theevent in animal.Logs)
+					{
+						<p>
+						@theevent.ToString();		
+						</p>
+					}
+				</p>
+
+
+
+@* 				<div >
+					<form method="post" asp-page-handler="Show">
+						<input type="hidden" name="TempTitle" asp-for="TempTitle" value="@blog.Title" />
+						<input type="submit" value="Open Blog" /> 
+				 	</form> 
+				</div> *@
+			
+			}
+			</div
+		</div>
+	</main>
+</body>

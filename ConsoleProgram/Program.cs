@@ -46,7 +46,7 @@ namespace ConsoleProgram
                 Console.WriteLine("3. Blog");
                 Console.WriteLine("4. Worker");
                 Console.WriteLine("5. Event");
-                Console.WriteLine();
+                Console.WriteLine("6. Freestyle");
                 Console.Write("Indsæt dit valg: ");
                 int choice = ChoiceChoser();
 
@@ -70,6 +70,10 @@ namespace ConsoleProgram
 
                     case 5:
                         break;
+                    case 6:
+                        Console.ReadLine();
+                        break;
+
                 }
             }
 
@@ -89,6 +93,14 @@ namespace ConsoleProgram
                 ChoiceChoser();
             }
             return choice;
+
+        }
+        public static void Events(EventService eventService, ActivityService activityService, BookingService bookingService, VeterinarianService vetService)
+        {
+            int choice = ChoiceChoser();
+            switch (choice) { 
+                
+            }
 
         }
         public static void Animals(AnimalService animalService, CatService catService, DogService dogService)
@@ -149,6 +161,10 @@ namespace ConsoleProgram
             try
             {
                 logs=animalService.GetLogs(chipID);
+                foreach (Event e in logs)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
             catch {
                 Console.WriteLine("skriv venligst et valid ID");
