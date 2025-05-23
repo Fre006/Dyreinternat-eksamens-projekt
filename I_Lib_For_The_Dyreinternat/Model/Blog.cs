@@ -29,7 +29,8 @@ namespace Lib.Model
 
         public override string ToString()
         {
-            return $"Title: {Title}  Text: {Text}  Author: {Author.Name}";
+            return $"Title: {Title}  Text: {Text}";
+            //return $"Title: {Title}  Text: {Text}  Author: {Author.Name}";
         }
     }
 }

@@ -31,8 +31,6 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public void OnPost()
         {
 
-            
-
             Worker worker = new Worker(Roles.Grunt, Name, ID, PhoneNumber);
             Debug.WriteLine(worker);
             _workerService.Add(worker);

@@ -1,0 +1,21 @@
+﻿@page
+@model Dyreinternat_eksamens_projekt.Pages.CreateBlogModel
+@{
+}
+<body>
+	<main>
+		<div>
+		 	<h1>
+				@Model.SpecificBlog.Title
+			</h1>
+			<div>
+				<form method="post" asp-page-handler="Edit">
+					<input type="submit" value="Open Blog" />
+				</form>
+			</div>
+			<p>
+				@* @Model.SpecificBlog.Text *@
+			</p> 
+		 </div> 
+	</main>
+</body>
