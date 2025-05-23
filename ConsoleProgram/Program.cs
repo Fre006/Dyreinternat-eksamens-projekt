@@ -17,13 +17,16 @@ namespace ConsoleProgram
     {
         static void Main(string[] args)
         {
-            
-            WorkerService workerService = new WorkerService(new WorkerJSONRepo());
+            CostumerService costumerService = new CostumerService();
+            PersonJSONRepo personJSONRepo = new PersonJSONRepo();
+            WorkerJSONRepo workerJSONRepo = new WorkerJSONRepo(personJSONRepo);
+            WorkerService workerService = new WorkerService(workerJSONRepo);
             BlogService blogService = new BlogService(new BlogJSONRepo());
             CatJSONRepo catJSONRepo = new CatJSONRepo();
             DogJSONRepo dogJSONRepo = new DogJSONRepo();
+            CostumerJSONRepo costumerJSONRepo= new CostumerJSONRepo(personJSONRepo); 
             AnimalRepo animalRepo = new AnimalRepo(catJSONRepo, dogJSONRepo);
-            EventJSONRepo eventRepo = new EventJSONRepo(animalRepo);
+            EventJSONRepo eventRepo = new EventJSONRepo(animalRepo, costumerJSONRepo, workerJSONRepo);
             CatService catService = new CatService(catJSONRepo);
             DogService dogService = new DogService(dogJSONRepo);
             AnimalService animalService = new AnimalService(animalRepo);
@@ -476,7 +479,7 @@ namespace ConsoleProgram
             string title = Console.ReadLine();
             Console.WriteLine("Write the body text");
             string text = Console.ReadLine();
-            Worker author = workerService.GetByID("012845");
+            Worker author = workerService.GetByID(1);
 
             blogService.Add(new Blog(title, text, author, DateTime.Now));
 

@@ -156,10 +156,17 @@ namespace Lib.Repo
             try
             {
                 int index = GetIndexById(EventId);
-                if (_booking[index].ID == WorkerId)
+                
+                if (_booking[index].ID == EventId)
                 {
-                    int remove = _booking[index].ID;
-                    _booking[index].Workers.RemoveAt(remove);
+                    foreach (Worker theworker in _booking[index].Workers)
+                    {
+                        if (theworker.Id == WorkerId)
+                        {
+                            _booking[index].Workers.Remove(theworker);
+                            SaveFile();
+                        }
+                    }
                 }
                 else Console.WriteLine("Employee is not registeret to this event");
             }
