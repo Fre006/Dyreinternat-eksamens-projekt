@@ -6,15 +6,32 @@
 <body>
 	<main>
 		<form method="post" asp-page-handler="CreateDog">
+			<p>Create Dog</p>
 			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
 			<input type="text" name="Description" asp-for="Description" placeholder="Description" />
 			<input type="text" name="Status" asp-for="Status" placeholder="Status" />
 			<input type="text" name="Characteristics" asp-for="Characteristics" placeholder="Characteristics" />
 			<input type="text" name="ChipID" asp-for="ChipID" placeholder="ChipID" />
-			<input type="checkbox" name="Male" asp-for="Male" placeholder="Is the Animal Male?" />
-			<input type="checkbox" name="Fertile" asp-for="Fertile" placeholder="Is the Animal Fertile?" />
+			<p>Is the animal male?
+			<input type="checkbox" name="Male" asp-for="Male" value="true"/></p>
+			<p>Is the Animal Sterilised?
+			<input type="checkbox" name="Fertile" asp-for="Fertile" value="true"/></p>
 			<input type="datetime" name="Birthdate" asp-for="Birthdate" placeholder="Birthdate" />
-			<input type="submit" value="Create Blog" />
+			<input type="submit" value="Create dog" />
+		</form>
+			<p>Create Cat</p>
+			<form method="post" asp-page-handler="CreateCat">
+			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
+			<input type="text" name="Description" asp-for="Description" placeholder="Description" />
+			<input type="text" name="Status" asp-for="Status" placeholder="Status" />
+			<input type="text" name="Characteristics" asp-for="Characteristics" placeholder="Characteristics" />
+			<input type="text" name="ChipID" asp-for="ChipID" placeholder="ChipID" />
+			<p>Is the animal male?
+			<input type="checkbox" name="Male" asp-for="Male" value="true"/></p>
+			<p>Is the Animal Sterilised?
+			<input type="checkbox" name="Fertile" asp-for="Fertile" value="true"/></p>
+			<input type="datetime" name="Birthdate" asp-for="Birthdate" placeholder="Birthdate" />
+			<input type="submit" value="Create cat" />
 		</form>
 		<div>
 			@foreach (Lib.Model.Animal animal in Model.animals)
@@ -81,15 +98,14 @@
 						</p>
 					}
 				</p>
+				<form method="post" asp-page-handler="Delete">
+					<input type="hidden" name="ChipID" asp-for="ChipID" value="@animal.ChipID" />
+					<input type="submit" value="Delete Animal" />
+				</form>
 
 
 
-@* 				<div >
-					<form method="post" asp-page-handler="Show">
-						<input type="hidden" name="TempTitle" asp-for="TempTitle" value="@blog.Title" />
-						<input type="submit" value="Open Blog" /> 
-				 	</form> 
-				</div> *@
+
 			
 			}
 			</div

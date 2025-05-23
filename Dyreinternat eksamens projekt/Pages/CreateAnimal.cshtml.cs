@@ -33,22 +33,34 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public string Description { get; set; }
         [BindProperty]
         public DateTime Birthdate { get; set; }
-        public CreateAnimalModel(AnimalService animalService) 
+        public CreateAnimalModel(AnimalService animalService, DogService dogService, CatService catService) 
         {
             _animalService = animalService;
+            _dogService = dogService;
+            _catService = catService;
             animals = _animalService.GetAll();
         }
 
         public void OnGet()
         {
         }
+        public void OnPostDelete()
+        {
+            _animalService.DeleteByID(ChipID);
+
+        }
 
         public void OnPostCreateDog()
         {
 
-            Dog dog = new Dog(Name, Characteristics, Status, Male, Fertile, Sizes.Small, new List<Event>(), ChipID, Description, Birthdate);
+            Dog dog = new Dog(Name, Characteristics, Status, Male, !Fertile, Sizes.Small, new List<Event>(), ChipID, Description, Birthdate);
             _dogService.Add(dog);
 
+        }
+        public void OnPostCreateCat()
+        {
+            Cat cat = new Cat(Name, Characteristics, Status, Male, !Fertile, Sizes.Small, new List<Event>(), ChipID, Description, CatBreeds.Unknown, Birthdate);
+            _catService.Add(cat);
         }
     }
 }
