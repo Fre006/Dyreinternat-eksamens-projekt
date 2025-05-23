@@ -28,10 +28,6 @@ namespace Lib.Services
         {
             return _animalRepo.GetLogs(chipID);
         }
-        public void AddLog(Event log, string chipID, string path = "default")
-        {
-            _animalRepo.AddLog(chipID, log, path);
-        }
 
     }
 }

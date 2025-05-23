@@ -5,9 +5,9 @@
 
 <body>
 	<main>
-		<form method="post">
-			<input type="text" name="Title" asp-for="Title" placeholder="Title" />
-			<input type="text" name="Text" asp-for="Text" placeholder="Text" />
+		<form method="post" asp-page-handler="Create">
+			<input type="text" name="Title" asp-for="Title" placeholder="title" />
+			<input type="text" name="Text" asp-for="Text" placeholder="text" />
 			<input type="text" name="AuthorName" asp-for="AuthorName" placeholder="AuthorName" />
 			<input type="submit" value="Create Blog" />
 		</form>
@@ -21,7 +21,46 @@
 				<p>
 					@blog.Text
 				</p>
+				@if (blog.Author.Name ==  null)
+				{
+					<p>
+						-Author Unknown
+					</p>
+				}
+				else
+				{
+					<p>
+						-@blog.Author.Name
+					</p>
+				}
+				<div >
+					<form method="post" asp-page-handler="Show">
+						<input type="hidden" name="TempTitle" asp-for="TempTitle" value="@blog.Title" />
+						<input type="submit" value="Open Blog" /> 
+				 	</form> 
+				</div>
+			
 			}
+
+			<div id="Modal" class="modal">
+				<div class="modal-content">
+					<h1>
+						@Model.SpecificBlog.Title
+					</h1>
+					<p>
+						@Model.SpecificBlog.Text
+					</p>
+					<p>
+						@* -@Model.SpecificBlog.Author.Name *@
+					</p>
+				<div/>
+
+			</div>
+			<form method="post" asp-page-handler="Delete">
+				<input type="text" name="Title" asp-for="Title" placeholder="Title" />
+				<input type="submit" value="Delete Blog" />
+			</form>
+			
 		</div>
 	</main>
 </body>

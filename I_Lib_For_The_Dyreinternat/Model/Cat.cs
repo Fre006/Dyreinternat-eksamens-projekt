@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
+    //catbreeds in the system
     public enum CatBreeds {Unknown, Siamese, Norwegian_Forest_Cat, Korat, Maine_Coon }
     public class Cat : Animal
     {

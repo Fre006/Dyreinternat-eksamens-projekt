@@ -135,6 +135,8 @@ namespace Lib.Repo
                 if (_activity[index].Animals.Count < _activity[index].AnimalCap)
                 {
                     _activity[index]._animals.Add(animal);
+                    SaveFile();
+                    _eventRepo.AddEventToLogViaID(_activity[index].ID);
                 }
                 else Console.WriteLine("No more animals can attend this event");
             }
@@ -152,6 +154,7 @@ namespace Lib.Repo
                 if (_activity[index].Costumers.Count < _activity[index].CostumerCap)
                 {
                     _activity[index]._costumers.Add(costumer);
+                    SaveFile();
                 }
                 else Console.WriteLine("No more Costumers can attend this event");
             }

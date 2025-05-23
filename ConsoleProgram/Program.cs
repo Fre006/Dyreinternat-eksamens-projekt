@@ -17,12 +17,16 @@ namespace ConsoleProgram
     {
         static void Main(string[] args)
         {
-            WorkerService workerService = new WorkerService(new WorkerJSONRepo());
+            CostumerService costumerService = new CostumerService();
+            PersonJSONRepo personJSONRepo = new PersonJSONRepo();
+            WorkerJSONRepo workerJSONRepo = new WorkerJSONRepo(personJSONRepo);
+            WorkerService workerService = new WorkerService(workerJSONRepo);
             BlogService blogService = new BlogService(new BlogJSONRepo());
             CatJSONRepo catJSONRepo = new CatJSONRepo();
             DogJSONRepo dogJSONRepo = new DogJSONRepo();
+            CostumerJSONRepo costumerJSONRepo= new CostumerJSONRepo(personJSONRepo); 
             AnimalRepo animalRepo = new AnimalRepo(catJSONRepo, dogJSONRepo);
-            EventJSONRepo eventRepo = new EventJSONRepo(animalRepo);
+            EventJSONRepo eventRepo = new EventJSONRepo(animalRepo, costumerJSONRepo, workerJSONRepo);
             CatService catService = new CatService(catJSONRepo);
             DogService dogService = new DogService(dogJSONRepo);
             AnimalService animalService = new AnimalService(animalRepo);
@@ -90,6 +94,8 @@ namespace ConsoleProgram
         {
             Console.WriteLine("1. Se alle dyr");
             Console.WriteLine("2. Skabe et nyt dyr");
+            Console.WriteLine("3. Se dyr ved at angive ChipID");
+            Console.WriteLine("4. Se log fra dyr ved at angive ChipID");
             Console.Write("Indsæt dit valg: ");
 
             int choice = ChoiceChoser();
@@ -109,6 +115,7 @@ namespace ConsoleProgram
                     Console.WriteLine("hvilket dyr vil du lave?");
                     Console.WriteLine("1. Kat");
                     Console.WriteLine("2. Hund");
+
                     Console.Write("Indsæt dit valg:");
                     choice = ChoiceChoser();
                     switch (choice)
@@ -120,11 +127,51 @@ namespace ConsoleProgram
                             AddDog(dogService, animalService);
                             break;
                     }
-
                     break;
+                case 3:
+                    Console.WriteLine("Venligst skriv ID'et på det dyr du gerne vil se");
+                    GetAnimalByID(animalService);
+                    break;
+                case 4:
+                    Console.WriteLine("Venligst skriv ID'et på det dyr du gerne vil se loggen på");
+                    break;
+
+
+            }
+
+
+        }
+        public static void GetLogByID(AnimalService animalService)
+        {
+            string chipID = Console.ReadLine();
+            List<Event> logs = new List<Event>();
+            try
+            {
+                logs=animalService.GetLogs(chipID);
+            }
+            catch {
+                Console.WriteLine("skriv venligst et valid ID");
+                GetLogByID(animalService);
             }
 
         }
+        public static void GetAnimalByID(AnimalService animalService)
+        {
+            string chipID = Console.ReadLine();
+            Animal theanimal = new Animal();
+            try
+            {
+                
+                theanimal=animalService.GetByID(chipID);
+            }
+            catch
+            {
+                Console.WriteLine("skriv et valid ID");
+                GetAnimalByID(animalService);
+            }
+ 
+        }
+
         public static Animal MakeAnimal(AnimalService animalService)
         {
             Console.WriteLine("Hvad skal dyret hede?");
@@ -432,7 +479,7 @@ namespace ConsoleProgram
             string title = Console.ReadLine();
             Console.WriteLine("Write the body text");
             string text = Console.ReadLine();
-            Worker author = workerService.GetByID("012845");
+            Worker author = workerService.GetByID(1);
 
             blogService.Add(new Blog(title, text, author, DateTime.Now));
 
@@ -457,7 +504,7 @@ namespace ConsoleProgram
             Console.WriteLine("Write the name of the new worker");
             string name = Console.ReadLine();
             Console.WriteLine("Write the new id of the worker");
-            string id = Console.ReadLine();
+            int id = Convert.ToInt32(Console.ReadLine());
 
             workerService.Add(new Worker(Roles.Admin, name, id));
             
