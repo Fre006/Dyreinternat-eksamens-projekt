@@ -59,5 +59,17 @@ namespace Lib.Services
         {
             _activityRepo.Edit(id, name, description, customerCap, animalCap, location, start, stop);
         }
+        public void RegAnimal(int EventId, string AnimalId)
+        {
+            _activityRepo.RegAnimal(EventId, AnimalId);
+        }
+        public void RegWorker(int EventId, int WorkerId)
+        {
+            _activityRepo.RegWorker(EventId, WorkerId);
+        }
+        public void RegCostumer(int EventId, int CostumerId)
+        {
+            _activityRepo.RegCostumer(EventId, CostumerId);
+        }
     }
 }

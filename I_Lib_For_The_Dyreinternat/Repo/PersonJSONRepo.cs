@@ -108,6 +108,32 @@ namespace Lib.Repo
 
             _worker = JsonSerializer.Deserialize<List<Worker>>(json);
         }
+        private int GetIndexByID(int ID)
+        {
+            //returns 0 if chipID isn't found
+            int index = 0;
+            for (int i = 0; i < _person.Count; i++)
+            {
+                if (_person[i].Id == ID)
+                {
 
+                    index = i;
+
+                }
+            }
+            return index;
+        }
+        public Person GetByID(int ID)
+        {
+            Person thePerson = new Person();
+            int index = GetIndexByID(ID);
+
+            if (_person[index].Id == ID)
+            {
+                thePerson = _person[index];
+            }
+            return thePerson;
+
+        }
     }
 }

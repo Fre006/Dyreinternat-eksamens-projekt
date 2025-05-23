@@ -11,5 +11,6 @@ namespace Lib.Repo
     {
         public List<Costumer> GetAll();
         public void Add(Costumer costumer);
+        public Costumer GetByID(int ID);
     }
 }

@@ -132,24 +132,45 @@ namespace Lib.Repo
             {
                 int index = GetIndexById(EventId);
                 Animal animal = _eventRepo.GetAnimalByID(AnimalId);
-                _activity[index]._animals.Add(animal);
+                if (_activity[index].Animals.Count < _activity[index].AnimalCap)
+                {
+                    _activity[index]._animals.Add(animal);
+                }
+                else Console.WriteLine("No more animals can attend this event");
             }
             catch
             {
-                Console.WriteLine("Animal or event id not correct");
+                Console.WriteLine("Animal or event id is incorrect");
             }
         }        
-        public void RegCostumer(int EventId, string CostumerId)
+        public void RegCostumer(int EventId, int CostumerId)
         {
             try
             {
                 int index = GetIndexById(EventId);
-                //Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
-                //_activity[index]._costumer.Add(costumer);
+                Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
+                if (_activity[index].Costumers.Count < _activity[index].CostumerCap)
+                {
+                    _activity[index]._costumers.Add(costumer);
+                }
+                else Console.WriteLine("No more Costumers can attend this event");
             }
             catch
             {
                 Console.WriteLine("costumer or event id is incorrect");
+            }
+        }
+        public void RegWorker(int EventId, int WorkerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Worker worker = _eventRepo.GetWorkerByID(WorkerId);
+                _activity[index].Workers.Add(worker);
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
             }
         }
     }

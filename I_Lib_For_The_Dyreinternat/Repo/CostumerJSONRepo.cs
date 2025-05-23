@@ -54,5 +54,32 @@ namespace Lib.Repo
         {
             return _costumer;
         }
+        private int GetIndexByID(int ID)
+        {
+            //returns 0 if chipID isn't found
+            int index = 0;
+            for (int i = 0; i < _costumer.Count; i++)
+            {
+                if (_costumer[i].Id == ID)
+                {
+
+                    index = i;
+
+                }
+            }
+            return index;
+        }
+        public Costumer GetByID(int ID)
+        {
+            Costumer theCostumer = new Costumer();
+            int index = GetIndexByID(ID);
+
+            if (_costumer[index].Id == ID)
+            {
+                theCostumer = _costumer[index];
+            }
+            return theCostumer;
+
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace Lib.Repo
         {
             return _workers; 
         }
-        public Worker GetByID(string id)
+        public Worker GetByID(int id)
         {
             foreach (Worker worker in _workers) 
             {
