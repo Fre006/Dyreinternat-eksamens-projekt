@@ -46,6 +46,7 @@ namespace ConsoleProgram
                 Console.WriteLine("3. Blog");
                 Console.WriteLine("4. Worker");
                 Console.WriteLine("5. Event");
+                Console.WriteLine();
                 Console.Write("Indsæt dit valg: ");
                 int choice = ChoiceChoser();
 

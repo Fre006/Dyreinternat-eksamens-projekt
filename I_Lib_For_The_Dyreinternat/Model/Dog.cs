@@ -35,6 +35,10 @@ namespace Lib.Model
 
 
         }
+        public override string ToString()
+        {
+            return $"Name: {Name}, Characteristics: {Characteristics}, Status: {Status}, IsMale: {Male}, Fertile: {Fertile}, Size: {Size}, ChipID: {ChipID}, Description: {Description}, Birthdate:{Birthdate}, Event amount{Logs.Count}, Breed:{Breed}";
+        }
 
 
     }

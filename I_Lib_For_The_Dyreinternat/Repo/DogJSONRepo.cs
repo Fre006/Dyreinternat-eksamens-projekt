@@ -44,6 +44,24 @@ namespace Lib.Repo
             }
             return index;
         }
+        //Uses getindex by id, then if given chipid matches the dog in the index,
+        //and if a log matches the event id, deletes the event from the log
+        public void RemoveLogByID(int EventID, string Chipid)
+        {
+            int index = GetIndexByID(Chipid);
+            if (_dogs[index].ChipID == Chipid)
+            {
+                foreach (Event theEvent in _dogs[index].Logs)
+                {
+                    if (theEvent.ID == EventID)
+                    {
+                        _dogs[index].Logs.Remove(theEvent);
+                        SaveFile();
+                    }
+                }
+            }
+
+        }
         //Uses GetIndexByID, to get the index then checks wether the chipid's fit, if they do deletes the dog
         public void DeleteByID(string chipID, string path="default")
         {

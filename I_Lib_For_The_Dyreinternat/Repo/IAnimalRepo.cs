@@ -13,5 +13,6 @@ namespace Lib.Repo
         public Animal GetByID(string id);
         public List<Event> GetLogs(string id);
         public void AddLog(string id, Event newentry, string path = "default");
+        public void RemoveLogByID(Event theevent, string Chipid);
     }
 }
