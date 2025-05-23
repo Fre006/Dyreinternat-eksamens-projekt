@@ -1,4 +1,4 @@
-using Lib.Model;
+ using Lib.Model;
 using Lib.Services;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +17,8 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public int ID { get; set; }
         [BindProperty]
         public int WorkerID { get; set; }
+        [BindProperty]
+        public Roles roleSelect { get; set; }
 
 
         public List<Worker> Workers { get; set; }
@@ -36,7 +38,8 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public void OnPostCreate()
         {
 
-            Worker worker = new Worker(Roles.Grunt, Name, ID, PhoneNumber);
+            Debug.WriteLine(roleSelect);
+            Worker worker = new Worker(roleSelect, Name, ID, PhoneNumber);
             Debug.WriteLine(worker);
             _workerService.Add(worker);
 

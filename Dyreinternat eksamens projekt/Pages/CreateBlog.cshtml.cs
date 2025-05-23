@@ -22,8 +22,11 @@ namespace Dyreinternat_eksamens_projekt.Pages
         [BindProperty]
         public string AuthorName { get; set; }
         [BindProperty]
+        public Roles roleSelect { get; set; }
+        [BindProperty]
         public Blog SpecificBlog { get; set; } = new Blog();
         public List<Blog> Blogs { get; set; }
+        public List<Worker> Workers { get; set; }
 
         BlogService _blogService;
         WorkerService _workerService;
@@ -32,7 +35,10 @@ namespace Dyreinternat_eksamens_projekt.Pages
         {
             _blogService = bs;
             _workerService = ws;
+            
             Blogs = _blogService.GetAll();
+            Workers = _workerService.GetAll();
+            Blogs.Reverse();
         }
 
 
@@ -42,14 +48,20 @@ namespace Dyreinternat_eksamens_projekt.Pages
         }
         public void OnPostCreate()
         {
-            if (AuthorName != null)
+            Debug.WriteLine(roleSelect);
+            foreach (Worker w in Workers) 
             {
-                Author = _workerService.GetByName(AuthorName);
+                if (AuthorName == w.Name)
+                {
+                    Author = w;
+                    //Author = _workerService.GetByName(AuthorName);
+                }
+                else
+                {
+                    Author = new Worker(Roles.Admin, "John Doe");
+                }
             }
-            else
-            {
-                Author = new Worker();
-            }
+            
 
             Blog blog = new Blog(Title, Text, Author, DateTime.Now);
             Debug.WriteLine(blog);
