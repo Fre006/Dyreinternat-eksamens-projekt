@@ -123,6 +123,11 @@ namespace Lib.Repo
 
         }
 
+        public void DeletedEvent(Event theevent)
+        {
+            _animalRepo.DeletedEvent(theevent);
+        }
+
         //takes the the id from somewhere and returns _iD++ for a unique identifier for the Event.
         public int GiveID(int ThisID)
         {

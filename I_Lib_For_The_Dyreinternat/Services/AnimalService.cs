@@ -28,6 +28,9 @@ namespace Lib.Services
         {
             return _animalRepo.GetLogs(chipID);
         }
+        public void DeleteByID(string ChipID) { 
+            _animalRepo.DeleteByID(ChipID);
+        }
 
     }
 }

@@ -47,6 +47,24 @@ namespace Lib.Repo
             }   
             return index;
         }
+        //Uses getindex by id, then if given chipid matches the cat in the index,
+        //and if a log matches the event id, deletes the event from the log
+        public void RemoveLogByID(int EventID, string Chipid)
+        {
+            int index=GetIndexByID(Chipid);
+            if (_cats[index].ChipID==Chipid)
+            {
+                foreach (Event theEvent in _cats[index].Logs)
+                {
+                    if (theEvent.ID == EventID)
+                    {
+                        _cats[index].Logs.Remove(theEvent);
+                        SaveFile();
+                    }
+                }
+            }
+
+        }
 
         //gets the cats index in _cats using the chipID, then checks if the cat is right,
         //in case it couldn't find the cat, if it is right, deletes the cat, then saves the cats file, if it isn't does nothing

@@ -14,5 +14,7 @@ namespace Lib.Repo
         public List<Event> GetLogs(string id);
         public void AddLog(string id, Event newentry, string path = "default");
         public void RemoveLogByID(Event theevent, string Chipid);
+        public void DeletedEvent(Event theEvent);
+        public void DeleteByID(string chipID);
     }
 }

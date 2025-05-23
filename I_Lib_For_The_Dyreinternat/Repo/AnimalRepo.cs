@@ -121,6 +121,19 @@ namespace Lib.Repo
                 catch { }
             }
         }
+        public void DeleteByID(string chipID)
+        {
+            try
+            {
+                _catRepo.DeleteByID(chipID);
+            }
+            catch { }
+            try
+            {
+                _catRepo.DeleteByID(chipID);
+            }
+            catch { }
+        }
 
 
 

@@ -17,6 +17,8 @@ namespace Lib.Repo
         public Animal GetAnimalByID(string id);
         public Costumer GetCostumerByID(int id);
         public Worker GetWorkerByID(int id);
+        public void DeletedEvent(Event theevent);
+
 
     }
 }
