@@ -11,9 +11,9 @@ namespace Lib.Repo
     {
         public List<TheActivity> GetAll();
         public void Add(TheActivity activity);
-        public void AddNoCostumer(TheActivity activity);
-        public void AddNoAnimal(TheActivity activity);
-        public void AddOnlyWorker(TheActivity activity);
+        //public void AddNoCostumer(TheActivity activity);
+        //public void AddNoAnimal(TheActivity activity);
+        //public void AddOnlyWorker(TheActivity activity);
         public TheActivity GetByName(string name);
         public int GetIndexById(int id);
         public void DeleteById(int id);

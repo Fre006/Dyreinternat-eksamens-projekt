@@ -10,11 +10,9 @@ namespace Lib.Repo
 {
     internal class VaultAnimalJSONRepo: IVaultAnimalJSONRepo
     {
-        private IVaultAnimalJSONRepo _vaultAnimalRepo;
         public Dictionary<string, Animal> _AnimalVault = new Dictionary<string, Animal>();
-        public VaultAnimalJSONRepo(IVaultAnimalJSONRepo AnimalVault)
+        public VaultAnimalJSONRepo()
         {
-            _vaultAnimalRepo = AnimalVault;
             try
             {
                 LoadFile();

@@ -12,10 +12,12 @@ namespace Lib.Repo
     public class BookingJSONRepo : IBookingJSONRepo
     {
         private IEventJSONRepo _eventRepo;
+        private IVaultEventJSONRepo _vaultEventRepo;
         public List<Booking> _booking = new List<Booking>();
-        public BookingJSONRepo(IEventJSONRepo bookingRepo)
+        public BookingJSONRepo(IEventJSONRepo bookingRepo, IVaultEventJSONRepo VaultEventRepo)
         {
             _eventRepo = bookingRepo;
+            _vaultEventRepo = VaultEventRepo;
             try
             {
                 LoadFile();
@@ -86,6 +88,7 @@ namespace Lib.Repo
             int index = GetIndexById(id);
             if (_booking[index].ID == id)
             {
+                _vaultEventRepo.VaultEvent(_booking[index]);
                 _booking.RemoveAt(index);
                 SaveFile();
             }
