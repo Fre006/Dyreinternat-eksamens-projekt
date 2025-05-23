@@ -7,7 +7,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface IVaultAnimalJSONRepo
+    public interface IVaultAnimalJSONRepo
     {
         public void VaultAnimal(Animal oldAnimal);
         public Animal VaultGetAnimal(string Key);

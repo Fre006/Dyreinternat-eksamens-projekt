@@ -11,10 +11,12 @@ namespace Lib.Repo
 {
     public class VeterinarianJSONRepo : IVeterinarianJSONRepo
     {
+        private IVaultEventJSONRepo _vaultEventRepo;
         private IEventJSONRepo _eventRepo;
-        public VeterinarianJSONRepo(IEventJSONRepo EventRepo)
+        public VeterinarianJSONRepo(IEventJSONRepo EventRepo, IVaultEventJSONRepo VaultEventRepo)
         {
             _eventRepo = EventRepo;
+            _vaultEventRepo = VaultEventRepo;
             try
             {
                 LoadFile();
@@ -87,6 +89,7 @@ namespace Lib.Repo
             int index = GetIndexById(id);
             if (_veterinarian[index].ID == id)
             {
+                _vaultEventRepo.VaultEvent(_veterinarian[index]);
                 _veterinarian.RemoveAt(index);
                 SaveFile();
             }

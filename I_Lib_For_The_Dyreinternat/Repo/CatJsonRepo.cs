@@ -16,10 +16,12 @@ namespace Lib.Repo
     {
         //_path is the file name
         private string _path="Cat.json";
+        private IVaultAnimalJSONRepo _vaultAnimalRepo;
         protected List<Cat> _cats = new List<Cat>();
         //tries to load Cat.json, if it doesn't exist then it creates it
-        public CatJSONRepo()
+        public CatJSONRepo(IVaultAnimalJSONRepo VaultEventRepo)
         {
+            _vaultAnimalRepo = VaultEventRepo;
             try
             {
                 LoadFile();
@@ -72,9 +74,11 @@ namespace Lib.Repo
         {
             int index=GetIndexByID(chipID);
             //catches if chipID doesn't match, and then will not delete
-            if (_cats[index].ChipID == chipID) { 
-            _cats.RemoveAt(index);
-            SaveFile(path);
+            if (_cats[index].ChipID == chipID)
+            {
+                _vaultAnimalRepo.VaultAnimal(_cats[index]);
+                _cats.RemoveAt(index);
+                SaveFile(path);
             }
         }
         //Finds, the cat using GetIndexByID, then returns that cat, in case it can't find the cat, returns a null cat

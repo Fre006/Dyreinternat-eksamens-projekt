@@ -64,14 +64,16 @@ namespace Lib.Repo
         }
         public Worker GetByID(int id)
         {
+            Worker theworker=new Worker();
             foreach (Worker worker in _workers) 
             {
                 if (worker.Id == id)
                 {
-                    return worker;
+                    theworker=worker;
+                    
                 }
             }
-            return null;
+            return theworker;
 
         }
         public Worker GetByName(string name)

@@ -10,11 +10,9 @@ namespace Lib.Repo
 {
     internal class VaultEventJSONRepo : IVaultEventJSONRepo
     {
-        private IVaultEventJSONRepo _vaultEventRepo;
         public Dictionary<int ,Event> _EventVault = new Dictionary<int, Event>();
-        public VaultEventJSONRepo(IVaultEventJSONRepo EventVault)
+        public VaultEventJSONRepo()
         {
-            _vaultEventRepo = EventVault;
             try
             {
                 LoadFile();

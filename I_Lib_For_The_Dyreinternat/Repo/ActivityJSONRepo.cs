@@ -12,10 +12,12 @@ namespace Lib.Repo
     public class ActivityJSONRepo : IActivityJSONRepo
     {
         private IEventJSONRepo _eventRepo;
+        private IVaultEventJSONRepo _vaultEventRepo;
         private List<TheActivity> _activity = new List<TheActivity>();
-        public ActivityJSONRepo(IEventJSONRepo EventRepo)
+        public ActivityJSONRepo(IEventJSONRepo EventRepo, IVaultEventJSONRepo VaultEventRepo)
         {
             _eventRepo = EventRepo;
+            _vaultEventRepo = VaultEventRepo;
             try
             {
                 LoadFile();
@@ -44,27 +46,27 @@ namespace Lib.Repo
             _eventRepo.AddEventToLogViaID(activity.ID);
 
         }
-        public virtual void AddNoAnimal(TheActivity activity)
-        {
-            activity._animals = new List<Animal> { };
-            _activity.Add(activity);
-            SaveFile();
-        }
+        //public virtual void AddNoAnimal(TheActivity activity)
+        //{
+        //    activity._animals = new List<Animal> { };
+        //    _activity.Add(activity);
+        //    SaveFile();
+        //}
 
-        public virtual void AddNoCostumer(TheActivity activity)
-        {
-            activity._costumers = new List<Costumer> { };
-            _activity.Add(activity);
-            SaveFile();
-        }
+        //public virtual void AddNoCostumer(TheActivity activity)
+        //{
+        //    activity._costumers = new List<Costumer> { };
+        //    _activity.Add(activity);
+        //    SaveFile();
+        //}
 
-        public virtual void AddOnlyWorker(TheActivity activity)
-        {
-            activity._animals = new List<Animal> { };
-            activity._costumers = new List<Costumer> { };
-            _activity.Add(activity);
-            SaveFile();
-        }
+        //public virtual void AddOnlyWorker(TheActivity activity)
+        //{
+        //    activity._animals = new List<Animal> { };
+        //    activity._costumers = new List<Costumer> { };
+        //    _activity.Add(activity);
+        //    SaveFile();
+        //}
 
         //denne metode skal kaldes når vi vil putte data i vores JSON
         private void SaveFile()
@@ -108,6 +110,7 @@ namespace Lib.Repo
             int index = GetIndexById(id);
             if (_activity[index].ID == id)
             {
+                _vaultEventRepo.VaultEvent(_activity[index]);
                 _activity.RemoveAt(index);
                 SaveFile();
             }
