@@ -86,7 +86,7 @@ namespace Lib.Repo
             return thedog;
 
         }
-
+        //makes a logs list, sends chipID to getbyID, returns the logs
         public List<Event> GetLogs(string chipID)
         {
             List<Event> log = new List<Event>();

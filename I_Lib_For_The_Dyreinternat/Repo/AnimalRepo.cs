@@ -66,7 +66,8 @@ namespace Lib.Repo
             Animal theanimal = GetByID(chipID);
             return theanimal.Logs; ;
         }
-        //tries to add the event to both dogs and cats, which then checks wether that dog or cat exists in the dog/cat repo and if it exists then it adds the event to the log
+        //tries to add the event to both dogs and cats, which then checks wether that dog
+        //or cat exists in the dog/cat repo and if it exists then it adds the event to the log
         public void AddLog(string chipID, Event newEntry, string path = "default")
         {
             try
@@ -87,7 +88,9 @@ namespace Lib.Repo
             }
 
         }
-        //first uses UpdateAnimals just in case, then uses get index by ID, then checks if the index matches the id, in case it returned the right animal and if it did, returns that animal else returns a null animal
+        //first uses UpdateAnimals just in case, then uses get index by ID,
+        //then checks if the index matches the id, in case it returned the right animal
+        //and if it did, returns that animal else returns a null animal
         public Animal GetByID(string chipID)
         {
             UpdateAnimals();
@@ -101,6 +104,10 @@ namespace Lib.Repo
             return theanimal;
 
         }
+
+        //Takes an Event, and chipID of animal,
+        //foreach Animal in the event, sends the event ID and chipID to
+        //RemoveLogByID in dog and catrepo
         public void RemoveLogByID(Event theEvent, string chipID)
         {
             foreach (Animal theAnimal in theEvent.Animals)
@@ -111,6 +118,8 @@ namespace Lib.Repo
                 catch { }
             }
         }
+        //Takes and for each animal in the event, sends theEvent id and
+        //each animals to cat and dog repos remove log by id
         public void DeletedEvent(Event theEvent)
         {
             foreach (Animal theAnimal in theEvent.Animals)
@@ -121,10 +130,15 @@ namespace Lib.Repo
                 catch { }
             }
         }
+        //Sends Chip id to both deletebyid for catrepo and dogrepos deletebyid
         public void DeleteByID(string chipID)
         {
-
+            try { _catRepo.DeleteByID(chipID); }
+            catch { }
+            try { _dogRepo.DeleteByID(chipID); }
+            catch { }
         }
+        //Sends chipID to both cat and dog repos sterilize function
         public void Sterilise(string chipID, string path = "default")
         {
             try

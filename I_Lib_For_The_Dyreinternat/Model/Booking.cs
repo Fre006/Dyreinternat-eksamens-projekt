@@ -10,8 +10,19 @@ namespace Lib.Model
 {
     public class Booking : Event
     {
-        public Booking(string name, string description, int costumerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop)
+        public Booking(string name, string description, int costumerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop, int id=0)
         {
+            Name = name;
+            Description = description;
+            CostumerCap = costumerCap;
+            AnimalCap = animalCap;
+            Location = location;
+            Start = start;
+            Stop = stop;
+            Workers = workers;
+            ID = id;
+            Animals = animals;
+            Costumers = costumers;
         }
         public override string ToString()
         {
