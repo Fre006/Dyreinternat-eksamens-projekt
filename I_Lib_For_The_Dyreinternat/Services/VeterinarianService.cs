@@ -38,5 +38,13 @@ namespace Lib.Services
         {
             _veterinarianRepo.RegAnimal(EventId, AnimalId);
         }
+        public void DeRegAnimal(int EventId, string AnimalId)
+        {
+            _veterinarianRepo.DeRegAnimal(EventId, AnimalId);
+        }
+        public void DeRegWorker(int EventId, int WorkerId)
+        {
+            _veterinarianRepo.DeRegWorker(EventId, WorkerId);
+        }
     }
 }
