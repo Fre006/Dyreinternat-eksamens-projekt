@@ -36,7 +36,7 @@ namespace Lib.Services
             //Debug.WriteLine("Reached Servic e");
             return _workerRepo.GetAll();
         }
-        public Worker GetByID(string id)
+        public Worker GetByID(int id)
         {
             return _workerRepo.GetByID(id);
             

@@ -30,7 +30,9 @@ namespace Lib.Repo
             }
 
         }
-        public int GetIndexByID(string chipID)
+        //simply an internal method to find the cats index in the _cats list,
+        //in case it can't find the id in the list returns the 0'th index
+        internal int GetIndexByID(string chipID)
         {
             //returns 0 if chipID isn't found
             int index= 0;
@@ -45,6 +47,9 @@ namespace Lib.Repo
             }   
             return index;
         }
+
+        //gets the cats index in _cats using the chipID, then checks if the cat is right,
+        //in case it couldn't find the cat, if it is right, deletes the cat, then saves the cats file, if it isn't does nothing
         public void DeleteByID(string chipID, string path="default")
         {
             int index=GetIndexByID(chipID);
@@ -54,6 +59,7 @@ namespace Lib.Repo
             SaveFile(path);
             }
         }
+        //Finds, the cat using GetIndexByID, then returns that cat, in case it can't find the cat, returns a null cat
         public Cat GetByID(string chipID)
         {
             Cat thecat = new Cat();
@@ -66,13 +72,15 @@ namespace Lib.Repo
             return thecat;
 
         }
-
-
+        //Finds the cat using GetByID, then returns it's log
         public List<Event> GetLogs(string chipID)
         {
             Cat thecat = GetByID(chipID);
             return thecat.Logs; ;
         }
+        //uses GetLogs, to get the log, then adds the new entry event,
+        //checks, gets the indexbyid, checks wether the chipid fits the index,
+        //if it oes saves the new log to the cat then saves the file
         public void AddLog(string chipID, Event newEntry, string path = "default")
         {
             List<Event> log = new List<Event>();
@@ -89,13 +97,14 @@ namespace Lib.Repo
 
         }
 
-
+        //uses getbyID, then returns that cats status
         public string GetStatusByID(string chipID)
         {
             Cat thecat = GetByID(chipID);
             return thecat.Status;
         }
-        
+        //uses GetIndexByID, then checks wether the chipid fits,
+        //if it does saves that cats status to the cat then saves the cats file 
         public void ChangeStatusByID(string chipID, string status, string path = "default")
         {
             int index = 0;
@@ -107,17 +116,18 @@ namespace Lib.Repo
             }
         }
 
-
+        //simply returns all cats
         public List<Cat> GetAll()
         {
             return _cats;
         }
-
+        //simply adds a cat
         public void Add(Cat cat,string path="default")
         {
             _cats.Add(cat);
             SaveFile(path);
         }
+        //changes the fertile statys of the cat to false, in case you sterilise the cat
         public void Sterilise(string chipID, string path="default")
         {
             Cat thecat = new Cat();

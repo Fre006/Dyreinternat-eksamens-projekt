@@ -17,6 +17,7 @@ namespace ConsoleProgram
     {
         static void Main(string[] args)
         {
+            
             WorkerService workerService = new WorkerService(new WorkerJSONRepo());
             BlogService blogService = new BlogService(new BlogJSONRepo());
             CatJSONRepo catJSONRepo = new CatJSONRepo();

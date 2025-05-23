@@ -14,7 +14,7 @@ namespace Dyreinternat_eksamens_projekt.Pages
         [BindProperty]
         public string PhoneNumber { get; set; }
         [BindProperty]
-        public string ID { get; set; }
+        public int ID { get; set; }
 
 
         public List<Worker> Workers { get; set; }

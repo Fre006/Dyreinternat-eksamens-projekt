@@ -7,8 +7,8 @@
 		<form method="post">
 			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
 			<input type="text" name="PhoneNumber" asp-for="PhoneNumber" placeholder="PhoneNumber" />
-			<input type="text" name="ID" asp-for="ID" placeholder="ID" />
-			<input type="submit" value="Create Blog" />
+			<input type="number" name="ID" asp-for="ID" placeholder="ID" />
+			<input type="submit" value="Create Worker" />
 		</form>
 		<div>
 			@foreach (Lib.Model.Worker worker in Model.Workers)
