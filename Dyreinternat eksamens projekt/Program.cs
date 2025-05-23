@@ -18,6 +18,11 @@ namespace Dyreinternat_eksamens_projekt
             builder.Services.AddSingleton<IPersonJSONRepo, PersonJSONRepo>();
             //builder.Services.AddSingleton<ActivityService>();
 
+            builder.Services.AddSingleton<IVaultAnimalJSONRepo, VaultAnimalJSONRepo>();
+
+            builder.Services.AddSingleton<IVaultEventJSONRepo, VaultEventJSONRepo>();
+
+
             //Singleton for Event repository
             builder.Services.AddSingleton<IEventJSONRepo, EventJSONRepo>();
             builder.Services.AddSingleton<EventService>();

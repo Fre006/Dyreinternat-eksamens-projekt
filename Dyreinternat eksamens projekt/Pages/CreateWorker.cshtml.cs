@@ -15,6 +15,8 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public string PhoneNumber { get; set; }
         [BindProperty]
         public int ID { get; set; }
+        [BindProperty]
+        public int WorkerID { get; set; }
 
 
         public List<Worker> Workers { get; set; }
@@ -26,14 +28,25 @@ namespace Dyreinternat_eksamens_projekt.Pages
             _workerService = ws;
             Workers = _workerService.GetAll();
         }
-
-
         public void OnPost()
+        {
+
+        }
+
+        public void OnPostCreate()
         {
 
             Worker worker = new Worker(Roles.Grunt, Name, ID, PhoneNumber);
             Debug.WriteLine(worker);
             _workerService.Add(worker);
+
+        }
+
+        public void OnPostDelete()
+        {
+            Worker w = _workerService.GetByID(WorkerID);
+            //Debug.WriteLine(w);
+            _workerService.Delete(w);
 
         }
         public void OnGet()

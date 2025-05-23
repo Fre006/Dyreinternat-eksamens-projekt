@@ -20,8 +20,8 @@ namespace Lib.Repo
             }
             catch 
             {
-                Debug.WriteLine("Failed to Load Blog File");
-                //SaveFile();
+                //Debug.WriteLine("Failed to Load Blog File");
+                SaveFile();
             }
 
         }
@@ -36,6 +36,7 @@ namespace Lib.Repo
         }
         private void SaveFile()
         {
+            //Debug.WriteLine("Saved file");
             File.WriteAllText(_path, JsonSerializer.Serialize(_blogs));
         }
 
@@ -84,6 +85,8 @@ namespace Lib.Repo
                     b.Title = changedBlog.Title;
                     b.Text = changedBlog.Text;
                     b.Multimedia = changedBlog.Multimedia;
+                    b.Author = changedBlog.Author;
+                    Debug.WriteLine("Edit: "+b);
                     SaveFile();
                 }
             }
