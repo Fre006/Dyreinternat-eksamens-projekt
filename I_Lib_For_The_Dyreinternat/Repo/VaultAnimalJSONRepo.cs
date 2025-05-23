@@ -39,6 +39,7 @@ namespace Lib.Repo
         public void VaultAnimal(Animal oldAnimal)
         {
             _AnimalVault.Add(oldAnimal.ChipID, oldAnimal);
+            SaveFile();
         }
         public Animal VaultGetAnimal(string Key)
         {

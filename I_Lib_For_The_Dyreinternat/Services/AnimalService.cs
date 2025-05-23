@@ -31,6 +31,10 @@ namespace Lib.Services
         public void DeleteByID(string ChipID) { 
             _animalRepo.DeleteByID(ChipID);
         }
+        public void Sterilise(string id)
+        {
+            _animalRepo.Sterilise(id);
+        }
 
     }
 }

@@ -39,7 +39,7 @@ namespace Lib.Repo
         public void VaultEvent(Event EventVault)
         {
             _EventVault.Add(EventVault.ID, EventVault);
-
+            SaveFile();
         }
         public Event VaultGetEvent(int Key)
         {

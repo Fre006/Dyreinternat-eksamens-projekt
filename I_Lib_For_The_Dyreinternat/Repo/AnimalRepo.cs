@@ -123,16 +123,21 @@ namespace Lib.Repo
         }
         public void DeleteByID(string chipID)
         {
+
+        }
+        public void Sterilise(string chipID, string path = "default")
+        {
             try
             {
-                _catRepo.DeleteByID(chipID);
+                _catRepo.Sterilise(chipID);
             }
             catch { }
             try
             {
-                _catRepo.DeleteByID(chipID);
+                _catRepo.Sterilise(chipID);
             }
             catch { }
+
         }
 
 
