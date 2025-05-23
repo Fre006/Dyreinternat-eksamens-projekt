@@ -22,14 +22,16 @@ namespace Dyreinternat_eksamens_projekt.Pages
         [BindProperty]
         public string Text { get; set; }
         [BindProperty]
-        public Worker Author { get; set; }
+        public Worker Author { get; set; } = new Worker();
         [BindProperty]
         public string AuthorName { get; set; }
 
-        BlogService _blogService;
-        public BlogModel(BlogService bs)
+        private BlogService _blogService;
+        private WorkerService _workerService;
+        public BlogModel(BlogService bs, WorkerService ws)
         {
             _blogService = bs;
+            _workerService = ws;
         }
 
         public IActionResult OnPostDelete()
@@ -41,6 +43,31 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public void OnPostEdit()
         {
             Edit = true;
+            Author = _workerService.GetByName(AuthorName);
+            //SpecificBlog.Author = Author;
+            Debug.WriteLine(Author);
+
+        }
+
+        public void OnPostSave(string oldTitle)
+        {
+            Debug.WriteLine("Old Title: " + oldTitle);
+
+            Blog oldBlog = _blogService.GetByTitle(oldTitle);
+            Blog changedBlog = new();
+            changedBlog.Title = Title;
+            changedBlog.Text = Text;
+            changedBlog.Author = _workerService.GetByName(AuthorName);
+
+            Debug.WriteLine(changedBlog);
+            //_workerService.Add(new(Roles.Grunt, "FISH"));
+            //changedBlog.Author = _workerService.GetByName("FISH");
+
+            _blogService.Edit(oldBlog, changedBlog);
+            SpecificBlog = changedBlog;
+
+
+            Edit = false;
         }
 
 
