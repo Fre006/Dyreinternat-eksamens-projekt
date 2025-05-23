@@ -39,6 +39,7 @@ namespace Lib.Repo
         public virtual void Add(Costumer costumer)
         {
             int newid = _personRepo.GiveID(costumer.Id);
+            costumer.Id = newid;
             _costumer.Add(costumer);
             SaveFile();
         }

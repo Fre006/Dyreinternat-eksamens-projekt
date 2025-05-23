@@ -47,6 +47,7 @@ namespace Lib.Repo
         public void Add(Worker worker)
         {
             int newid = _personRepo.GiveID(worker.Id);
+            worker.Id = newid;
             _workers.Add(worker);
             Debug.WriteLine("Successfully added worker");
             SaveFile();
