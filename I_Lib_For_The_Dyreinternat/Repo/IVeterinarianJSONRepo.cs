@@ -17,5 +17,7 @@ namespace Lib.Repo
         public void DeleteById(int id);
         public void RegAnimal(int EventId, string AnimalId);
         public void RegWorker(int EventId, int WorkerId);
+        public void DeRegWorker(int EventId, int WorkerId);
+        public void DeRegAnimal(int EventId, string AnimalId);
     }
 }

@@ -175,21 +175,51 @@ namespace Lib.Repo
                 Console.WriteLine("Worker or event id is incorrect");
             }
         }
-        public void DeRegAnimal(int EventId, int AnimalId)
+        public void DeRegAnimal(int EventId, string AnimalId)
         {
             try
             {
                 int index = GetIndexById(EventId);
-                if (_booking[index].ID == AnimalId)
+                if (_booking[index].ID == EventId)
                 {
-                    int remove = _booking[index].ID;
-                    _booking[index].Workers.RemoveAt(remove);
+                    foreach (Animal theanimal in _booking[index].Animals)
+                    {
+                        if (theanimal.ChipID == AnimalId)
+                        {
+                            _booking[index].Animals.Remove(theanimal);
+                            SaveFile();
+                        }
+                    }
                 }
                 else Console.WriteLine("Animal is not registeret to this event");
             }
             catch
             {
                 Console.WriteLine("Animal or event id is incorrect");
+            }
+        }
+        public void DeRegCostumer(int EventId, int CostumerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+
+                if (_booking[index].ID == EventId)
+                {
+                    foreach (Costumer thecostumer in _booking[index].Costumers)
+                    {
+                        if (thecostumer.Id == CostumerId)
+                        {
+                            _booking[index].Costumers.Remove(thecostumer);
+                            SaveFile();
+                        }
+                    }
+                }
+                else Console.WriteLine("Employee is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
             }
         }
     }

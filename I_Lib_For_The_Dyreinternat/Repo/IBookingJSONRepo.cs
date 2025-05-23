@@ -18,5 +18,8 @@ namespace Lib.Repo
         public void RegAnimal(int EventId, string AnimalId);
         public void RegCostumer(int EventId, int CostumerId);
         public void RegWorker(int EventId, int WorkerId);
+        public void DeRegWorker(int EventId, int WorkerId);
+        public void DeRegAnimal(int EventId, string AnimalId);
+        public void DeRegCostumer(int EventId, int CostumerId);
     }
 }

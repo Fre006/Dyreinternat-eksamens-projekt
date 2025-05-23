@@ -63,24 +63,9 @@ namespace Dyreinternat_eksamens_projekt.Pages
             Debug.WriteLine(TempTitle);
         }
 
-        public void OnPostShow()
+        public IActionResult OnPostShow()
         {
-            //Debug.WriteLine("Yes");
-            //SpecificBlog = new Blog();
-
-            //Debug.WriteLine("Title:" + TempTitle);
-            Blog g = _blogService.GetByTitle(TempTitle);
-
-            SpecificBlog.Title = g.Title;
-            SpecificBlog.Text = g.Text;
-            SpecificBlog.Author = g.Author;
-            Debug.WriteLine(g.Title);
-            Debug.WriteLine(SpecificBlog.Title);
-
-
-            //return RedirectToPage("/Blog");
-
-            //return null;
+            return RedirectToPage("/Blog", new { Title = TempTitle});
         }
         public void OnGet()
         {

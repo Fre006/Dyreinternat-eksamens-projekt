@@ -13,6 +13,10 @@ namespace Dyreinternat_eksamens_projekt
             //Singleton for Activity.Repo
             builder.Services.AddSingleton<IActivityJSONRepo, ActivityJSONRepo>();
             builder.Services.AddSingleton<ActivityService>();
+            
+            //Singleton for Person.Repo
+            builder.Services.AddSingleton<IPersonJSONRepo, PersonJSONRepo>();
+            //builder.Services.AddSingleton<ActivityService>();
 
             //Singleton for Event repository
             builder.Services.AddSingleton<IEventJSONRepo, EventJSONRepo>();
