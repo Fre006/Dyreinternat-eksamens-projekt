@@ -35,6 +35,22 @@ namespace Lib.Services
         {
             _animalRepo.Sterilise(id);
         }
+        public List<Animal> AllMales()
+        {
+            return _animalRepo.AllMales();
+        }
+        public List<Animal> AllFemales()
+        {
+            return _animalRepo.AllFemales();
+        }
+        public List<Animal> AllFertile()
+        {
+            return _animalRepo.AllFertile();
+        }
+        public List<Animal> AllInfertile()
+        {
+            return _animalRepo.AllInfertile();
+        }
 
     }
 }

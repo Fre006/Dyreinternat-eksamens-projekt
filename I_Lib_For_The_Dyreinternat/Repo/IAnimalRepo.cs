@@ -17,5 +17,9 @@ namespace Lib.Repo
         public void DeletedEvent(Event theEvent);
         public void DeleteByID(string chipID);
         public void Sterilise(string chipID, string path = "default");
+        public List<Animal> AllFemales();
+        public List<Animal> AllMales();
+        public List<Animal> AllFertile();
+        public List<Animal> AllInfertile();
     }
 }

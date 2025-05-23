@@ -4,7 +4,7 @@
 }
 <body>
 	<main>
-		<form method="post">
+		<form method="post" asp-page-handler="Create">
 			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
 			<input type="text" name="PhoneNumber" asp-for="PhoneNumber" placeholder="PhoneNumber" />
 			@* <input type="number" name="ID" asp-for="ID" placeholder="ID" /> *@
@@ -24,6 +24,10 @@
 				<p>
 					@worker.Id
 				</p>
+				<form method="post" asp-page-handler="Delete">
+					<input type="hidden" name="WorkerID" asp-for="WorkerID" value="@worker.Id" />
+					<input type="submit" value="Delete Worker" />
+				</form>
 			}
 		</div>
 	</main>

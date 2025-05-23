@@ -21,7 +21,7 @@
 				<p>
 					@blog.Text
 				</p>
-				@if (blog.Author.Name ==  null)
+				@if (blog.Author.Name ==  null || blog.Author == null)
 				{
 					<p>
 						-Author Unknown
@@ -39,7 +39,6 @@
 						<input type="submit" value="Open Blog" /> 
 				 	</form> 
 				</div>
-			
 			}
 			</div
 		</div>

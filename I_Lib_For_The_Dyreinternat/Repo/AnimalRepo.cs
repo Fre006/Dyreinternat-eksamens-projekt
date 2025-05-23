@@ -153,8 +153,58 @@ namespace Lib.Repo
             catch { }
 
         }
-
-
+        //Filters all animals for males:
+        public List<Animal> AllMales()
+        {
+            List<Animal> males = new List<Animal>();
+            foreach(Animal theanimal in _animals)
+            {
+                if (theanimal.Male)
+                {
+                    males.Add(theanimal);
+                }
+            }
+            return males;
+        }
+        //Filters all animals for females:
+        public List<Animal> AllFemales()
+        {
+            List<Animal> females = new List<Animal>();
+            foreach (Animal theanimal in _animals)
+            {
+                if (!theanimal.Male)
+                {
+                    females.Add(theanimal);
+                }
+            }
+            return females;
+        }
+        //Filters all animals for fertile:
+        public List<Animal> AllFertile()
+        {
+            List<Animal> fertile = new List<Animal>();
+            foreach (Animal theanimal in _animals)
+            {
+                if (theanimal.Fertile)
+                {
+                    fertile.Add(theanimal);
+                }
+            }
+            return fertile;
+        }
+        //Filters all animals for infertile:
+        public List<Animal> AllInfertile()
+        {
+            List<Animal> infertile = new List<Animal>();
+            foreach (Animal theanimal in _animals)
+            {
+                if (!theanimal.Fertile)
+                {
+                    infertile.Add(theanimal);
+                }
+            }
+            return infertile;
+        }
 
 
     }
