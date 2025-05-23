@@ -41,26 +41,7 @@
 				</div>
 			
 			}
-
-			<div id="Modal" class="modal">
-				<div class="modal-content">
-					<h1>
-						@Model.SpecificBlog.Title
-					</h1>
-					<p>
-						@Model.SpecificBlog.Text
-					</p>
-					<p>
-						@* -@Model.SpecificBlog.Author.Name *@
-					</p>
-				<div/>
-
-			</div>
-			<form method="post" asp-page-handler="Delete">
-				<input type="text" name="Title" asp-for="Title" placeholder="Title" />
-				<input type="submit" value="Delete Blog" />
-			</form>
-			
+			</div
 		</div>
 	</main>
 </body>

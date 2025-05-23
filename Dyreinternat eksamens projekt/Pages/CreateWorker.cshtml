@@ -7,7 +7,7 @@
 		<form method="post">
 			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
 			<input type="text" name="PhoneNumber" asp-for="PhoneNumber" placeholder="PhoneNumber" />
-			<input type="number" name="ID" asp-for="ID" placeholder="ID" />
+			@* <input type="number" name="ID" asp-for="ID" placeholder="ID" /> *@
 			<input type="submit" value="Create Worker" />
 		</form>
 		<div>
@@ -19,6 +19,10 @@
 
 				<p>
 					@worker.Role
+				</p>
+
+				<p>
+					@worker.Id
 				</p>
 			}
 		</div>
