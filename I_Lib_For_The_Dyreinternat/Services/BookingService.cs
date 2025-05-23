@@ -41,5 +41,17 @@ namespace Lib.Services
         {
             _bookingJSONRepo.Edit(id, name, description, customerCap, animalCap, location, start, stop);
         }
+        public void RegAnimal(int EventId, string AnimalId)
+        {
+            _bookingJSONRepo.RegAnimal(EventId, AnimalId);
+        }
+        public void RegWorker(int EventId, int WorkerId)
+        {
+            _bookingJSONRepo.RegWorker(EventId, WorkerId);
+        }
+        public void RegCostumer(int EventId, int CostumerId)
+        {
+            _bookingJSONRepo.RegCostumer(EventId, CostumerId);
+        }
     }
 }

@@ -18,21 +18,17 @@ namespace Lib.Repo
         private IDogJSONRepo _dogRepo;
         public AnimalRepo(ICatJSONRepo CatRepo, IDogJSONRepo DogRepo) {
             _catRepo = CatRepo;
-            _cats = _catRepo.GetAll();
             _dogRepo = DogRepo;
-            _dogs = _dogRepo.GetAll();
-            foreach (Cat cat in _cats) { 
-                _animals.Add(cat);
-            }
-            foreach (Dog dog in _dogs)
-            {
-                _animals.Add(dog);
-            }
+            UpdateAnimals();
+
         }
+        //simply Updates the _animals list then returns it
         public List<Animal> GetAll()
         {
+            UpdateAnimals();
             return _animals;
         }
+        //uses cat and dog repos, to get a list of all animals
         internal void UpdateAnimals()
         {
             _animals = new List<Animal>();
@@ -47,8 +43,8 @@ namespace Lib.Repo
                 _animals.Add(dog);
             }
         }
-
-        private int GetIndexByID(string chipID)
+        //just an internal method to get animal indexes via ID's 
+        internal int GetIndexByID(string chipID)
         {
             //returns 0 if chipID isn't found
             int index = 0;
@@ -63,12 +59,14 @@ namespace Lib.Repo
             }
             return index;
         }
-
+        //uses GetByID then just returns that animals log
         public List<Event> GetLogs(string chipID)
         {
+
             Animal theanimal = GetByID(chipID);
             return theanimal.Logs; ;
         }
+        //tries to add the event to both dogs and cats, which then checks wether that dog or cat exists in the dog/cat repo and if it exists then it adds the event to the log
         public void AddLog(string chipID, Event newEntry, string path = "default")
         {
             try
@@ -89,9 +87,10 @@ namespace Lib.Repo
             }
 
         }
-
+        //first uses UpdateAnimals just in case, then uses get index by ID, then checks if the index matches the id, in case it returned the right animal and if it did, returns that animal else returns a null animal
         public Animal GetByID(string chipID)
         {
+            UpdateAnimals();
             Animal theanimal = new Animal();
             int index = GetIndexByID(chipID);
 

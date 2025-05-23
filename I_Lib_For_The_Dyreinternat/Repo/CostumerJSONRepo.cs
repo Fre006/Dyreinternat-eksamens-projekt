@@ -11,11 +11,20 @@ namespace Lib.Repo
 {
     public class CostumerJSONRepo : ICostumerJSONRepo
     {
+        private IPersonJSONRepo _personRepo;
         public List<Costumer> _costumer = new List<Costumer>();
 
-        public CostumerJSONRepo()
+        public CostumerJSONRepo(IPersonJSONRepo PersonRepo)
         {
-            LoadFile();
+            _personRepo = PersonRepo;
+            try
+            {
+                LoadFile();
+            }
+            catch
+            {
+                SaveFile();
+            }
         }
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
@@ -29,6 +38,7 @@ namespace Lib.Repo
 
         public virtual void Add(Costumer costumer)
         {
+            int newid = _personRepo.GiveID(costumer.Id);
             _costumer.Add(costumer);
             SaveFile();
         }
@@ -43,6 +53,33 @@ namespace Lib.Repo
         public List<Costumer> GetAll()
         {
             return _costumer;
+        }
+        private int GetIndexByID(int ID)
+        {
+            //returns 0 if chipID isn't found
+            int index = 0;
+            for (int i = 0; i < _costumer.Count; i++)
+            {
+                if (_costumer[i].Id == ID)
+                {
+
+                    index = i;
+
+                }
+            }
+            return index;
+        }
+        public Costumer GetByID(int ID)
+        {
+            Costumer theCostumer = new Costumer();
+            int index = GetIndexByID(ID);
+
+            if (_costumer[index].Id == ID)
+            {
+                theCostumer = _costumer[index];
+            }
+            return theCostumer;
+
         }
     }
 }

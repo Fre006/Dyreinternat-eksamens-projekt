@@ -30,5 +30,13 @@ namespace Lib.Services
         {
             _veterinarianRepo.Edit(id, name, description, customerCap, animalCap, location, start, stop, veterinarian);
         }
+        public void RegWorker(int EventId, int WorkerId)
+        {
+            _veterinarianRepo.RegWorker(EventId, WorkerId);
+        }
+        public void RegAnimal(int EventId, string AnimalId)
+        {
+            _veterinarianRepo.RegAnimal(EventId, AnimalId);
+        }
     }
 }

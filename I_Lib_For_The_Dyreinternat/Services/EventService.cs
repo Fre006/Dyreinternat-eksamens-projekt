@@ -24,5 +24,9 @@ namespace Lib.Services
         {
             return _eventRepo.GetEventByID(ID);
         }
+        public Animal GetAnimalByID(string id)
+        {
+            return _eventRepo.GetAnimalByID(id);
+        }
     }
 }

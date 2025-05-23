@@ -14,6 +14,9 @@ namespace Lib.Repo
         public void AddEventToLogViaID(int id);
         public void AddEventToLog(Event theevent);
         public List<Event> GetAll();
+        public Animal GetAnimalByID(string id);
+        public Costumer GetCostumerByID(int id);
+        public Worker GetWorkerByID(int id);
 
     }
 }

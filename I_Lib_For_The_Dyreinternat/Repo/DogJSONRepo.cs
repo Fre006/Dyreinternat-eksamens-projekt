@@ -12,9 +12,10 @@ namespace Lib.Repo
 {
     public class DogJSONRepo:IDogJSONRepo
     {
+        //filename
         private string _path = "Dog.json";
         protected List<Dog> _dogs = new List<Dog>();
-
+        //tries to load Dog.json, if it doesn't exist creates it
         public DogJSONRepo()
         {
             try
@@ -27,7 +28,8 @@ namespace Lib.Repo
             }
 
         }
-        public int GetIndexByID(string chipID)
+        //simply an internal method to get index by ID
+        internal int GetIndexByID(string chipID)
         {
             //returns 0 if chipID isn't found
             int index = 0;
@@ -42,6 +44,7 @@ namespace Lib.Repo
             }
             return index;
         }
+        //Uses GetIndexByID, to get the index then checks wether the chipid's fit, if they do deletes the dog
         public void DeleteByID(string chipID, string path="default")
         {
             int index = GetIndexByID(chipID);
@@ -52,6 +55,7 @@ namespace Lib.Repo
                 SaveFile(path);
             }
         }
+        //uses get index by Id to get the specific dog from the dog list using the id, if id isn't found returns an empty dog
         public Dog GetByID(string chipID)
         {
             Dog thedog = new Dog();
@@ -71,7 +75,8 @@ namespace Lib.Repo
             Dog thedog=GetByID(chipID);
             return thedog.Logs; ;
         }
-
+        //Uses GetLogs, to get the log of the animal, adds the entry to the list, then uses GetByIndex,
+        //checks if the ChipId fits, if it does saves the new logs to the dog then saves the file
         public void AddLog(string chipID, Event newEntry, string path="default")
         {
             List<Event> log=new List<Event>();
@@ -87,18 +92,18 @@ namespace Lib.Repo
 
 
         }
-
+        //simply returns all dogs
         public List<Dog> GetAll()
         {
             return _dogs;
         }
-
+        //Adds a dog, then saves the file
         public void Add(Dog dog, string path = "default")
         {
             _dogs.Add(dog);
             SaveFile(path);
         }
-
+        //Changes the fertile bool incase the dog gets steriliset
         public void Sterilise(string chipID, string path = "default")
         {
             Dog thedog = new Dog();
@@ -108,12 +113,14 @@ namespace Lib.Repo
                 SaveFile(path);
             }
         }
+        //Simply uses GetByID, then returns, the status
         public string GetStatusByID(string chipID)
         {
             Dog thedog = GetByID(chipID);
             return thedog.Status;
         }
-
+        //Uses GetIndexByID, then checks wether chipID fits, the dog in the index
+        //if it does, saves the Status and saves the file
         public void ChangeStatusByID(string chipID, string status, string path = "default")
         {
             int index = 0;
@@ -127,7 +134,7 @@ namespace Lib.Repo
 
 
         //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
-        private void LoadFile(string path = "default")
+        internal void LoadFile(string path = "default")
         {
             if (path == "default")
             {
@@ -143,7 +150,7 @@ namespace Lib.Repo
         }
 
         //denne metode skal kaldes når vi vil putte data i vores JSON
-        private void SaveFile(string path = "default")
+        internal void SaveFile(string path = "default")
         {
             if (path == "default")
             {

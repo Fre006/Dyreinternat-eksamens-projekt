@@ -33,7 +33,7 @@ namespace Lib.Model
 
         public Event() { }
 
-        //List<Costumer> costumers, List<Animal> animals, List<Worker> workers
+        //List<Costumer> costumers, List<Animal> animals, List<Worker> workers we give ID a default value we later change
         public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, int id=0)
         {
             Name = name;

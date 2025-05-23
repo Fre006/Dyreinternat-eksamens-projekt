@@ -22,6 +22,7 @@ namespace Lib.Model
 
         public DateTime Birthdate { get; set; }
 
+        //default constructor
         public Animal()
         {
 
@@ -39,6 +40,11 @@ namespace Lib.Model
             Logs= logs;
             ChipID=chipID;
             Birthdate=birthdate;
+        }
+
+        public override string ToString()
+        {
+            return $"Name: {Name}, Characteristics: {Characteristics}, Status: {Status}, IsMale: {Male}, Fertile: {Fertile}, Size: {Size}, ChipID: {ChipID}, Description: {Description}, Birthdate:{Birthdate}";
         }
 
 

@@ -7,10 +7,11 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    public interface ICostumerJSONRepo
+    public interface IPersonJSONRepo
     {
-        public List<Costumer> GetAll();
-        public void Add(Costumer costumer);
-        public Costumer GetByID(int ID);
+        public List<Person> GetAll();
+        public int GiveID(int ThisID);
+        public Person GetByID(int ID);
+
     }
 }

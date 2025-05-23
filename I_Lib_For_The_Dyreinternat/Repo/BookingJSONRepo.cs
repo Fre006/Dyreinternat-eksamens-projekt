@@ -104,5 +104,86 @@ namespace Lib.Repo
                 _booking[index].Stop = stop;
             }
         }
+        public void RegAnimal(int EventId, string AnimalId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Animal animal = _eventRepo.GetAnimalByID(AnimalId);
+                if (_booking[index].Animals.Count < _booking[index].AnimalCap)
+                {
+                    _booking[index]._animals.Add(animal);
+                }
+                else Console.WriteLine("No more animals can attend this event");
+            }
+            catch
+            {
+                Console.WriteLine("Animal or event id is incorrect");
+            }
+        }
+        public void RegCostumer(int EventId, int CostumerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Costumer costumer = _eventRepo.GetCostumerByID(CostumerId);
+                if (_booking[index].Costumers.Count < _booking[index].CostumerCap)
+                {
+                    _booking[index]._costumers.Add(costumer);
+                }
+                else Console.WriteLine("No more Costumers can attend this event");
+            }
+            catch
+            {
+                Console.WriteLine("costumer or event id is incorrect");
+            }
+        }
+        public void RegWorker(int EventId, int WorkerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                Worker worker = _eventRepo.GetWorkerByID(WorkerId);
+                _booking[index].Workers.Add(worker);
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
+            }
+        }
+        public void DeRegWorker(int EventId, int WorkerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                if (_booking[index].ID == WorkerId)
+                {
+                    int remove = _booking[index].ID;
+                    _booking[index].Workers.RemoveAt(remove);
+                }
+                else Console.WriteLine("Employee is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
+            }
+        }
+        public void DeRegAnimal(int EventId, int AnimalId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                if (_booking[index].ID == AnimalId)
+                {
+                    int remove = _booking[index].ID;
+                    _booking[index].Workers.RemoveAt(remove);
+                }
+                else Console.WriteLine("Animal is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Animal or event id is incorrect");
+            }
+        }
     }
 }
