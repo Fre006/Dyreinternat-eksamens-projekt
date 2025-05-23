@@ -61,5 +61,9 @@ namespace Lib.Model
             Animals = animals;
             Costumers = costumers;
         }
+        public override string ToString()
+        {
+            return $"Name: {Name}, Description: {Description}, Costumer Capacity: {CostumerCap}, Animal Capacity: {AnimalCap}, Location: {Location}, Start time: {Start}, End time: {Stop}, ID: {ID} Animal amount: {Animals.Count}, Worker amount: {Workers.Count}, Costumer amount: {Costumers.Count}";
+        }
     }
 }

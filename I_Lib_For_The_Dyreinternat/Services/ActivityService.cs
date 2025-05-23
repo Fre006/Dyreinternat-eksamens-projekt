@@ -71,5 +71,17 @@ namespace Lib.Services
         {
             _activityRepo.RegCostumer(EventId, CostumerId);
         }
+        public void DeRegAnimal(int EventId, string AnimalId)
+        {
+            _activityRepo.DeRegAnimal(EventId, AnimalId);
+        }
+        public void DeRegWorker(int EventId, int WorkerId)
+        {
+            _activityRepo.DeRegWorker(EventId, WorkerId);
+        }
+        public void DeRegCostumer(int EventId, int CostumerId)
+        {
+            _activityRepo.DeRegCostumer(EventId, CostumerId);
+        }
     }
 }

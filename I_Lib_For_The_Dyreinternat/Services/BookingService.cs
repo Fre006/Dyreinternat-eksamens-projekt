@@ -53,5 +53,17 @@ namespace Lib.Services
         {
             _bookingJSONRepo.RegCostumer(EventId, CostumerId);
         }
+        public void DeRegAnimal(int EventId, string AnimalId)
+        {
+            _bookingJSONRepo.DeRegAnimal(EventId, AnimalId);
+        }
+        public void DeRegWorker(int EventId, int WorkerId)
+        {
+            _bookingJSONRepo.DeRegWorker(EventId, WorkerId);
+        }
+        public void DeRegCostumer(int EventId, int CostumerId)
+        {
+            _bookingJSONRepo.DeRegCostumer(EventId, CostumerId);
+        }
     }
 }

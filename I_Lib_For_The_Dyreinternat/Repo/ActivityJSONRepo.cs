@@ -176,5 +176,76 @@ namespace Lib.Repo
                 Console.WriteLine("Worker or event id is incorrect");
             }
         }
+        public void DeRegWorker(int EventId, int WorkerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+
+                if (_activity[index].ID == EventId)
+                {
+                    foreach (Worker theworker in _activity[index].Workers)
+                    {
+                        if (theworker.Id == WorkerId)
+                        {
+                            _activity[index].Workers.Remove(theworker);
+                            SaveFile();
+                        }
+                    }
+                }
+                else Console.WriteLine("Employee is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
+            }
+        }
+        public void DeRegAnimal(int EventId, string AnimalId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+                if (_activity[index].ID == EventId)
+                {
+                    foreach (Animal theanimal in _activity[index].Animals)
+                    {
+                        if (theanimal.ChipID == AnimalId)
+                        {
+                            _activity[index].Animals.Remove(theanimal);
+                            SaveFile();
+                        }
+                    }
+                }
+                else Console.WriteLine("Animal is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Animal or event id is incorrect");
+            }
+        }
+        public void DeRegCostumer(int EventId, int CostumerId)
+        {
+            try
+            {
+                int index = GetIndexById(EventId);
+
+                if (_activity[index].ID == EventId)
+                {
+                    foreach (Costumer thecostumer in _activity[index].Costumers)
+                    {
+                        if (thecostumer.Id == CostumerId)
+                        {
+                            _activity[index].Costumers.Remove(thecostumer);
+                            SaveFile();
+                        }
+                    }
+                }
+                else Console.WriteLine("Employee is not registeret to this event");
+            }
+            catch
+            {
+                Console.WriteLine("Worker or event id is incorrect");
+            }
+        }
     }
 }

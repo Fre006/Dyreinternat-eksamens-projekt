@@ -101,6 +101,26 @@ namespace Lib.Repo
             return theanimal;
 
         }
+        public void RemoveLogByID(Event theEvent, string chipID)
+        {
+            foreach (Animal theAnimal in theEvent.Animals)
+            {
+                try { _catRepo.RemoveLogByID(theEvent.ID, chipID); }
+                catch { }
+                try { _dogRepo.RemoveLogByID(theEvent.ID, chipID); }
+                catch { }
+            }
+        }
+        public void DeletedEvent(Event theEvent)
+        {
+            foreach (Animal theAnimal in theEvent.Animals)
+            {
+                try { _catRepo.RemoveLogByID(theEvent.ID, theAnimal.ChipID); }
+                catch { }
+                try { _dogRepo.RemoveLogByID(theEvent.ID, theAnimal.ChipID); }
+                catch { }
+            }
+        }
 
 
 
