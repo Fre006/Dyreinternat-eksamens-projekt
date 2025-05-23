@@ -122,7 +122,7 @@ namespace Lib.Repo
 
 
         }
-
+        //sends event to deletedEvent
         public void DeletedEvent(Event theevent)
         {
             _animalRepo.DeletedEvent(theevent);
