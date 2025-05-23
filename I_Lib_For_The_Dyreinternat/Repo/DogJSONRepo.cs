@@ -13,11 +13,13 @@ namespace Lib.Repo
     public class DogJSONRepo:IDogJSONRepo
     {
         //filename
+        private IVaultAnimalJSONRepo _vaultAnimalEvent;
         private string _path = "Dog.json";
         protected List<Dog> _dogs = new List<Dog>();
         //tries to load Dog.json, if it doesn't exist creates it
-        public DogJSONRepo()
+        public DogJSONRepo(IVaultAnimalJSONRepo VaultEventRepo)
         {
+            _vaultAnimalEvent = VaultEventRepo;
             try
             {
                 LoadFile();
@@ -55,6 +57,7 @@ namespace Lib.Repo
                 {
                     if (theEvent.ID == EventID)
                     {
+
                         _dogs[index].Logs.Remove(theEvent);
                         SaveFile();
                     }
@@ -69,6 +72,7 @@ namespace Lib.Repo
             //catches if chipID doesn't match, and then will not delete
             if (_dogs[index].ChipID == chipID)
             {
+                _vaultAnimalEvent.VaultAnimal(_dogs[index]);
                 _dogs.RemoveAt(index);
                 SaveFile(path);
             }

@@ -7,7 +7,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    internal interface IVaultEventJSONRepo
+    public interface IVaultEventJSONRepo
     {
         public void VaultEvent(Event oldEvent);
         public Event VaultGetEvent(int Key);
