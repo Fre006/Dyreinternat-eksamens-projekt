@@ -21,18 +21,21 @@ namespace ConsoleProgram
             PersonJSONRepo personJSONRepo = new PersonJSONRepo();
             WorkerJSONRepo workerJSONRepo = new WorkerJSONRepo(personJSONRepo);
             WorkerService workerService = new WorkerService(workerJSONRepo);
+            
             BlogService blogService = new BlogService(new BlogJSONRepo());
-            CatJSONRepo catJSONRepo = new CatJSONRepo();
-            DogJSONRepo dogJSONRepo = new DogJSONRepo();
+            VaultAnimalJSONRepo vaultAnimalJSONRepo = new VaultAnimalJSONRepo();
+            VaultEventJSONRepo vaultEventJSONRepo = new VaultEventJSONRepo();
+            CatJSONRepo catJSONRepo = new CatJSONRepo(vaultAnimalJSONRepo);
+            DogJSONRepo dogJSONRepo = new DogJSONRepo(vaultAnimalJSONRepo);
             CostumerJSONRepo costumerJSONRepo= new CostumerJSONRepo(personJSONRepo); 
             AnimalRepo animalRepo = new AnimalRepo(catJSONRepo, dogJSONRepo);
             EventJSONRepo eventRepo = new EventJSONRepo(animalRepo, costumerJSONRepo, workerJSONRepo);
             CatService catService = new CatService(catJSONRepo);
             DogService dogService = new DogService(dogJSONRepo);
             AnimalService animalService = new AnimalService(animalRepo);
-            ActivityService activityService = new ActivityService(new ActivityJSONRepo(eventRepo));
-            BookingService bookingService = new BookingService(new BookingJSONRepo(eventRepo));
-            VeterinarianService vetService = new VeterinarianService(new VeterinarianJSONRepo(eventRepo));
+            ActivityService activityService = new ActivityService(new ActivityJSONRepo(eventRepo, vaultEventJSONRepo));
+            BookingService bookingService = new BookingService(new BookingJSONRepo(eventRepo, vaultEventJSONRepo));
+            VeterinarianService vetService = new VeterinarianService(new VeterinarianJSONRepo(eventRepo, vaultEventJSONRepo));
             bool testing = true;
             while (testing == true)
             {
