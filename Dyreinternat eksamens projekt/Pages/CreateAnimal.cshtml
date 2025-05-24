@@ -17,6 +17,14 @@
 			<p>Is the Animal Sterilised?
 			<input type="checkbox" name="Fertile" asp-for="Fertile" value="true"/></p>
 			<input type="datetime" name="Birthdate" asp-for="Birthdate" placeholder="Birthdate" />
+			<!--Unknown,Labrador, Golden_Retriever, Rhodesian_Rigdebag, Saint_Bernards_dog -->
+			<label for="dogBreedSelect">Choose a Breed:</label>
+			<select id="dogBreedSelect" name="dogBreeds">
+				  <option value="Unknown">Unknown</option>
+				  <option value="Golden_Retriever">Golden Retriever</option>
+				  <option value="Rhodesian_Rigdebag">Rhodesian Rigdebag</option>
+				  <option value="Saint_Bernards_dog">Saint Bernards dog</option>
+			</select>
 			<input type="submit" value="Create dog" />
 		</form>
 			<p>Create Cat</p>
@@ -31,6 +39,15 @@
 			<p>Is the Animal Sterilised?
 			<input type="checkbox" name="Fertile" asp-for="Fertile" value="true"/></p>
 			<input type="datetime" name="Birthdate" asp-for="Birthdate" placeholder="Birthdate" />
+			<!--Unknown, Siamese, Norwegian_Forest_Cat, Korat, Maine_Coon-->
+			<label for="catBreedSelect">Choose a Breed:</label>
+			<select id="catBreedSelect" name="catBreeds">
+				  <option value="Unknown">Unknown</option>
+				  <option value="Norwegian_Forest_Cat">Norwegian Forest Cat</option>
+				  <option value="Korat">Korat</option>
+				  <option value="Siamese">Siamese</option>
+				  <option value="Maine_Coon">Maine Coon</option>
+			</select>
 			<input type="submit" value="Create cat" />
 		</form>
 		<div>
