@@ -21,18 +21,22 @@
 				<p>
 					@blog.Text
 				</p>
-				@if (blog.Author.Name ==  null || blog.Author == null)
-				{
+				
+					@if (blog.Author.Name ==  null || blog.Author == null)
+					{
 					<p>
 						-Author Unknown
 					</p>
-				}
+					}
 				else
 				{
 					<p>
 						-@blog.Author.Name
 					</p>
-				}
+					}
+				
+				
+				
 				<div >
 					<form method="post" asp-page-handler="Show">
 						<input type="hidden" name="TempTitle" asp-for="TempTitle" value="@blog.Title" />

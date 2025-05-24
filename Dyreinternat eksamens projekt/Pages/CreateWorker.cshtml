@@ -7,7 +7,12 @@
 		<form method="post" asp-page-handler="Create">
 			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
 			<input type="text" name="PhoneNumber" asp-for="PhoneNumber" placeholder="PhoneNumber" />
-			@* <input type="number" name="ID" asp-for="ID" placeholder="ID" /> *@
+			<label for="roleSelect">Choose a Role:</label>
+			<select id="roleSelect" name="roleSelect">
+				  <option value="Leader">Leader</option>
+				  <option value="Grunt">Grunt</option>
+				  <option value="Admín">Admin</option>
+			</select>
 			<input type="submit" value="Create Worker" />
 		</form>
 		<div>
