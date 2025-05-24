@@ -9,13 +9,16 @@ namespace Lib.Model
 {
     public class Costumer : Person
     {
-        public string _cardNumber;
+        //Instansvariabler
+        private string _cardNumber;
         public string CardNumber { get; set; }
 
+        //Default Constructor
         public Costumer()
         {
 
         }
+        //Construktor
         public Costumer(string name, string mail, string phoneNumber, DateTime birthdate, string cardNumber, int id = 0)
         {
             Name = name;

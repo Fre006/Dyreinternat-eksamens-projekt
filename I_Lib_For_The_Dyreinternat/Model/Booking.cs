@@ -10,6 +10,7 @@ namespace Lib.Model
 {
     public class Booking : Event
     {
+        // Construtor for at lave Events af typen Booking
         public Booking(string name, string description, int costumerCap, int animalCap, List<Costumer> costumers, List<Animal> animals, List<Worker> workers, string location, DateTime start, DateTime stop, int id=0)
         {
             Name = name;
