@@ -8,6 +8,7 @@ namespace Lib.Model
 {
     public class Event
     {
+        //instansvariabler
         public string _name;
         public string _description;
         public int _customerCap;
@@ -19,6 +20,7 @@ namespace Lib.Model
         public DateTime _start;
         public DateTime _stop;
 
+        //Properties
         public string Name { get; set; }
         public string Description { get; set; }
         public int CostumerCap { get; set; }
@@ -31,6 +33,7 @@ namespace Lib.Model
         public DateTime Stop { get; set; }
         public int ID { get; set; }
 
+        //Default Construktor
         public Event() { }
 
         //List<Costumer> costumers, List<Animal> animals, List<Worker> workers we give ID a default value we later change
@@ -48,6 +51,7 @@ namespace Lib.Model
 
         }
 
+        //Construktor Scaffolding
         public Event(string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Animal> animals) : this(name, description,customerCap,animalCap,location,start,stop,workers)
         {
             Animals = animals;

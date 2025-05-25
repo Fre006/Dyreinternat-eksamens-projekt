@@ -33,6 +33,10 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public string Description { get; set; }
         [BindProperty]
         public DateTime Birthdate { get; set; }
+        [BindProperty]
+        public DogBreeds dogBreedSelect { get; set; }
+        [BindProperty]
+        public CatBreeds catBreedSelect { get; set; }
         public CreateAnimalModel(AnimalService animalService, DogService dogService, CatService catService) 
         {
             _animalService = animalService;
@@ -53,13 +57,13 @@ namespace Dyreinternat_eksamens_projekt.Pages
         public void OnPostCreateDog()
         {
 
-            Dog dog = new Dog(Name, Characteristics, Status, Male, !Fertile, Sizes.Small, new List<Event>(), ChipID, Description, Birthdate);
+            Dog dog = new Dog(Name, Characteristics, Status, Male, !Fertile, Sizes.Small, new List<Event>(), ChipID, Description, Birthdate, dogBreedSelect);
             _dogService.Add(dog);
 
         }
         public void OnPostCreateCat()
         {
-            Cat cat = new Cat(Name, Characteristics, Status, Male, !Fertile, Sizes.Small, new List<Event>(), ChipID, Description, CatBreeds.Unknown, Birthdate);
+            Cat cat = new Cat(Name, Characteristics, Status, Male, !Fertile, Sizes.Small, new List<Event>(), ChipID, Description, catBreedSelect, Birthdate);
             _catService.Add(cat);
         }
     }

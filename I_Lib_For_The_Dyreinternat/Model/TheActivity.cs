@@ -9,12 +9,12 @@ namespace Lib.Model
 {
     public class TheActivity : Event
     {
-        
+        //Default construktor
         public TheActivity()
         {
 
         }
-
+        //Construktor for the Event type TheActivity
         public TheActivity (string name, string description, int costumerCap, int animalCap, string location, DateTime start, DateTime stop, List<Worker> workers, List<Animal> animals, List<Costumer> costumers, int id=0)
         {
             Name = name;

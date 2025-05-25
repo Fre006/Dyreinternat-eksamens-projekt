@@ -155,7 +155,7 @@ namespace Lib.Repo
         }
 
 
-        //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
+        //this method loads data from JSON files
         internal void LoadFile(string path = "default")
         {
             if (path == "default")
@@ -171,7 +171,7 @@ namespace Lib.Repo
             _dogs = JsonSerializer.Deserialize<List<Dog>>(json);
         }
 
-        //denne metode skal kaldes når vi vil putte data i vores JSON
+        //this method loads data from JSON files
         internal void SaveFile(string path = "default")
         {
             if (path == "default")
