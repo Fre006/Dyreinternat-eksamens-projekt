@@ -5,6 +5,7 @@
 
 <body>
 	<main>
+		<!-- Makes the create button so we can send the desired variables over to the properties in c#-->
 		<form method="post" asp-page-handler="Create">
 			<input type="text" name="Title" asp-for="Title" placeholder="title" />
 			<input type="text" name="Text" asp-for="Text" placeholder="text" />
@@ -12,6 +13,7 @@
 			<input type="submit" value="Create Blog" />
 		</form>
 		<div>
+			<!--Goes through each existing blog and writes out the properties-->
 			@foreach (Lib.Model.Blog blog in Model.Blogs)
 			{
 				<h1>
@@ -21,8 +23,8 @@
 				<p>
 					@blog.Text
 				</p>
-				
-					@if (blog.Author.Name ==  null || blog.Author == null)
+				<!--This is just a little safety measure, if it can't find the authors name or author it will still show something -->
+					@if (blog.Author == null || blog.Author.Name ==  null)
 					{
 					<p>
 						-Author Unknown
@@ -37,8 +39,8 @@
 				
 				
 				
-				<div >
-					<form method="post" asp-page-handler="Show">
+				<div > <!--This button runs the OnPostShow method and defines a temporary title we can send over -->
+					<form method="post" asp-page-handler="Show"><!--to the next page --> 
 						<input type="hidden" name="TempTitle" asp-for="TempTitle" value="@blog.Title" />
 						<input type="submit" value="Open Blog" /> 
 				 	</form> 

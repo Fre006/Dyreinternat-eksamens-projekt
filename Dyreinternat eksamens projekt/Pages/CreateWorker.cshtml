@@ -3,21 +3,23 @@
 @{
 }
 <body>
-	<main>
-		<form method="post" asp-page-handler="Create">
+	<main
+		<!--Makes the button that allows for the creation of a worker, 
+		the asp-page-handler="Create" makes it run the OnPostCreate Method -->
+		<form method="post" asp-page-handler="Create"> 
 			<input type="text" name="Name" asp-for="Name" placeholder="Name" />
 			<input type="text" name="PhoneNumber" asp-for="PhoneNumber" placeholder="PhoneNumber" />
 			<label for="roleSelect">Choose a Role:</label>
 			<select id="roleSelect" name="roleSelect">
-				  <option value="Leader">Leader</option>
-				  <option value="Grunt">Grunt</option>
+				  <option value="Leader">Leader</option> <!--The first "Leader" is the actual value that gets sent over-->
+				  <option value="Grunt">Grunt</option> <!--And the second "Leader" is the text shown to the user-->
 				  <option value="Admín">Admin</option>
 			</select>
 			<input type="submit" value="Create Worker" />
-		</form>
+		</form> 
 		<div>
-			@foreach (Lib.Model.Worker worker in Model.Workers)
-			{
+			@foreach (Lib.Model.Worker worker in Model.Workers) 
+			{ <!--This foreach loop prints out all of the workers' names, roles and ID-->
 				<h1>
 					@worker.Name
 				</h1>
@@ -29,7 +31,11 @@
 				<p>
 					@worker.Id
 				</p>
-				<form method="post" asp-page-handler="Delete">
+				<!-- 
+					This Button takes the ID of the current worker defined by the foreach loop
+					and then runs OnPostDelete which then deletes the worker based of their ID
+				-->
+				<form method="post" asp-page-handler="Delete"> 
 					<input type="hidden" name="WorkerID" asp-for="WorkerID" value="@worker.Id" />
 					<input type="submit" value="Delete Worker" />
 				</form>
