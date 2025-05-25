@@ -87,16 +87,17 @@ namespace Lib.Repo
 
         //This Method is used to find objects in the code that have a specific name.
         //It also works as a filter showing all objects with that name 
-        public TheActivity GetByName(string name)
+        public List<TheActivity> GetByName(string name)
         {
+            List<TheActivity> FilteredList = new();
             foreach (TheActivity activity in _activity)
             {
                 if (name == activity.Name )
                 {
-                    return activity;
+                    FilteredList.Add(activity);
                 }
             }
-            return null;
+            return FilteredList;
         }
 
         //This Method is used to get the specific index number from the List that corresponds to the id of a given activity.

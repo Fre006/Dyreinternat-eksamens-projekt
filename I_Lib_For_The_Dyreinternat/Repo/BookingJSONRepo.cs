@@ -63,16 +63,17 @@ namespace Lib.Repo
 
         //This Method is used to find objects in the code that have a specific name.
         //It also works as a filter showing all objects with that name 
-        public Booking GetByName(string name)
+        public List<Booking> GetByName(string name)
         {
+            List<Booking> FilteredList = new();
             foreach (Booking booking in _booking)
             {
                 if (name == booking.Name)
                 {
-                    return booking;
+                    FilteredList.Add(booking);
                 }
             }
-            return null;
+            return FilteredList;
         }
 
         //This Method is used to get the specific index number from the List that corresponds to the id of a given Booking.

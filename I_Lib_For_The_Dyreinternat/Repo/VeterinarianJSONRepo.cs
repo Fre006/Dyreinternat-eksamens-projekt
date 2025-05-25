@@ -69,16 +69,17 @@ namespace Lib.Repo
 
         //This Method is used to find objects in the code that have a specific name.
         //It also works as a filter showing all objects with that name 
-        public VeterinarianVisit GetByName(string name)
+        public List<VeterinarianVisit> GetByName(string name)
         {
-            foreach (VeterinarianVisit veterinarian in _veterinarian)
-            {
-                if (name == veterinarian.Name)
+                List<VeterinarianVisit> FilteredList = new();
+                foreach (VeterinarianVisit veterinarian in _veterinarian)
                 {
-                    return veterinarian;
+                    if (name == veterinarian.Name)
+                    {
+                        FilteredList.Add(veterinarian);
+                    }
                 }
-            }
-            return null;
+                return FilteredList;
         }
 
         //This Method is used to get the specific index number from the List that corresponds to the id of a given VeterinarianVisit.

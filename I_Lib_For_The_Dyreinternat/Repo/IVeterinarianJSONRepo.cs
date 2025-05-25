@@ -12,7 +12,7 @@ namespace Lib.Repo
         public List<VeterinarianVisit> GetAll();
         public void Add(VeterinarianVisit veterinarian);
         public void Edit(int id, string name, string description, int customerCap, int animalCap, string location, DateTime start, DateTime stop, string veterinarian);
-        public VeterinarianVisit GetByName(string name);
+        public List<VeterinarianVisit> GetByName(string name);
         public int GetIndexById(int id);
         public void DeleteById(int id);
         public void RegAnimal(int EventId, string AnimalId);
