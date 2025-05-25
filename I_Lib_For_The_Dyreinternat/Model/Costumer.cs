@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Lib.Model
 {
-    public class Costumer : Person
+    public class Costumer : Person //Costumer inherits properties from Person
     {
-        public string _cardNumber;
-        public string CardNumber { get; set; }
+        
+        public string CardNumber { get; set; }//Costumers only unique property
 
-        public Costumer()
+        public Costumer() //Default Constructor
         {
 
         }
-        public Costumer(string name, string mail, string phoneNumber, DateTime birthdate, string cardNumber, int id = 0)
+        public Costumer(string name, string mail, string phoneNumber, DateTime birthdate, string cardNumber, int id = 0) //We set the default id to be 0
         {
             Name = name;
             Id = id;
@@ -25,7 +25,7 @@ namespace Lib.Model
             Birthdate = birthdate;
             CardNumber = cardNumber;
         }
-        public override string ToString()
+        public override string ToString() //Simple ToString
         {
             return $"Name: {Name}  Id: {Id}  Mail: {Mail}  PhoneNumber: {PhoneNumber}  Birthdate: {Birthdate} CardNumber: {CardNumber}";
         }

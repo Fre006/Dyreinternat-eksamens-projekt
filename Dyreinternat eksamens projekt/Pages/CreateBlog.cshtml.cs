@@ -10,6 +10,10 @@ namespace Dyreinternat_eksamens_projekt.Pages
 {
     public class CreateBlogModel : PageModel
     {
+        /*
+            Creates some properties for the blogs so we have
+            somewhere to trow the variables defined in the html page to
+         */
         [BindProperty]
         public string Title { get; set; }
 
@@ -30,7 +34,17 @@ namespace Dyreinternat_eksamens_projekt.Pages
 
         BlogService _blogService;
         WorkerService _workerService;
-
+        /*
+            We create the workerService and BlogServiec and define it so we can 
+            Call the methods defined in WorkerService and BlogService.
+            We also make sure to get all of the already existing Blogs and workers
+            and put them into a list so we can display the blogs.
+            Then we reverse the list so the newest one is the first one to show up.
+            But since this is done in the constructor everytime you refresh the page
+            it flips the list and when you add an object it will be in the incorrect location
+            A better option would be using a sorting algorithm to sort by DateTime they were created
+            But we ran out of time
+         */
         public CreateBlogModel(BlogService bs, WorkerService ws)
         {
             _blogService = bs;
@@ -46,6 +60,14 @@ namespace Dyreinternat_eksamens_projekt.Pages
         {
 
         }
+        /*
+            When you create a blog it checks whether the author
+            is a valid worker. This is why we needed to getAll workers.
+            If the author is not a valid worker then we just give it 
+            the default worker, John Doe. This is to ensure it is always
+            created with a valid worker. Then we give the blog a 
+            DateTime.Now and send it down into the repo
+         */
         public void OnPostCreate()
         {
             Debug.WriteLine(roleSelect);
@@ -64,17 +86,24 @@ namespace Dyreinternat_eksamens_projekt.Pages
             
 
             Blog blog = new Blog(Title, Text, Author, DateTime.Now);
-            Debug.WriteLine(blog);
+            //Debug.WriteLine(blog);
             _blogService.Add(blog);
 
         }
+        /*
+           This is no longer used 
+         */
+        //public void OnPostEdit() 
+        //{
+        //    Debug.WriteLine(SpecificBlog.Title);
+        //    Debug.WriteLine(TempTitle);
+        //}
 
-        public void OnPostEdit() 
-        {
-            Debug.WriteLine(SpecificBlog.Title);
-            Debug.WriteLine(TempTitle);
-        }
-
+        /*
+            When you press the show button it redirects
+            you to a new page called Blog and sends over 
+            the Title of the blog you clicked from
+         */
         public IActionResult OnPostShow()
         {
             return RedirectToPage("/Blog", new { Title = TempTitle});
@@ -83,10 +112,12 @@ namespace Dyreinternat_eksamens_projekt.Pages
         {
             //Debug.WriteLine(SpecificBlog.Title);
         }
-
-        public void OnPostDelete()
-        {
-            _blogService.Delete(Title);
-        }
+        /*
+           No longer used here 
+         */
+        //public void OnPostDelete()
+        //{
+        //    _blogService.Delete(Title);
+        //}
     }
 }

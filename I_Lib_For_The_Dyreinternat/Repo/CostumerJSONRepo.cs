@@ -9,7 +9,7 @@ using Lib.Model;
 
 namespace Lib.Repo
 {
-    public class CostumerJSONRepo : ICostumerJSONRepo
+    public class CostumerJSONRepo : ICostumerJSONRepo //Implements the CostumerJSONRepo interface
     {
         private IPersonJSONRepo _personRepo;
         public List<Costumer> _costumer = new List<Costumer>();
@@ -17,7 +17,7 @@ namespace Lib.Repo
         public CostumerJSONRepo(IPersonJSONRepo PersonRepo)
         {
             _personRepo = PersonRepo;
-            try
+            try //This try catch tries to load the file and if it fails it will save a new empty file instead
             {
                 LoadFile();
             }
@@ -26,8 +26,7 @@ namespace Lib.Repo
                 SaveFile();
             }
         }
-
-        //denne metode skal kaldes hver gang vi gerne vil trække data fra vores JSON
+        //This method loads the file based off of the given path and puts into our private _costumer list
         private void LoadFile()
         {
             string path = "Costumer.json";
@@ -36,46 +35,44 @@ namespace Lib.Repo
             _costumer = JsonSerializer.Deserialize<List<Costumer>>(json);
         }
 
-        public virtual void Add(Costumer costumer)
+        public void Add(Costumer costumer)  //Add method
         {
-            int newid = _personRepo.GiveID(costumer.Id);
-            costumer.Id = newid;
-            _costumer.Add(costumer);
-            SaveFile();
+            int newid = _personRepo.GiveID(costumer.Id); //Creates a new ID
+            costumer.Id = newid;        //Gives the costumer object this new ID
+            _costumer.Add(costumer);    //Adds the Costumer to the list
+            SaveFile();                 //Saves the list
         }
-
-        //denne metode skal kaldes når vi vil putte data i vores JSON
+        
+        //Saves our list in a json file
         private void SaveFile()
         {
             string path = "Costumer.json";
-            File.WriteAllText(path, JsonSerializer.Serialize(_costumer));
+            File.WriteAllText(path, JsonSerializer.Serialize(_costumer)); //Saves the Costumer List
         }
 
         public List<Costumer> GetAll()
         {
-            return _costumer;
+            return _costumer; //Returns the full list of costumers
         }
         private int GetIndexByID(int ID)
         {
             //returns 0 if chipID isn't found
             int index = 0;
-            for (int i = 0; i < _costumer.Count; i++)
+            for (int i = 0; i < _costumer.Count; i++) //Goes through the list
             {
-                if (_costumer[i].Id == ID)
+                if (_costumer[i].Id == ID) //If the id equal the given ID
                 {
-
-                    index = i;
-
+                    index = i; //Set the index to the current iteration
                 }
             }
-            return index;
+            return index; //Returns the iteration
         }
         public Costumer GetByID(int ID)
         {
-            Costumer theCostumer = new Costumer();
-            int index = GetIndexByID(ID);
+            Costumer theCostumer = new Costumer(); //Creates a new costumer
+            int index = GetIndexByID(ID); //Gets the index by ID
 
-            if (_costumer[index].Id == ID)
+            if (_costumer[index].Id == ID) //This just checks if we have the correct object
             {
                 theCostumer = _costumer[index];
             }
