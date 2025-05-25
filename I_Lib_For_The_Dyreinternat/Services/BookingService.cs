@@ -24,7 +24,7 @@ namespace Lib.Services
         {
             return (List<Booking>)_bookingJSONRepo;
         }
-        public Booking GetByName(string name)
+        public List<Booking> GetByName(string name)
         {
             return _bookingJSONRepo.GetByName(name);
         }

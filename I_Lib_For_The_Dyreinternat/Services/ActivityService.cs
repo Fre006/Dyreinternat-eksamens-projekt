@@ -42,7 +42,7 @@ namespace Lib.Services
         {
             return (List<TheActivity>)_activityRepo;
         }
-         public TheActivity GetByName(string name)
+         public List<TheActivity> GetByName(string name)
         {
             return _activityRepo.GetByName(name);
         }
